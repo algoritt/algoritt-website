@@ -59,6 +59,7 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null)
+  const [isDarkMode, setIsDarkMode] = useState(true);
   const { scrollY } = useScroll()
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -91,6 +92,11 @@ export function Header() {
     setOpenSubmenu(openSubmenu === title ? null : title)
   }
 
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+    document.body.classList.toggle('dark', !isDarkMode);
+  };
+
   return (
     <>
       <motion.header
@@ -112,6 +118,15 @@ export function Header() {
 
             {/* Desktop Navigation */}
             <NavMenu />
+
+            {/* Toggle Dark Mode */}
+            <button
+              className="ml-4 p-2 text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+              onClick={toggleTheme}
+              aria-label="Toggle dark mode"
+            >
+              {isDarkMode ? '🌙' : '☀️'}
+            </button>
 
             {/* Mobile Menu Button */}
             <button
