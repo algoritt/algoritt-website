@@ -9,42 +9,23 @@ import { NavMenu } from './nav-menu'
 // Import navigation items from nav-menu
 const navigationItems = [
   {
-    title: 'Solutions',
+    title: 'Services',
+    href: '/services',
     subItems: [
       {
         title: 'Web Development',
-        href: '/solutions/web-development',
+        href: '/services/web-development',
         description: 'Create powerful web applications with modern technologies',
       },
       {
-        title: 'Mobile Apps',
-        href: '/solutions/mobile-apps',
+        title: 'Mobile Development',
+        href: '/services/mobile-development',
         description: 'Build native and cross-platform mobile applications',
       },
       {
         title: 'Cloud Solutions',
-        href: '/solutions/cloud',
+        href: '/services/cloud-solutions',
         description: 'Scale your infrastructure with cloud-native solutions',
-      },
-    ],
-  },
-  {
-    title: 'Services',
-    subItems: [
-      {
-        title: 'Consulting',
-        href: '/services/consulting',
-        description: 'Expert guidance for your digital transformation',
-      },
-      {
-        title: 'Development',
-        href: '/services/development',
-        description: 'Full-cycle software development services',
-      },
-      {
-        title: 'Support',
-        href: '/services/support',
-        description: '24/7 technical support and maintenance',
       },
     ],
   },
@@ -64,7 +45,7 @@ const navigationItems = [
       {
         title: 'Contact',
         href: '/contact',
-        description: 'Get in touch with our team',
+        description: 'Get in touch with us',
       },
     ],
   },
