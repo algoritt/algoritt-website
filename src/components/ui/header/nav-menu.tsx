@@ -1,27 +1,16 @@
 'use client'
 
+import { title } from 'process'
 import { NavItem } from './nav-item'
 
 const navigationItems = [
   {
-    title: 'Solutions',
-    subItems: [
-      {
-        title: 'Web Development',
-        href: '/solutions/web-development',
-        description: 'Create powerful web applications with modern technologies',
-      },
-      {
-        title: 'Mobile Apps',
-        href: '/solutions/mobile-apps',
-        description: 'Build native and cross-platform mobile applications',
-      },
-      {
-        title: 'Cloud Solutions',
-        href: '/solutions/cloud',
-        description: 'Scale your infrastructure with cloud-native solutions',
-      },
-    ],
+    title: 'Home',
+    href: '/',
+  },
+  {
+    title: 'About Us',
+    href: '/about',
   },
   {
     title: 'Services',
@@ -44,28 +33,12 @@ const navigationItems = [
     ],
   },
   {
-    title: 'Company',
-    subItems: [
-      {
-        title: 'About Us',
-        href: '/about',
-        description: 'Learn about our mission and values',
-      },
-      {
-        title: 'Careers',
-        href: '/careers',
-        description: 'Join our team of innovators',
-      },
-      {
-        title: 'Contact',
-        href: '/contact',
-        description: 'Get in touch with our team',
-      },
-    ],
+    title: 'Careers',
+    href: '/careers',
   },
   {
-    title: 'Blog',
-    href: '/blog',
+    title: 'Contact Us',
+    href: '/contact',
   },
 ]
 
