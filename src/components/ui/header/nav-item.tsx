@@ -45,7 +45,7 @@ export function NavItem({ title, href, subItems }: NavItemProps) {
     return (
       <Link
         href={href || '#'}
-        className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white px-3 py-2 text-sm font-medium transition-colors duration-200"
+        className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-gradient-to-r hover:from-[#172357]/10 hover:to-[#DA393E]/10 rounded-md"
       >
         {title}
       </Link>
@@ -53,15 +53,14 @@ export function NavItem({ title, href, subItems }: NavItemProps) {
   }
 
   return (
-    <div 
-      className="relative" 
-      onMouseEnter={() => setIsOpen(true)} 
-      onMouseLeave={() => setIsOpen(false)}
-      ref={containerRef}
-    >
+    <div className="relative" ref={containerRef}>
       <button
-        className="flex items-center gap-1 text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white px-3 py-2 text-sm font-medium transition-colors duration-200"
-        aria-expanded={isOpen}
+        className={`flex items-center gap-1 text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-gradient-to-r hover:from-[#172357]/10 hover:to-[#DA393E]/10 rounded-md ${
+          isOpen ? 'bg-gradient-to-r from-[#172357]/10 to-[#DA393E]/10' : ''
+        }`}
+        onClick={() => setIsOpen(!isOpen)}
+        onMouseEnter={() => setIsOpen(true)}
+        onMouseLeave={() => setIsOpen(false)}
       >
         {title}
         <ChevronDown className="h-4 w-4" />
@@ -70,34 +69,30 @@ export function NavItem({ title, href, subItems }: NavItemProps) {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            className={`absolute top-full ${
+              dropdownPosition === 'left' ? 'left-0' : 'right-0'
+            } mt-2 w-80 rounded-lg bg-white dark:bg-gray-900 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-50`}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
+            exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className={`absolute z-10 mt-2 w-screen max-w-sm rounded-xl bg-white dark:bg-gray-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ${
-              dropdownPosition === 'left' 
-                ? 'left-0 origin-top-left' 
-                : 'right-0 origin-top-right'
-            }`}
-            style={{
-              maxHeight: 'calc(100vh - 80px)',
-              overflowY: 'auto'
-            }}
+            onMouseEnter={() => setIsOpen(true)}
+            onMouseLeave={() => setIsOpen(false)}
           >
             <div className="p-4 grid gap-4">
               {subItems.map((item) => (
                 <Link
                   key={item.title}
                   href={item.href}
-                  className="block rounded-lg px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
+                  className="block p-4 rounded-md hover:bg-gradient-to-r hover:from-[#172357]/10 hover:to-[#DA393E]/10 transition-colors duration-200"
                 >
-                  <p className="font-medium text-gray-900 dark:text-white">
+                  <div className="font-medium text-gray-900 dark:text-white mb-1">
                     {item.title}
-                  </p>
+                  </div>
                   {item.description && (
-                    <p className="mt-1 text-sm text-gray-500 dark:text-gray-400 line-clamp-2">
+                    <div className="text-sm text-gray-500 dark:text-gray-400">
                       {item.description}
-                    </p>
+                    </div>
                   )}
                 </Link>
               ))}

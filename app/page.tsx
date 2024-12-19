@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button/button'
 import Link from 'next/link'
 
 export default function Home() {
@@ -21,18 +22,12 @@ export default function Home() {
               We craft innovative software solutions that empower businesses to thrive in the digital age. From web applications to mobile solutions, we bring your vision to life.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center px-4 sm:px-0">
-              <Link 
-                href="/contact"
-                className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-3 text-base font-medium bg-purple-600 hover:bg-purple-700 rounded-lg transition-colors duration-200"
-              >
-                Get Started
-              </Link>
-              <Link
-                href="/portfolio"
-                className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-3 text-base font-medium bg-purple-50 hover:bg-purple-100 rounded-lg transition-colors duration-200"
-              >
-                View Our Work
-              </Link>
+              <Button variant="default" className="w-full sm:w-auto">
+                <Link href="/contact">Get Started</Link>
+              </Button>
+              <Button variant="outline" className="w-full sm:w-auto">
+                <Link href="/portfolio">View Our Work</Link>
+              </Button>
             </div>
           </div>
         </div>

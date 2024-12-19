@@ -26,18 +26,19 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+    <footer className="bg-gray-900 border-t border-gray-800">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-12 lg:py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8">
             {/* Company Info */}
             <div className="space-y-6 lg:col-span-2">
               <Link href="/" className="flex items-center">
-                <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                <span className="text-xl font-bold text-white">
+                  <span className="accent-dot">i</span>
                   Algoritt
                 </span>
               </Link>
-              <p className="text-base text-gray-600 dark:text-gray-400">
+              <p className="text-base text-gray-400">
                 Empowering businesses with cutting-edge software solutions and digital transformation services.
               </p>
               <SocialLinks />
@@ -45,7 +46,7 @@ export function Footer() {
 
             {/* Solutions Links */}
            <div className='md:col-span-1'>
-              <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">
+              <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
                 Solutions
               </h3>
               <ul className="space-y-3">
@@ -53,7 +54,7 @@ export function Footer() {
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-base text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors duration-200"
+                      className="text-base text-gray-400 hover:text-white transition-colors duration-200"
                     >
                       {link.name}
                     </Link>
@@ -64,7 +65,7 @@ export function Footer() {
 
             {/* Company Links */}
             <div className='md:col-span-1'>
-              <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">
+              <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
                 Company
               </h3>
               <ul className="space-y-3">
@@ -72,7 +73,26 @@ export function Footer() {
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-base text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors duration-200"
+                      className="text-base text-gray-400 hover:text-white transition-colors duration-200"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Resources Links */}
+            <div className='md:col-span-1'>
+              <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
+                Resources
+              </h3>
+              <ul className="space-y-3">
+                {footerLinks.resources.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      href={link.href}
+                      className="text-base text-gray-400 hover:text-white transition-colors duration-200"
                     >
                       {link.name}
                     </Link>
@@ -83,10 +103,10 @@ export function Footer() {
 
             {/* Newsletter */}
             <div className='lg:col-span-2'>
-              <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">
+              <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
                 Stay Updated
               </h3>
-              <p className="text-base text-gray-600 dark:text-gray-400 mb-4">
+              <p className="text-base text-gray-400 mb-4">
                 Subscribe to our newsletter for the latest updates and insights.
               </p>
               <NewsletterForm />
@@ -95,21 +115,21 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-200 dark:border-gray-800 py-6">
+        <div className="border-t border-gray-800 py-6">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-sm text-gray-400">
               {currentYear} Algoritt. All rights reserved.
             </p>
             <div className="flex gap-6">
               <Link
                 href="/privacy"
-                className="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors duration-200"
+                className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/terms"
-                className="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors duration-200"
+                className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
               >
                 Terms of Service
               </Link>

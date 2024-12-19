@@ -4,25 +4,49 @@
 
 @layer base {
   :root {
-    --background: 240 10% 3.9%;
+    --background: 225 58% 98%;
+    --foreground: 225 58% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 225 58% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 225 58% 12%;
+    --primary: 225 58% 22%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 225 30% 96%;
+    --secondary-foreground: 225 58% 22%;
+    --muted: 225 20% 96%;
+    --muted-foreground: 225 58% 40%;
+    --accent: 358 70% 54%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 358 70% 54%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 225 30% 92%;
+    --input: 225 30% 92%;
+    --ring: 225 58% 22%;
+  }
+
+  .dark {
+    --background: 225 58% 8%;
     --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
+    --card: 225 58% 12%;
     --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
+    --popover: 225 58% 12%;
     --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
+    --primary: 225 58% 22%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 225 30% 16%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
+    --muted: 225 20% 16%;
+    --muted-foreground: 225 10% 80%;
+    --accent: 358 70% 54%;
     --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 358 70% 54%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+    --border: 225 30% 16%;
+    --input: 225 30% 16%;
+    --ring: 225 58% 22%;
+    --purple: 265 89% 56%;
+    --purple-hover: 265 89% 62%;
   }
 
   body {
@@ -55,11 +79,28 @@
 
   /* Custom utility classes */
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600;
+    @apply text-white;
   }
 
   .hover-gradient {
-    @apply hover:bg-gradient-to-r from-purple-600 to-pink-600 hover:text-white transition-all duration-300;
+    @apply hover:bg-purple-600 hover:text-white transition-all duration-300;
+  }
+
+  .accent-dot {
+    @apply relative;
+  }
+
+  .accent-dot::after {
+    content: '';
+    @apply absolute -top-1 -right-2 w-2 h-2 bg-accent rounded-full;
+  }
+
+  .btn-primary {
+    @apply bg-purple-600 hover:bg-purple-500 text-white transition-all duration-300 rounded-md;
+  }
+
+  .btn-outline {
+    @apply bg-transparent border border-white/20 hover:bg-white/10 text-white transition-all duration-300 rounded-md;
   }
 
   /* Container utilities */

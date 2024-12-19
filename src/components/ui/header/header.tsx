@@ -59,7 +59,6 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null)
-  const [isDarkMode, setIsDarkMode] = useState(true);
   const { scrollY } = useScroll()
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -92,16 +91,11 @@ export function Header() {
     setOpenSubmenu(openSubmenu === title ? null : title)
   }
 
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    document.body.classList.toggle('dark', !isDarkMode);
-  };
-
   return (
     <>
       <motion.header
         className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-200 ${
-          isScrolled ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800' : 'bg-transparent'
+          isScrolled ? 'bg-gray-900/80 backdrop-blur-sm border-b border-gray-800' : 'bg-transparent'
         }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -111,7 +105,8 @@ export function Header() {
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 relative z-10">
-              <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+              <span className="text-xl font-bold text-gray-200">
+                <span className="accent-dot">i</span>
                 Algoritt
               </span>
             </Link>
@@ -119,18 +114,9 @@ export function Header() {
             {/* Desktop Navigation */}
             <NavMenu />
 
-            {/* Toggle Dark Mode */}
-            <button
-              className="ml-4 p-2 text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
-              onClick={toggleTheme}
-              aria-label="Toggle dark mode"
-            >
-              {isDarkMode ? '🌙' : '☀️'}
-            </button>
-
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden relative z-10 p-2 text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+              className="md:hidden relative z-10 p-2 text-gray-300 hover:text-white bg-gray-800/50 hover:bg-gray-700/50 rounded-md transition-all duration-300"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle mobile menu"
             >
@@ -145,7 +131,7 @@ export function Header() {
 
         {/* Mobile Menu */}
         <motion.div
-          className="md:hidden fixed inset-x-0 top-16 bottom-0 bg-white dark:bg-gray-900 z-40"
+          className="md:hidden fixed inset-x-0 top-16 bottom-0 bg-gray-900 z-40"
           initial={{ opacity: 0, x: '100%' }}
           animate={{
             opacity: isMobileMenuOpen ? 1 : 0,
@@ -156,12 +142,12 @@ export function Header() {
           <div className="h-full overflow-y-auto">
             <nav className="px-4 py-6">
               {navigationItems.map((item) => (
-                <div key={item.title} className="border-b border-gray-100 dark:border-gray-800 last:border-0">
+                <div key={item.title} className="border-b border-gray-800 last:border-0">
                   {item.subItems ? (
                     <div>
                       <button
                         onClick={() => toggleSubmenu(item.title)}
-                        className="flex items-center justify-between w-full py-4 text-base font-medium text-gray-900 dark:text-white hover:text-purple-600 dark:hover:text-purple-400"
+                        className="flex items-center justify-between w-full py-4 text-base font-medium text-white hover:text-purple-400"
                       >
                         {item.title}
                         {openSubmenu === item.title ? (
@@ -181,7 +167,7 @@ export function Header() {
                             <Link
                               key={subItem.title}
                               href={subItem.href}
-                              className="block py-3 text-sm text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400"
+                              className="block py-3 text-sm text-gray-400 hover:text-purple-400"
                               onClick={() => {
                                 setIsMobileMenuOpen(false)
                                 setOpenSubmenu(null)
@@ -189,7 +175,7 @@ export function Header() {
                             >
                               {subItem.title}
                               {subItem.description && (
-                                <p className="mt-1 text-xs text-gray-500 dark:text-gray-500">
+                                <p className="mt-1 text-xs text-gray-500">
                                   {subItem.description}
                                 </p>
                               )}
@@ -201,7 +187,7 @@ export function Header() {
                   ) : (
                     <Link
                       href={item.href || '#'}
-                      className="block py-4 text-base font-medium text-gray-900 dark:text-white hover:text-purple-600 dark:hover:text-purple-400"
+                      className="block py-4 text-base font-medium text-white hover:text-purple-400"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item.title}
