@@ -33,10 +33,7 @@ export function Footer() {
             {/* Company Info */}
             <div className="space-y-6 lg:col-span-2">
               <Link href="/" className="flex items-center">
-                <span className="text-xl font-bold text-white">
-                  <span className="accent-dot">i</span>
-                  Algoritt
-                </span>
+                <img src="/assets/logo_white.png" alt="Algoritt Logo" className="h-10" />
               </Link>
               <p className="text-base text-gray-400">
                 Empowering businesses with cutting-edge software solutions and digital transformation services.

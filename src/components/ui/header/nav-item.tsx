@@ -15,9 +15,10 @@ interface NavItemProps {
   title: string
   href?: string
   subItems?: SubNavItem[]
+  className?: string
 }
 
-export function NavItem({ title, href, subItems }: NavItemProps) {
+export function NavItem({ title, href, subItems, className }: NavItemProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [dropdownPosition, setDropdownPosition] = useState<'left' | 'right'>('left')
   const containerRef = useRef<HTMLDivElement>(null)
@@ -45,7 +46,7 @@ export function NavItem({ title, href, subItems }: NavItemProps) {
     return (
       <Link
         href={href || '#'}
-        className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-gradient-to-r hover:from-[#172357]/10 hover:to-[#DA393E]/10 rounded-md"
+        className={`text-gray-200 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-gradient-to-r hover:from-[#172357]/10 hover:to-[#DA393E]/10 rounded-md ${className}`}
       >
         {title}
       </Link>
@@ -53,9 +54,9 @@ export function NavItem({ title, href, subItems }: NavItemProps) {
   }
 
   return (
-    <div className="relative" ref={containerRef}>
+    <div className={`relative ${className}`} ref={containerRef}>
       <button
-        className={`flex items-center gap-1 text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-gradient-to-r hover:from-[#172357]/10 hover:to-[#DA393E]/10 rounded-md ${
+        className={`flex items-center gap-1 text-gray-200 hover:text-gray-200 dark:text-gray-300 dark:hover:text-white px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-gradient-to-r hover:from-[#172357]/10 hover:to-[#DA393E]/10 rounded-md ${
           isOpen ? 'bg-gradient-to-r from-[#172357]/10 to-[#DA393E]/10' : ''
         }`}
         onClick={() => setIsOpen(!isOpen)}

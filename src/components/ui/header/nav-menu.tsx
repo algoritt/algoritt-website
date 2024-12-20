@@ -51,6 +51,7 @@ export function NavMenu() {
           title={item.title}
           href={item.href}
           subItems={item.subItems}
+          className="text-gray-200 hover:text-white"
         />
       ))}
     </nav>

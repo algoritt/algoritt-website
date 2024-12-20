@@ -105,10 +105,7 @@ export function Header() {
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 relative z-10">
-              <span className="text-xl font-bold text-gray-200">
-                <span className="accent-dot">i</span>
-                Algoritt
-              </span>
+              <img src="/assets/logo_white.png" alt="Algoritt Logo" className="h-10" />
             </Link>
 
             {/* Desktop Navigation */}
