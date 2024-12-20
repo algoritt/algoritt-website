@@ -1,71 +1,73 @@
-import { services } from '@/constants/services'
-import { Metadata } from 'next'
-import Image from 'next/image'
 import { notFound } from 'next/navigation'
+import type { Metadata } from 'next'
+import { services } from '@/constants/services'
+import SubServiceCard from '@/components/ui/services/SubServiceCard'
+import { Button } from '@/components/ui/button/button'
+import Link from 'next/link'
 
-type Props = {
-  params: {
-    service: string
-  }
+interface Props {
+  params: { service: string }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const service = services.find((s) => s.id === params.service)
-  if (!service) return notFound()
+  const service = services.find(s => s.id === params.service)
+  if (!service) return {}
 
   return {
-    title: `${service.title} - Algoritt Services`,
+    title: `${service.title} | Algoritt Services`,
     description: service.description,
   }
 }
 
-export async function generateStaticParams() {
-  return services.map((service) => ({
-    service: service.id,
-  }))
-}
-
 export default function ServicePage({ params }: Props) {
-  const service = services.find((s) => s.id === params.service)
+  const service = services.find(s => s.id === params.service)
   if (!service) return notFound()
 
   return (
-    <main className="flex min-h-screen flex-col">
-      <div className="relative h-[50vh] min-h-[400px] w-full">
-        <Image
-          src={service.imageUrl}
-          alt={service.title}
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/70 to-gray-900" />
-        <div className="absolute inset-0 flex items-center">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+    <main className="flex min-h-screen flex-col bg-gray-950">
+      {/* Hero Section */}
+      <section className="relative w-full pt-24 md:pt-32 pb-20">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:14px_24px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-transparent to-gray-900" />
+        
+        <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">
               {service.title}
             </h1>
-            <p className="text-xl text-gray-300 max-w-3xl">
-              {service.description}
+            <p className="text-xl text-gray-300">
+              {service.longDescription}
             </p>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        <div className="prose prose-invert max-w-none">
-          {/* Add more detailed content about the service here */}
-          <h2>Why Choose Our {service.title} Service?</h2>
-          <p>
-            At Algoritt, we understand that every business has unique challenges
-            and requirements. Our {service.title.toLowerCase()} solutions are
-            tailored to meet your specific needs while ensuring the highest
-            standards of quality and innovation.
-          </p>
-          
-          {/* Add more sections as needed */}
+      {/* Sub-services Grid */}
+      <section className="py-24 bg-gray-900">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {service.subServices.map((subService) => (
+              <SubServiceCard key={subService.id} subService={subService} />
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="relative py-24 bg-gray-950">
+        <div className="absolute inset-0 bg-purple-500/10" />
+        <div className="container relative mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-white mb-6">
+            Ready to Get Started?
+          </h2>
+          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            Contact us to learn more about our {service.title.toLowerCase()} services.
+          </p>
+          <Button variant="default" size="lg" className="bg-purple-600 hover:bg-purple-500">
+            <Link href="/contact">Contact Us</Link>
+          </Button>
+        </div>
+      </section>
     </main>
   )
 }
