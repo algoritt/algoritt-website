@@ -1,70 +1,30 @@
-import type { Metadata } from 'next'
+'use client'
+
+import { useState } from 'react'
 import { notFound } from 'next/navigation'
-import { type JobPosition } from '@/types'
+import { openPositions } from '@/constants/careers'
+import ApplicationForm from '@/components/ui/careers/ApplicationForm'
 
-type Props = {
-  params: { career: string }
-}
-
-const positions: Record<string, JobPosition> = {
-  'senior-frontend-developer': {
-    title: 'Senior Frontend Developer',
-    department: 'Engineering',
-    location: 'Remote',
-    type: 'Full-time',
-    description: 'We are looking for a Senior Frontend Developer to join our team and help build the next generation of our products.',
-    requirements: [
-      '5+ years of experience with modern JavaScript frameworks (React, Next.js)',
-      'Strong understanding of web performance optimization',
-      'Experience with TypeScript and modern CSS frameworks',
-      'Excellent problem-solving skills and attention to detail',
-    ],
-  },
-  'backend-engineer': {
-    title: 'Backend Engineer',
-    department: 'Engineering',
-    location: 'Remote',
-    type: 'Full-time',
-    description: 'Join our backend team to build scalable and reliable systems that power our applications.',
-    requirements: [
-      '3+ years of experience in backend development',
-      'Strong knowledge of Node.js and TypeScript',
-      'Experience with databases and API design',
-      'Understanding of cloud infrastructure and microservices',
-    ],
-  },
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const position = positions[params.career]
-  
-  if (!position) {
-    return {
-      title: 'Position Not Found | Algoritt',
-    }
-  }
-
-  return {
-    title: `${position.title} | Careers at Algoritt`,
-    description: position.description,
-  }
-}
-
-export default function CareerPage({ params }: Props) {
-  const position = positions[params.career]
+export default function CareerPage({ params }: { params: { career: string } }) {
+  const [isFormOpen, setIsFormOpen] = useState(false)
+  const position = openPositions.find(p => p.id === params.career)
   
   if (!position) {
     notFound()
   }
 
   return (
-    <main className="flex min-h-screen flex-col">
+    <main className="flex min-h-screen flex-col bg-gray-950">
       <section className="relative w-full pt-24 md:pt-32 pb-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:14px_24px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-transparent to-gray-900" />
+        
+        <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
-            <h1 className="text-4xl font-bold mb-4">{position.title}</h1>
+            <h1 className="text-4xl font-bold mb-4 text-white">{position.title}</h1>
             
-            <div className="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-300 mb-8">
+            <div className="flex flex-wrap gap-4 text-sm text-gray-300 mb-8">
               <span>{position.department}</span>
               <span>•</span>
               <span>{position.location}</span>
@@ -72,14 +32,14 @@ export default function CareerPage({ params }: Props) {
               <span>{position.type}</span>
             </div>
 
-            <div className="prose dark:prose-invert max-w-none">
-              <p className="text-lg mb-8">{position.description}</p>
+            <div className="prose prose-invert max-w-none">
+              <p className="text-lg mb-8 text-gray-300">{position.description}</p>
 
-              <h2 className="text-2xl font-semibold mb-4">Requirements</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-white">Requirements</h2>
               <ul className="space-y-2">
                 {position.requirements?.map((requirement, index) => (
-                  <li key={index} className="flex items-start">
-                    <span className="mr-2">•</span>
+                  <li key={index} className="flex items-start text-gray-300">
+                    <span className="text-purple-500 mr-2">•</span>
                     {requirement}
                   </li>
                 ))}
@@ -88,7 +48,8 @@ export default function CareerPage({ params }: Props) {
               <div className="mt-12">
                 <button
                   type="button"
-                  className="px-6 py-3 text-white bg-blue-600 hover:bg-blue-700 rounded-lg font-medium"
+                  onClick={() => setIsFormOpen(true)}
+                  className="px-6 py-3 text-white bg-purple-600 hover:bg-purple-500 rounded-lg font-medium transition-colors"
                 >
                   Apply Now
                 </button>
@@ -97,6 +58,12 @@ export default function CareerPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      <ApplicationForm
+        jobTitle={position.title}
+        isOpen={isFormOpen}
+        onClose={() => setIsFormOpen(false)}
+      />
     </main>
   )
 }

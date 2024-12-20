@@ -52,4 +52,45 @@ export const careerSections: CareerSection[] = [
     },
     description: 'Our Network in business consulting is anchored in expertise and specialization in risk management. At Algoritt, we pride ourselves on a robust network of professionals dedicated to navigating the complexities of risk with precision and foresight.',
   },
+]
+
+export interface JobPosition {
+  id: string;
+  title: string;
+  department: string;
+  location: string;
+  type: string;
+  description: string;
+  requirements: string[];
+}
+
+export const openPositions: JobPosition[] = [
+  {
+    id: 'senior-frontend-developer',
+    title: 'Senior Frontend Developer',
+    department: 'Engineering',
+    location: 'Remote',
+    type: 'Full-time',
+    description: 'We are looking for a Senior Frontend Developer to join our team and help build the next generation of our products.',
+    requirements: [
+      '5+ years of experience with modern JavaScript frameworks (React, Next.js)',
+      'Strong understanding of web performance optimization',
+      'Experience with TypeScript and modern CSS frameworks',
+      'Excellent problem-solving skills and attention to detail',
+    ],
+  },
+  {
+    id: 'backend-engineer',
+    title: 'Backend Engineer',
+    department: 'Engineering',
+    location: 'Remote',
+    type: 'Full-time',
+    description: 'Join our backend team to build scalable and reliable systems that power our applications.',
+    requirements: [
+      '3+ years of experience in backend development',
+      'Strong knowledge of Node.js and TypeScript',
+      'Experience with databases and API design',
+      'Understanding of cloud infrastructure and microservices',
+    ],
+  },
 ] 
