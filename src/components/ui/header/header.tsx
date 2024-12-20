@@ -5,29 +5,18 @@ import Link from 'next/link'
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
 import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react'
 import { NavMenu } from './nav-menu'
+import { services } from '@/constants/services'
 
 // Import navigation items from nav-menu
 const navigationItems = [
   {
     title: 'Services',
     href: '/services',
-    subItems: [
-      {
-        title: 'Web Development',
-        href: '/services/web-development',
-        description: 'Create powerful web applications with modern technologies',
-      },
-      {
-        title: 'Mobile Development',
-        href: '/services/mobile-development',
-        description: 'Build native and cross-platform mobile applications',
-      },
-      {
-        title: 'Cloud Solutions',
-        href: '/services/cloud-solutions',
-        description: 'Scale your infrastructure with cloud-native solutions',
-      },
-    ],
+    subItems: services.map(service => ({
+      title: service.title,
+      href: `/services/${service.id}`,
+      description: service.description,
+    })),
   },
   {
     title: 'Company',

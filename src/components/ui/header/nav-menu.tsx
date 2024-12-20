@@ -2,6 +2,7 @@
 
 import { title } from 'process'
 import { NavItem } from './nav-item'
+import { services } from '@/constants/services'
 
 const navigationItems = [
   {
@@ -14,23 +15,11 @@ const navigationItems = [
   },
   {
     title: 'Services',
-    subItems: [
-      {
-        title: 'Consulting',
-        href: '/services/consulting',
-        description: 'Expert guidance for your digital transformation',
-      },
-      {
-        title: 'Development',
-        href: '/services/development',
-        description: 'Full-cycle software development services',
-      },
-      {
-        title: 'Support',
-        href: '/services/support',
-        description: '24/7 technical support and maintenance',
-      },
-    ],
+    subItems: services.map(service => ({
+      title: service.title,
+      href: `/services/${service.id}`,
+      description: service.description,
+    })),
   },
   {
     title: 'Careers',

@@ -3,13 +3,13 @@
 import Link from 'next/link'
 import { SocialLinks } from './social/social-links'
 import { NewsletterForm } from './newsletter/newsletter-form'
+import { services } from '@/constants/services'
 
 const footerLinks = {
-  solutions: [
-    { name: 'Web Development', href: '/solutions/web-development' },
-    { name: 'Mobile Apps', href: '/solutions/mobile-apps' },
-    { name: 'Cloud Solutions', href: '/solutions/cloud' },
-  ],
+  solutions: services.map(service => ({
+    name: service.title,
+    href: `/services/${service.id}`
+  })),
   company: [
     { name: 'About', href: '/about' },
     { name: 'Careers', href: '/careers' },
