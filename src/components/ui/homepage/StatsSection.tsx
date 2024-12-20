@@ -1,0 +1,93 @@
+'use client';
+
+import { stats } from '@/constants/stats';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
+
+export default function StatsSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start end', 'end start'],
+  });
+
+  return (
+    <section ref={containerRef} className="relative py-24 bg-gray-900 overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:14px_24px]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-transparent to-gray-900" />
+
+      <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center mb-16">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl sm:text-4xl font-bold text-white mb-4"
+          >
+            Our Impact in Numbers
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-gray-400 text-lg"
+          >
+            Delivering exceptional results through innovation and expertise
+          </motion.p>
+        </div>
+
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          {stats.map((stat, index) => {
+            const delay = index * 0.1;
+            const translateY = useTransform(
+              scrollYProgress,
+              [0, 0.5, 1],
+              [100, 0, -100]
+            );
+
+            return (
+              <motion.div
+                key={stat.id}
+                style={{ y: translateY }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay }}
+                className="relative group"
+              >
+                <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300">
+                  <div className="relative z-10">
+                    <div className="flex items-baseline space-x-1 mb-2">
+                      {stat.prefix && (
+                        <span className="text-purple-500 text-4xl font-bold">
+                          {stat.prefix}
+                        </span>
+                      )}
+                      <span className="text-4xl sm:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300">
+                        {stat.value}
+                      </span>
+                      {stat.suffix && (
+                        <span className="text-purple-500 text-2xl font-bold">
+                          {stat.suffix}
+                        </span>
+                      )}
+                    </div>
+                    <h3 className="text-lg font-semibold text-white mb-2">
+                      {stat.label}
+                    </h3>
+                    <p className="text-gray-400 text-sm">
+                      {stat.description}
+                    </p>
+                  </div>
+
+                  {/* Decorative Elements */}
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500/0 via-purple-500/10 to-purple-500/0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur" />
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
