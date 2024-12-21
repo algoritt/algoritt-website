@@ -128,7 +128,7 @@ export const services: Service[] = [
     },
     {
         id: 'sustainability-and-esg',
-        title: 'Sustainability & ESG',
+        title: 'Sustainability and ESG',
         description: 'Cutting-edge technology implementation and integration services.',
         longDescription: 'We deliver innovative technology solutions that help businesses modernize their operations, enhance efficiency, and stay competitive in the digital age.',
         media: {
