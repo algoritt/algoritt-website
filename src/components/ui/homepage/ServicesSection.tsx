@@ -15,7 +15,7 @@ const ServicesSection: React.FC = () => {
     const autoplayOptions = {
         delay: 4000,
         stopOnInteraction: true,
-        rootNode: (emblaRoot: any) => emblaRoot.parentElement,
+        rootNode: (emblaRoot: HTMLElement) => emblaRoot.parentElement,
     };
 
     const [emblaRef, emblaApi] = useEmblaCarousel(

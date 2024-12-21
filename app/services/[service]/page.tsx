@@ -5,12 +5,20 @@ import SubServiceCard from '@/components/ui/services/SubServiceCard'
 import { Button } from '@/components/ui/button/button'
 import Link from 'next/link'
 
+type ServiceParams = { service: string }
+
 interface Props {
-  params: { service: string }
+  params: Promise<ServiceParams> & {
+    then: Promise<ServiceParams>['then'];
+    catch: Promise<ServiceParams>['catch'];
+    finally: Promise<ServiceParams>['finally'];
+    [Symbol.toStringTag]: string;
+  }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const service = services.find(s => s.id === params.service)
+  const resolvedParams = await params
+  const service = services.find(s => s.id === resolvedParams.service)
   if (!service) return {}
 
   return {
@@ -19,8 +27,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default function ServicePage({ params }: Props) {
-  const service = services.find(s => s.id === params.service)
+export default async function ServicePage({ params }: Props) {
+  const resolvedParams = await params
+  const service = services.find(s => s.id === resolvedParams.service)
   if (!service) return notFound()
 
   return (

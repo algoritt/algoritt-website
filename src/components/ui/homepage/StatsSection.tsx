@@ -11,6 +11,9 @@ export default function StatsSection() {
     offset: ['start end', 'end start'],
   });
 
+  // Create transform values for each stat
+  const transformY = useTransform(scrollYProgress, [0, 0.5, 1], [100, 0, -100]);
+
   return (
     <section ref={containerRef} className="relative py-24 bg-gray-900 overflow-hidden">
       {/* Background Pattern */}
@@ -38,54 +41,42 @@ export default function StatsSection() {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((stat, index) => {
-            const delay = index * 0.1;
-            const translateY = useTransform(
-              scrollYProgress,
-              [0, 0.5, 1],
-              [100, 0, -100]
-            );
-
-            return (
-              <motion.div
-                key={stat.id}
-                style={{ y: translateY }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay }}
-                className="relative group"
-              >
-                <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300">
-                  <div className="relative z-10">
-                    <div className="flex items-baseline space-x-1 mb-2">
-                      {stat.prefix && (
-                        <span className="text-purple-500 text-4xl font-bold">
-                          {stat.prefix}
-                        </span>
-                      )}
-                      <span className="text-4xl sm:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300">
-                        {stat.value}
+          {stats.map((stat, index) => (
+            <motion.div
+              key={stat.id}
+              style={{ y: transformY }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="relative group"
+            >
+              <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50 hover:border-gray-500/50 transition-all duration-300">
+                <div className="relative z-10">
+                  <div className="flex items-baseline space-x-1 mb-2">
+                    {stat.prefix && (
+                      <span className="text-gray-300 text-4xl font-bold">
+                        {stat.prefix}
                       </span>
-                      {stat.suffix && (
-                        <span className="text-purple-500 text-2xl font-bold">
-                          {stat.suffix}
-                        </span>
-                      )}
-                    </div>
-                    <h3 className="text-lg font-semibold text-white mb-2">
-                      {stat.label}
-                    </h3>
-                    <p className="text-gray-400 text-sm">
-                      {stat.description}
-                    </p>
+                    )}
+                    <span className="text-4xl sm:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300">
+                      {stat.value}
+                    </span>
+                    {stat.suffix && (
+                      <span className="text-gray-300 text-2xl font-bold">
+                        {stat.suffix}
+                      </span>
+                    )}
                   </div>
-
-                  {/* Decorative Elements */}
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500/0 via-purple-500/10 to-purple-500/0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur" />
+                  <h3 className="text-lg font-semibold text-white mb-2">
+                    {stat.label}
+                  </h3>
+                  <p className="text-gray-400 text-sm">
+                    {stat.description}
+                  </p>
                 </div>
-              </motion.div>
-            );
-          })}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

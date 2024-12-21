@@ -47,7 +47,7 @@ export default function CareersPage() {
               Join Our Mission
             </h1>
             <p className="text-xl text-gray-300 mb-8">
-              At Algoritt, we're building the future of technology. Join our team of passionate innovators and make a real impact in the world of software development.
+              At Algoritt, we&apos;re building the future of technology. Join our team of passionate innovators and make a real impact in the world of software development.
             </p>
             <Button variant="default" size="lg" className="bg-purple-600 hover:bg-purple-500">
               <Link href="#open-positions">

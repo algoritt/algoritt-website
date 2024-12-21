@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
+import Link from 'next/link';
 
 const WorkingAtAlgoritt: React.FC = () => {
   return (
@@ -19,9 +19,9 @@ const WorkingAtAlgoritt: React.FC = () => {
           <p className="text-lg mb-8">
             Join our team of innovators and help shape the future of technology.
           </p>
-          <a href="/careers" className="inline-block px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transition duration-300">
+          <Link href="/careers" className="inline-block px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transition duration-300">
             Join Us
-          </a>
+          </Link>
         </div>
       </div>
     </section>

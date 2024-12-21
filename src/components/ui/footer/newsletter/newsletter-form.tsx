@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { Button } from '@/components/ui/button/button'
 
 export function NewsletterForm() {
   const [email, setEmail] = useState('')
@@ -13,42 +14,38 @@ export function NewsletterForm() {
     // TODO: Implement newsletter signup logic
     // This is where you'd integrate with your newsletter service
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000)) // Simulate API call
+      // Add your newsletter subscription logic here
+      await new Promise(resolve => setTimeout(resolve, 1000))
       setStatus('success')
-      setEmail('')
-    } catch (error) {
+    } catch {
       setStatus('error')
     }
   }
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-xl">
-      <div className="flex flex-col sm:flex-row gap-3">
+    <form onSubmit={handleSubmit} className="mt-6">
+      <div className="flex gap-4">
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email"
-          className="flex-1 min-w-0 px-4 py-2 text-base text-gray-900 dark:text-white placeholder-gray-500 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#172357] dark:focus:ring-[#DA393E] focus:border-transparent"
+          className="flex-1 min-w-0 px-4 py-2 text-base text-white bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-gray-600"
           required
         />
-        <button
+        <Button
           type="submit"
           disabled={status === 'loading'}
-          className="inline-flex items-center justify-center px-4 py-2 text-base font-medium text-white bg-gradient-to-r from-[#172357] to-[#DA393E] hover:opacity-90 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="bg-gray-800 hover:bg-gray-700"
         >
-          {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
-        </button>
+          Subscribe
+        </Button>
       </div>
       {status === 'success' && (
-        <p className="mt-2 text-sm text-green-600 dark:text-green-400">
-          Thanks for subscribing!
-        </p>
+        <p className="mt-2 text-sm text-green-500">Thank you for subscribing!</p>
       )}
       {status === 'error' && (
-        <p className="mt-2 text-sm text-red-600 dark:text-red-400">
-          Something went wrong. Please try again.
-        </p>
+        <p className="mt-2 text-sm text-red-500">Something went wrong. Please try again.</p>
       )}
     </form>
   )

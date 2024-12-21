@@ -6,7 +6,7 @@ import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
 import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react'
 import { NavMenu } from './nav-menu'
 import { services } from '@/constants/services'
-
+import Image from 'next/image'
 // Import navigation items from nav-menu
 const navigationItems = [
   {
@@ -94,7 +94,7 @@ export function Header() {
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 relative z-10">
-              <img src="/assets/logo_white.png" alt="Algoritt Logo" className="h-10" />
+              <Image width={100} height={100} src="/assets/logo_white.png" alt="Algoritt Logo" className="h-10" />
             </Link>
 
             {/* Desktop Navigation */}

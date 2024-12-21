@@ -5,12 +5,12 @@ import { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import AutoPlay from 'embla-carousel-autoplay';
 import { Star } from 'lucide-react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const autoplayOptions = {
   delay: 3000,
   stopOnInteraction: false,
-  rootNode: (emblaRoot: any) => emblaRoot.parentElement,
+  rootNode: (emblaRoot: HTMLElement) => emblaRoot.parentElement,
 };
 
 export default function TestimonialsSection() {
@@ -93,7 +93,7 @@ export default function TestimonialsSection() {
                         ))}
                       </div>
                       <p className="text-gray-300 text-lg mb-6 leading-relaxed">
-                        "{testimonial.testimonial}"
+                        &quot;{testimonial.testimonial}&quot;
                       </p>
                       <div className="flex items-center justify-between">
                         <div>

@@ -10,7 +10,7 @@ import { motion } from 'framer-motion';
 const autoplayOptions = {
   delay: 4000,
   stopOnInteraction: false,
-  rootNode: (emblaRoot: any) => emblaRoot.parentElement,
+  rootNode: (emblaRoot: Element) => emblaRoot.parentElement,
 };
 
 export default function USPSection() {
