@@ -5,13 +5,13 @@ import Link from 'next/link';
 
 const WorkingAtAlgoritt: React.FC = () => {
   return (
-    <section className="relative w-full h-screen overflow-hidden">
+    <section className="relative w-full min-h-screen py-24 overflow-hidden">
       <video className="absolute top-0 left-0 w-full h-full object-cover" autoPlay loop muted>
         <source src="/assets/careers.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <div className="absolute inset-0 bg-black opacity-50" />
-      <div className="relative flex items-center justify-center h-full text-center text-white">
+      <div className="relative flex items-center justify-center h-full text-center text-white px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
             Work at Algoritt

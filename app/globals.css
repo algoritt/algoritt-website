@@ -68,8 +68,7 @@
 
   /* Container utilities */
   .container {
-    @apply w-full mx-auto px-4 sm:px-6 lg:px-8;
-    max-width: min(100% - 2rem, 1280px);
+    @apply w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
   }
 
   /* Mobile menu utilities */
@@ -77,5 +76,19 @@
     @apply fixed inset-x-0 top-16 bottom-0 bg-white dark:bg-gray-900;
     max-height: calc(100vh - 4rem);
     overflow-y: auto;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+  
+  .section-spacing {
+    /* @apply mb-12 md:mb-16 lg:mb-20; */
+  }
+
+  .mobile-container {
+    @apply px-4 sm:px-6;
   }
 }

@@ -32,7 +32,7 @@ export default function RootLayout({
     <html lang="en" className="!scroll-smooth dark">
       <body className={`${inter.variable} ${jakarta.variable} font-sans bg-gray-950 text-gray-100 antialiased min-h-screen w-full overflow-x-hidden flex flex-col`}>
         <Header />
-        <main className="flex-1">
+        <main className="flex-1 w-full overflow-hidden">
           {children}
         </main>
         <Footer />

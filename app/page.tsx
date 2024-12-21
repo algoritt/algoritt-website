@@ -9,7 +9,6 @@ import StatsSection from '@/components/ui/homepage/StatsSection';
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col">
-      {/* Hero Section */}
       <HeroSection />
       <ServicesSection />
       <AboutSection />

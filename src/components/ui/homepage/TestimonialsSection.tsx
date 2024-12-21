@@ -39,7 +39,7 @@ export default function TestimonialsSection() {
   }, [emblaApi, onSelect]);
 
   return (
-    <section className="h-screen bg-gray-900 relative overflow-hidden">
+    <section className="min-h-screen py-24 bg-gray-900 relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center h-full">
           {/* Left side - Title */}
