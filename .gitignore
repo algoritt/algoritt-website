@@ -39,4 +39,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-public/assets/hero-background.mp4
+# public/assets/hero-background.mp4
