@@ -38,7 +38,7 @@ export default function ApplicationForm({ jobTitle, isOpen, onClose }: Applicati
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative w-full max-w-xl overflow-hidden rounded-2xl bg-gray-900 shadow-2xl"
+            className="relative w-full max-w-xl overflow-hidden rounded-2xl bg-gray-900 shadow-2xl max-h-[90vh] flex flex-col"
           >
             {/* Close Button */}
             <button
@@ -49,38 +49,24 @@ export default function ApplicationForm({ jobTitle, isOpen, onClose }: Applicati
             </button>
 
             {/* Form Content */}
-            <div className="p-6 sm:p-8">
+            <div className="p-6 sm:p-8 overflow-y-auto">
               <div className="mb-8">
                 <h2 className="text-2xl font-bold text-white mb-2">Apply for {jobTitle}</h2>
                 <p className="text-gray-400">Fill out the form below to apply for this position</p>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-300">
-                      First Name
-                    </label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      required
-                      className="w-full px-4 py-2.5 bg-gray-800/50 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all placeholder:text-gray-500"
-                      placeholder="John"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-300">
-                      Last Name
-                    </label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      required
-                      className="w-full px-4 py-2.5 bg-gray-800/50 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all placeholder:text-gray-500"
-                      placeholder="Doe"
-                    />
-                  </div>
+                <div className="space-y-2">
+                  <label htmlFor="fullName" className="block text-sm font-medium text-gray-300">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    id="fullName"
+                    required
+                    className="w-full px-4 py-2.5 bg-gray-800/50 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all placeholder:text-gray-500"
+                    placeholder="John Doe"
+                  />
                 </div>
 
                 <div className="space-y-2">
@@ -124,18 +110,16 @@ export default function ApplicationForm({ jobTitle, isOpen, onClose }: Applicati
 
                 <div className="space-y-2">
                   <label htmlFor="resume" className="block text-sm font-medium text-gray-300">
-                    Resume
+                    Resume Drive Link
                   </label>
-                  <div className="relative">
-                    <input
-                      type="file"
-                      id="resume"
-                      accept=".pdf,.doc,.docx"
-                      required
-                      className="w-full px-4 py-2.5 bg-gray-800/50 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-purple-500 file:text-white hover:file:bg-purple-600"
-                    />
-                  </div>
-                  <p className="text-xs text-gray-400 mt-1">Accepted formats: PDF, DOC, DOCX (Max 5MB)</p>
+                  <input
+                    type="url"
+                    id="resume"
+                    required
+                    className="w-full px-4 py-2.5 bg-gray-800/50 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all placeholder:text-gray-500"
+                    placeholder="https://drive.google.com/file/d/..."
+                  />
+                  <p className="text-xs text-gray-400 mt-1">Please provide a Google Drive link to your resume</p>
                 </div>
 
                 <div className="flex flex-col sm:flex-row justify-end gap-3 mt-8">
@@ -171,4 +155,4 @@ export default function ApplicationForm({ jobTitle, isOpen, onClose }: Applicati
       )}
     </AnimatePresence>
   )
-} 
+}
