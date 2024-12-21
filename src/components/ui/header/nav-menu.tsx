@@ -15,6 +15,7 @@ const navigationItems = [
   },
   {
     title: 'Services',
+    href: '/services',
     subItems: services.map(service => ({
       title: service.title,
       href: `/services/${service.id}`,

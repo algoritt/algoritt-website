@@ -3,13 +3,14 @@
 import { motion } from 'framer-motion'
 import * as Icons from 'lucide-react'
 import { type SubService } from '@/constants/services'
+import { LucideIcon } from 'lucide-react'
 
 interface Props {
   subService: SubService
 }
 
 export default function SubServiceCard({ subService }: Props) {
-  const Icon = Icons[subService.icon as keyof typeof Icons]
+  const Icon = Icons[subService.icon as keyof typeof Icons] as LucideIcon
 
   return (
     <motion.div

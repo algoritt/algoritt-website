@@ -29,11 +29,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="!scroll-smooth">
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-      </head>
-      <body className={`${inter.variable} ${jakarta.variable} font-sans bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 antialiased min-h-screen w-full overflow-x-hidden flex flex-col`}>
+    <html lang="en" className="!scroll-smooth dark">
+      <body className={`${inter.variable} ${jakarta.variable} font-sans bg-gray-950 text-gray-100 antialiased min-h-screen w-full overflow-x-hidden flex flex-col`}>
         <Header />
         <main className="flex-1">
           {children}

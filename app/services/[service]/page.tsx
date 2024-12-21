@@ -55,7 +55,7 @@ export default function ServicePage({ params }: Props) {
 
       {/* CTA Section */}
       <section className="relative py-24 bg-gray-950">
-        <div className="absolute inset-0 bg-purple-500/10" />
+        <div className="absolute inset-0" />
         <div className="container relative mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-6">
             Ready to Get Started?

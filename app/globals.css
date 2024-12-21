@@ -4,28 +4,6 @@
 
 @layer base {
   :root {
-    --background: 225 58% 98%;
-    --foreground: 225 58% 12%;
-    --card: 0 0% 100%;
-    --card-foreground: 225 58% 12%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 225 58% 12%;
-    --primary: 225 58% 22%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 225 30% 96%;
-    --secondary-foreground: 225 58% 22%;
-    --muted: 225 20% 96%;
-    --muted-foreground: 225 58% 40%;
-    --accent: 358 70% 54%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 358 70% 54%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 225 30% 92%;
-    --input: 225 30% 92%;
-    --ring: 225 58% 22%;
-  }
-
-  .dark {
     --background: 225 58% 8%;
     --foreground: 0 0% 98%;
     --card: 225 58% 12%;
@@ -47,21 +25,6 @@
     --ring: 225 58% 22%;
     --purple: 265 89% 56%;
     --purple-hover: 265 89% 62%;
-  }
-
-  body {
-    @apply bg-gray-950 text-gray-100;
-    position: relative;
-  }
-
-  /* Ensure all images are responsive */
-  img {
-    @apply max-w-full h-auto;
-  }
-
-  /* Ensure proper text wrapping */
-  p, h1, h2, h3, h4, h5, h6 {
-    @apply break-words;
   }
 }
 

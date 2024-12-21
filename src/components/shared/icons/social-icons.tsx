@@ -1,8 +1,8 @@
 'use client'
 
-import { Github, Twitter, Linkedin, Facebook, Instagram } from 'lucide-react'
+import { Linkedin, Mail, Building2 } from 'lucide-react'
 
-export type SocialIconName = 'github' | 'twitter' | 'linkedin' | 'facebook' | 'instagram'
+export type SocialIconName = 'linkedin' | 'glassdoor' | 'email'
 
 interface SocialIconProps {
   name: SocialIconName
@@ -16,16 +16,12 @@ export function SocialIcon({ name, className = '' }: SocialIconProps) {
   }
 
   switch (name) {
-    case 'github':
-      return <Github {...iconProps} />
-    case 'twitter':
-      return <Twitter {...iconProps} />
     case 'linkedin':
       return <Linkedin {...iconProps} />
-    case 'facebook':
-      return <Facebook {...iconProps} />
-    case 'instagram':
-      return <Instagram {...iconProps} />
+    case 'glassdoor':
+      return <Building2 {...iconProps} />
+    case 'email':
+      return <Mail {...iconProps} />
     default:
       return null
   }

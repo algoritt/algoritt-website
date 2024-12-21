@@ -69,7 +69,7 @@ const ServicesSection: React.FC = () => {
                 <div className="bg-gray-800 rounded-lg overflow-hidden transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20 relative h-full flex flex-col">
                     <div className="relative h-52 w-full overflow-hidden flex-shrink-0">
                         <Image
-                            src={service.imageUrl}
+                            src={service.media.url}
                             alt={service.title}
                             fill
                             className="object-cover transform transition-transform duration-300 group-hover:scale-110"

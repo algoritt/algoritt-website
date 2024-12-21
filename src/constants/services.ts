@@ -24,8 +24,8 @@ export const services: Service[] = [
         description: 'Comprehensive risk assessment and management solutions for modern businesses.',
         longDescription: 'Our risk management solutions combine advanced analytics with industry expertise to help organizations identify, assess, and mitigate risks effectively. We provide end-to-end risk management services tailored to your specific needs.',
         media: {
-            type: 'video',
-            url: '/assets/services/risk-management.mp4'
+            type: 'image',
+            url: '/assets/services/risk-management.jpg'
         },
         subServices: [
             {
@@ -55,60 +55,60 @@ export const services: Service[] = [
         ]
     },
     {
-        id: 'quantitative-analysis',
-        title: 'Quantitative Analysis',
+        id: 'compliance-governance',
+        title: 'Compliance & Governance',
         description: 'Advanced mathematical and statistical analysis for data-driven decisions.',
         longDescription: 'Our quantitative analysis services leverage cutting-edge mathematical models and statistical techniques to provide deep insights and support data-driven decision-making processes.',
         media: {
-            type: 'video',
-            url: '/assets/services/quant-analysis.mp4'
+            type: 'image',
+            url: '/assets/services/compliance-governance.jpg'
         },
         subServices: [
             {
-                id: 'statistical-modeling',
-                title: 'Statistical Modeling',
+                id: 'compliance-management',
+                title: 'Compliance Management',
                 description: 'Build and implement statistical models for business insights.',
                 icon: 'Network'
             },
             {
-                id: 'portfolio-optimization',
-                title: 'Portfolio Optimization',
+                id: 'compliance-reporting',
+                title: 'Compliance Reporting',
                 description: 'Optimize investment portfolios using advanced algorithms.',
                 icon: 'TrendingUp'
             },
             {
-                id: 'time-series-analysis',
-                title: 'Time Series Analysis',
+                id: 'compliance-training',
+                title: 'Compliance Training',
                 description: 'Analyze temporal data patterns for forecasting.',
                 icon: 'Clock'
             },
             {
-                id: 'machine-learning',
-                title: 'Machine Learning Models',
+                id: 'compliance-automation',
+                title: 'Compliance Automation',
                 description: 'Develop and deploy ML models for prediction.',
                 icon: 'Brain'
             }
         ]
     },
     {
-        id: 'consulting-services',
-        title: 'Consulting Services',
+        id: 'data-analytics-ai',
+        title: 'Data Analytics & AI',
         description: 'Expert guidance and solutions for business transformation.',
         longDescription: 'Our consulting services provide strategic guidance and practical solutions to help organizations navigate complex challenges and achieve their business objectives.',
         media: {
-            type: 'video',
-            url: '/assets/services/consulting.mp4'
+            type: 'image',
+            url: '/assets/services/data-analytics-ai.jpg'
         },
         subServices: [
             {
-                id: 'strategy-consulting',
-                title: 'Strategy Consulting',
+                id: 'data-analytics',
+                title: 'Data Analytics',
                 description: 'Develop effective business strategies for growth.',
                 icon: 'Target'
             },
             {
-                id: 'digital-transformation',
-                title: 'Digital Transformation',
+                id: 'ai-solutions',
+                title: 'AI Solutions',
                 description: 'Guide organizations through digital evolution.',
                 icon: 'Laptop'
             },
@@ -127,36 +127,36 @@ export const services: Service[] = [
         ]
     },
     {
-        id: 'technology-solutions',
-        title: 'Technology Solutions',
+        id: 'sustainability-and-esg',
+        title: 'Sustainability & ESG',
         description: 'Cutting-edge technology implementation and integration services.',
         longDescription: 'We deliver innovative technology solutions that help businesses modernize their operations, enhance efficiency, and stay competitive in the digital age.',
         media: {
-            type: 'video',
-            url: '/assets/services/technology.mp4'
+            type: 'image',
+            url: '/assets/services/sustainability-and-esg.jpg'
         },
         subServices: [
             {
-                id: 'cloud-solutions',
-                title: 'Cloud Solutions',
+                id: 'sustainability-management',
+                title: 'Sustainability Management',
                 description: 'Implement and manage cloud infrastructure.',
                 icon: 'Cloud'
             },
             {
-                id: 'data-analytics',
-                title: 'Data Analytics',
+                id: 'esg-reporting',
+                title: 'ESG Reporting',
                 description: 'Transform data into actionable insights.',
                 icon: 'BarChart'
             },
             {
-                id: 'cybersecurity',
-                title: 'Cybersecurity',
+                id: 'sustainability-automation',
+                title: 'Sustainability Automation',
                 description: 'Protect assets with advanced security solutions.',
                 icon: 'Shield'
             },
             {
-                id: 'api-integration',
-                title: 'API Integration',
+                id: 'sustainability-reporting',
+                title: 'Sustainability Reporting',
                 description: 'Seamless integration of systems and services.',
                 icon: 'Connection'
             }
