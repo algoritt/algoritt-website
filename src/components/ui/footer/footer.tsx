@@ -14,12 +14,7 @@ const footerLinks = {
     { name: 'About', href: '/about' },
     { name: 'Careers', href: '/careers' },
     { name: 'Contact', href: '/contact' },
-  ],
-  resources: [
-    { name: 'Blog', href: '/blog' },
-    { name: 'Portfolio', href: '/portfolio' },
-    { name: 'Services', href: '/services' },
-  ],
+  ]
 }
 
 export function Footer() {
@@ -79,24 +74,6 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Resources Links */}
-            <div className='md:col-span-1'>
-              <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
-                Resources
-              </h3>
-              <ul className="space-y-3">
-                {footerLinks.resources.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-base text-gray-400 hover:text-white transition-colors duration-200"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
 
             {/* Newsletter */}
             <div className='lg:col-span-2'>

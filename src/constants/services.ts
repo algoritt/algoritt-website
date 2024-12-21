@@ -139,26 +139,26 @@ export const services: Service[] = [
             {
                 id: 'sustainability-management',
                 title: 'Sustainability Management',
-                description: 'Implement and manage cloud infrastructure.',
-                icon: 'Cloud'
+                description: 'Develop and implement comprehensive sustainability strategies aligned with your business goals.',
+                icon: 'Leaf'
             },
             {
                 id: 'esg-reporting',
                 title: 'ESG Reporting',
-                description: 'Transform data into actionable insights.',
+                description: 'Create detailed Environmental, Social, and Governance reports that meet global standards.',
                 icon: 'BarChart'
             },
             {
                 id: 'sustainability-automation',
                 title: 'Sustainability Automation',
-                description: 'Protect assets with advanced security solutions.',
-                icon: 'Shield'
+                description: 'Streamline sustainability processes with automated data collection and monitoring systems.',
+                icon: 'Settings'
             },
             {
                 id: 'sustainability-reporting',
                 title: 'Sustainability Reporting',
-                description: 'Seamless integration of systems and services.',
-                icon: 'Connection'
+                description: 'Generate comprehensive sustainability reports with actionable insights and recommendations.',
+                icon: 'FileText'
             }
         ]
     }

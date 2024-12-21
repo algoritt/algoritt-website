@@ -40,10 +40,10 @@ export default function USPSection() {
   }, [emblaApi, onSelect]);
 
   return (
-    <section className="bg-gray-900">
+    <section className="py-24 bg-gray-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
             Why Choose Us
           </h2>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
@@ -51,18 +51,18 @@ export default function USPSection() {
           </p>
         </div>
 
-        <div className="overflow-hidden" ref={emblaRef}>
+        <div className="overflow-hidden -mx-4" ref={emblaRef}>
           <div className="flex">
             {usps.map((usp, index) => (
               <div
                 key={usp.id}
-                className="flex-[0_0_100%] min-w-0 md:flex-[0_0_50%] lg:flex-[0_0_33.333%] px-4"
+                className="flex-[0_0_100%] min-w-0 md:flex-[0_0_50%] lg:flex-[0_0_33.333%] px-4 py-4"
               >
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-8 h-full border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300"
+                  className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 md:p-8 h-full border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300"
                 >
                   <div className="flex items-start space-x-4">
                     <div className="relative w-12 h-12 flex-shrink-0">
@@ -97,7 +97,7 @@ export default function USPSection() {
         </div>
 
         {/* Dot indicators for mobile */}
-        <div className="flex justify-center gap-2 mt-8 md:hidden">
+        <div className="flex justify-center gap-2 mt-8 md:mt-10 md:hidden">
           {usps.map((_, index) => (
             <button
               key={index}

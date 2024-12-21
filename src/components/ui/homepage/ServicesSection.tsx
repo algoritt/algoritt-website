@@ -99,7 +99,7 @@ const ServicesSection: React.FC = () => {
   );
 
   return (
-    <section ref={containerRef} className="relative py-16 sm:py-20 md:py-24 bg-gray-900">
+    <section ref={containerRef} className="relative py-24 bg-gray-900">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:14px_24px]" />
       <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-transparent to-gray-900" />
@@ -109,12 +109,12 @@ const ServicesSection: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12 sm:mb-14 md:mb-16"
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 sm:mb-6">
+          <h2 className="text-4xl font-bold text-white mb-6">
             Our Services
           </h2>
-          <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto">
+          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
             Comprehensive solutions tailored to meet your business needs and drive sustainable growth
           </p>
         </motion.div>
