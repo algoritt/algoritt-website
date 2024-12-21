@@ -94,7 +94,7 @@ export function Header() {
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 relative z-10">
-              <Image width={100} height={100} src="/assets/logo_white.png" alt="Algoritt Logo" className="h-10" />
+              <Image src="/assets/logo_white.png" alt="Algoritt Logo" layout="fixed" width={100} height={100} />
             </Link>
 
             {/* Desktop Navigation */}
