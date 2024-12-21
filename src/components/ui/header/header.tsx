@@ -117,7 +117,7 @@ export function Header() {
 
         {/* Mobile Menu */}
         <motion.div
-          className="md:hidden fixed inset-x-0 top-16 bottom-0 bg-gray-900 z-40"
+          className="md:hidden fixed inset-x-0 top-16 bottom-0 bg-background z-40"
           initial={{ opacity: 0, x: '100%' }}
           animate={{
             opacity: isMobileMenuOpen ? 1 : 0,

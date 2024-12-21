@@ -2,113 +2,105 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 225 58% 8%;
-    --foreground: 0 0% 98%;
-    --card: 225 58% 12%;
-    --card-foreground: 0 0% 98%;
-    --popover: 225 58% 12%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 225 58% 22%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 225 30% 16%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 225 20% 16%;
-    --muted-foreground: 225 10% 80%;
-    --accent: 358 70% 54%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 358 70% 54%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 225 30% 16%;
-    --input: 225 30% 16%;
-    --ring: 225 58% 22%;
-    --purple: 265 89% 56%;
-    --purple-hover: 265 89% 62%;
-  }
+:root {
+  --background: 225 58% 8%;
+  --foreground: 0 0% 98%;
+  --card: 225 58% 12%;
+  --card-foreground: 0 0% 98%;
+  --popover: 225 58% 12%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 225 58% 22%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 225 30% 16%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 225 20% 16%;
+  --muted-foreground: 225 10% 80%;
+  --accent: 358 70% 54%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 358 70% 54%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 225 30% 16%;
+  --input: 225 30% 16%;
+  --ring: 225 58% 22%;
+  --purple: 265 89% 56%;
+  --purple-hover: 265 89% 62%;
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  
-  html,
-  body {
-    @apply antialiased overflow-x-hidden;
-    width: 100vw;
-    min-height: 100vh;
-  }
-
-  /* Custom utility classes */
-  .gradient-text {
-    @apply text-white;
-  }
-
-  .hover-gradient {
-    @apply hover:bg-purple-600 hover:text-white transition-all duration-300;
-  }
-
-  .accent-dot {
-    @apply relative;
-  }
-
-  .accent-dot::after {
-    content: '';
-    @apply absolute -top-1 -right-2 w-2 h-2 bg-accent rounded-full;
-  }
-
-  .btn-primary {
-    @apply bg-purple-600 hover:bg-purple-500 text-white transition-all duration-300 rounded-md;
-  }
-
-  .btn-outline {
-    @apply bg-transparent border border-white/20 hover:bg-white/10 text-white transition-all duration-300 rounded-md;
-  }
-
-  /* Container utilities */
-  .container {
-    @apply w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
-  }
-
-  /* Mobile menu utilities */
-  .mobile-menu-container {
-    @apply fixed inset-x-0 top-16 bottom-0 bg-white dark:bg-gray-900;
-    max-height: calc(100vh - 4rem);
-    overflow-y: auto;
-  }
+/* Base styles */
+* {
+  border-color: hsl(var(--border));
 }
 
-@layer components {
-  /* Section padding variants */
-  .section-padding-hero {
-    @apply pt-24 md:pt-32 pb-16 sm:pb-20 md:pb-24;
-  }
+html,
+body {
+  @apply antialiased overflow-x-hidden;
+  width: 100vw;
+  min-height: 100vh;
+}
 
-  .section-padding-default {
-    @apply py-16 sm:py-20 md:py-24;
-  }
+/* Custom utility classes */
+.gradient-text {
+  @apply text-white;
+}
 
-  .section-padding-compact {
-    @apply py-12 sm:py-16 md:py-20;
-  }
+.hover-gradient {
+  @apply hover:bg-accent hover:text-accent-foreground transition-all duration-300;
+}
 
-  /* Container padding */
-  .container-padding {
-    @apply px-4 sm:px-6 lg:px-8;
-  }
+.accent-dot {
+  @apply relative;
+}
 
-  /* Section spacing (gaps between sections) */
-  .section-spacing {
-    @apply mb-12 sm:mb-16 md:mb-20;
-  }
+.accent-dot::after {
+  content: '';
+  @apply absolute -top-1 -right-2 w-2 h-2 bg-accent rounded-full;
+}
 
-  /* Content spacing within sections */
-  .content-spacing {
-    @apply space-y-6 sm:space-y-8 md:space-y-10;
-  }
+.btn-primary {
+  @apply bg-accent hover:bg-accent/90 text-accent-foreground transition-all duration-300 rounded-md;
+}
 
-  .mobile-container {
-    @apply px-4 sm:px-6;
-  }
+.btn-outline {
+  @apply bg-transparent border border-white/20 hover:bg-white/10 text-white transition-all duration-300 rounded-md;
+}
+
+/* Container utilities */
+.container {
+  @apply w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+}
+
+/* Mobile menu utilities */
+.mobile-menu-container {
+  @apply fixed inset-x-0 top-16 bottom-0 bg-background;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+}
+
+/* Section utilities */
+.section-padding-hero {
+  @apply pt-24 md:pt-32 pb-16 sm:pb-20 md:pb-24;
+}
+
+.section-padding-default {
+  @apply py-16 sm:py-20 md:py-24;
+}
+
+.section-padding-compact {
+  @apply py-12 sm:py-16 md:py-20;
+}
+
+.container-padding {
+  @apply px-4 sm:px-6 lg:px-8;
+}
+
+.section-spacing {
+  @apply mb-12 sm:mb-16 md:mb-20;
+}
+
+.content-spacing {
+  @apply space-y-6 sm:space-y-8 md:space-y-10;
+}
+
+.mobile-container {
+  @apply px-4 sm:px-6;
 }
