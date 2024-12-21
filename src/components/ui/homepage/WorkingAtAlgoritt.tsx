@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const WorkingAtAlgoritt: React.FC = () => {
   return (
-    <section className="relative w-full min-h-screen py-24 overflow-hidden">
+    <section className="relative w-full min-h-screen overflow-hidden">
       <video className="absolute top-0 left-0 w-full h-full object-cover" autoPlay loop muted>
         <source src="/assets/careers.mp4" type="video/mp4" />
         Your browser does not support the video tag.

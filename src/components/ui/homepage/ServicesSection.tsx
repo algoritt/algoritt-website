@@ -1,159 +1,173 @@
 'use client';
 
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { services } from '@/constants/services';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import AutoPlay from 'embla-carousel-autoplay';
+import { motion, useInView } from 'framer-motion';
 
 const ServicesSection: React.FC = () => {
-    const [autoplayEnabled, setAutoplayEnabled] = useState(true);
-    const [selectedIndex, setSelectedIndex] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: true });
+  const [showControls, setShowControls] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: 'start',
+    loop: false,
+    skipSnaps: false,
+    dragFree: false,
+  });
+
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+  const scrollTo = useCallback((index: number) => emblaApi?.scrollTo(index), [emblaApi]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
     
-    const autoplayOptions = {
-        delay: 4000,
-        stopOnInteraction: true,
-        rootNode: (emblaRoot: HTMLElement) => emblaRoot.parentElement,
+    emblaApi.on('select', onSelect);
+    
+    const checkOverflow = () => {
+      const { slidesInView } = emblaApi;
+      setShowControls(slidesInView().length < services.length);
     };
 
-    const [emblaRef, emblaApi] = useEmblaCarousel(
-        {
-            align: 'center',
-            loop: true,
-            skipSnaps: false,
-            dragFree: false,
-            containScroll: 'trimSnaps'
-        },
-        autoplayEnabled ? [AutoPlay(autoplayOptions)] : []
-    );
+    checkOverflow();
+    window.addEventListener('resize', checkOverflow);
 
-    const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
-    const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
+    return () => {
+      emblaApi.off('select', onSelect);
+      window.removeEventListener('resize', checkOverflow);
+    };
+  }, [emblaApi, onSelect]);
 
-    const scrollPrev = useCallback(() => {
-        if (emblaApi) {
-            setAutoplayEnabled(false);
-            emblaApi.scrollPrev();
-        }
-    }, [emblaApi]);
+  const ServiceCard = ({ service }: { service: typeof services[0] }) => (
+    <div className="w-full h-full px-3">
+      <Link href={`/services/${service.id}`}>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="group h-[400px] bg-gray-800/40 backdrop-blur rounded-2xl overflow-hidden border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300"
+        >
+          <div className="relative h-44 w-full overflow-hidden">
+            {service.media.type === 'video' ? (
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover"
+              >
+                <source src={service.media.url} type="video/mp4" />
+              </video>
+            ) : (
+              <Image
+                src={service.media.url}
+                alt={service.title}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              />
+            )}
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60" />
+          </div>
 
-    const scrollNext = useCallback(() => {
-        if (emblaApi) {
-            setAutoplayEnabled(false);
-            emblaApi.scrollNext();
-        }
-    }, [emblaApi]);
-
-    const onSelect = useCallback(() => {
-        if (!emblaApi) return;
-        setPrevBtnEnabled(emblaApi.canScrollPrev());
-        setNextBtnEnabled(emblaApi.canScrollNext());
-        setSelectedIndex(emblaApi.selectedScrollSnap());
-    }, [emblaApi]);
-
-    useEffect(() => {
-        if (!emblaApi) return;
-        onSelect();
-        emblaApi.on('select', onSelect);
-        emblaApi.on('reInit', onSelect);
-    }, [emblaApi, onSelect]);
-
-    const ServiceCard = ({ service }: { service: typeof services[0] }) => (
-        <div className="h-full px-4">
-            <Link 
-                href={`/services/${service.id}`} 
-                className="block h-full"
-            >
-                <div className="bg-gray-800 rounded-lg overflow-hidden transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20 relative h-full flex flex-col">
-                    <div className="relative h-52 w-full overflow-hidden flex-shrink-0">
-                        <Image
-                            src={service.media.url}
-                            alt={service.title}
-                            fill
-                            className="object-cover transform transition-transform duration-300 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300" />
-                    </div>
-                    <div className="p-6 flex-grow flex flex-col">
-                        <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-purple-400 transition-colors duration-300">
-                            {service.title}
-                        </h3>
-                        <p className="text-gray-300 group-hover:text-white transition-colors duration-300">
-                            {service.description}
-                        </p>
-                    </div>
-                    <div className="absolute inset-0 border-2 border-transparent group-hover:border-purple-500/50 rounded-lg transition-colors duration-300" />
-                </div>
-            </Link>
-        </div>
-    );
-
-    return (
-        <section className="py-24 bg-gray-900">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
-                        Our Services
-                    </h2>
-                    <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-                        Comprehensive solutions tailored to meet your business needs and drive sustainable growth
-                    </p>
-                </div>
-
-                <div className="relative px-8">
-                    <div className="overflow-hidden" ref={emblaRef}>
-                        <div className="flex h-full">
-                            {services.map((service) => (
-                                <div key={service.id} className="flex-[0_0_100%] min-w-0 md:flex-[0_0_50%] lg:flex-[0_0_25%] h-full">
-                                    <ServiceCard service={service} />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Dot indicators for mobile */}
-                    <div className="flex justify-center gap-2 mt-6 md:hidden">
-                        {services.map((_, index) => (
-                            <button
-                                key={index}
-                                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                                    index === selectedIndex 
-                                        ? 'bg-purple-500 scale-110' 
-                                        : 'bg-gray-600 hover:bg-gray-500'
-                                }`}
-                                onClick={() => {
-                                    setAutoplayEnabled(false);
-                                    emblaApi?.scrollTo(index);
-                                }}
-                                aria-label={`Go to slide ${index + 1}`}
-                            />
-                        ))}
-                    </div>
-
-                    {services.length > 4 && (
-                        <>
-                            <button
-                                className="absolute left-0 top-1/2 -translate-y-1/2 bg-gray-800/80 hover:bg-gray-700 p-3 rounded-full text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed z-10 backdrop-blur-sm hover:scale-110"
-                                onClick={scrollPrev}
-                                disabled={!prevBtnEnabled}
-                            >
-                                <ChevronLeft className="w-6 h-6" />
-                            </button>
-                            <button
-                                className="absolute right-0 top-1/2 -translate-y-1/2 bg-gray-800/80 hover:bg-gray-700 p-3 rounded-full text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed z-10 backdrop-blur-sm hover:scale-110"
-                                onClick={scrollNext}
-                                disabled={!nextBtnEnabled}
-                            >
-                                <ChevronRight className="w-6 h-6" />
-                            </button>
-                        </>
-                    )}
-                </div>
+          <div className="p-5 flex flex-col h-[calc(400px-176px)]">
+            <h3 className="text-lg font-semibold text-white mb-3 group-hover:text-purple-400 transition-colors duration-300">
+              {service.title}
+            </h3>
+            <p className="text-gray-300 text-sm leading-relaxed group-hover:text-white transition-colors duration-300 line-clamp-3">
+              {service.description}
+            </p>
+            <div className="mt-auto pt-4 flex items-center text-purple-400 text-sm font-medium">
+              Learn more
+              <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" />
             </div>
-        </section>
-    );
+          </div>
+        </motion.div>
+      </Link>
+    </div>
+  );
+
+  return (
+    <section ref={containerRef} className="relative py-16 sm:py-20 md:py-24 bg-gray-900">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:14px_24px]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-transparent to-gray-900" />
+
+      <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12 sm:mb-14 md:mb-16"
+        >
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 sm:mb-6">
+            Our Services
+          </h2>
+          <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto">
+            Comprehensive solutions tailored to meet your business needs and drive sustainable growth
+          </p>
+        </motion.div>
+
+        <div className="relative">
+          <div className="overflow-hidden -mx-4" ref={emblaRef}>
+            <div className="flex">
+              {services.map((service) => (
+                <div key={service.id} className="flex-[0_0_100%] sm:flex-[0_0_50%] md:flex-[0_0_33.333%] xl:flex-[0_0_25%]">
+                  <ServiceCard service={service} />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex items-center justify-center gap-4 mt-8">
+            {showControls && (
+              <button
+                onClick={scrollPrev}
+                className="p-2 rounded-full bg-gray-800/80 hover:bg-gray-700/80 border border-gray-700/50 text-white backdrop-blur-sm transition-all duration-300 hover:scale-110"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+            )}
+
+            <div className="flex gap-3">
+              {services.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => scrollTo(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    index === selectedIndex 
+                      ? 'w-6 bg-purple-500' 
+                      : 'bg-gray-600 hover:bg-gray-500'
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            {showControls && (
+              <button
+                onClick={scrollNext}
+                className="p-2 rounded-full bg-gray-800/80 hover:bg-gray-700/80 border border-gray-700/50 text-white backdrop-blur-sm transition-all duration-300 hover:scale-110"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default ServicesSection;
