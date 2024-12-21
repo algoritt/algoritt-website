@@ -2,22 +2,6 @@ import React from 'react';
 import { Button } from '@/components/ui/button/button';
 import Link from 'next/link';
 
-// Standard Section Padding
-const sectionPadding = {
-  default: "py-16 sm:py-20 md:py-24", // Regular sections
-  hero: "pt-24 md:pt-32 pb-16 sm:pb-20 md:pb-24", // Hero sections
-  compact: "py-12 sm:py-16 md:py-20", // Smaller sections like CTAs
-}
-
-// Standard Container Padding
-const containerPadding = "px-4 sm:px-6 lg:px-8"
-
-// Standard Content Spacing
-const contentSpacing = {
-  sectionGap: "gap-8 sm:gap-10 md:gap-12",
-  titleMargin: "mb-6 sm:mb-8 md:mb-10",
-  contentMargin: "mb-4 sm:mb-6"
-}
 
 const HeroSection: React.FC = () => {
     return (
