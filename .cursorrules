@@ -1,0 +1,87 @@
+# Project Structure Rules
+root_dir: ./
+src_dir: ./src
+app_dir: ./app
+public_dir: ./public
+
+# File Naming Conventions
+naming:
+  components: PascalCase
+  pages: kebab-case
+  utils: camelCase
+  constants: kebab-case
+  types: PascalCase
+
+# Component Structure
+component_rules:
+  - client_components_must_use_directive: "'use client'"
+  - export_default_for_page_components: true
+  - props_interface_naming: "Props"
+  - shared_components_location: "src/components/shared"
+  - ui_components_location: "src/components/ui"
+
+# Styling Conventions
+styling:
+  framework: "tailwindcss"
+  custom_utilities_file: "app/globals.css"
+  color_scheme:
+    primary: "purple-600"
+    secondary: "gray-800"
+    accent: "purple-500"
+    background: "gray-900"
+    text: "gray-100"
+  typography:
+    font_family: WorkSans
+
+# TypeScript Configurations
+typescript:
+  strict: true
+  base_path: "@/*"
+  file_extensions: [".ts", ".tsx"]
+  type_imports: "type"
+
+# Animation Conventions
+animation:
+  library: "framer-motion"
+  default_duration: 0.5
+  default_easing: "ease-in-out"
+
+# State Management
+state:
+  prefer_hooks: true
+  local_state: "useState"
+  refs: "useRef"
+  effects: "useEffect"
+
+# Image Handling
+images:
+  use_next_image: true
+  default_quality: 75
+  formats: ["jpg", "png", "svg", "mp4"]
+  assets_directory: "/public/assets"
+
+# Code Organization
+imports:
+  order:
+    - react
+    - next
+    - external_libraries
+    - components
+    - utils
+    - constants
+    - types
+    - styles
+
+
+# Performance
+performance:
+  use_memo_for_expensive_calculations: true
+  use_callback_for_handlers: true
+  lazy_load_images: true
+  optimize_fonts: true
+
+# Accessibility
+accessibility:
+  require_aria_labels: true
+  require_semantic_html: true
+  require_alt_text: true

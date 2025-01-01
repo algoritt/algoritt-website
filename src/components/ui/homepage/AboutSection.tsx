@@ -13,10 +13,10 @@ const AboutSection: React.FC = () => {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
                 <div className="max-w-4xl mx-auto text-center">
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8 text-white bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300">
-                        Algoritt is a leading consulting firm known for its deep expertise and innovative strategies.
+                        Transforming Businesses Through Strategic Excellence
                     </h2>
                     <p className="text-lg sm:text-xl mb-12 text-gray-300">
-                        We help organizations optimize processes, mitigate risks, and drive sustainable growth with tailored solutions across industries.
+                        With over a decade of experience, we&apos;ve partnered with Fortune 500 companies and emerging startups across 20+ countries. Our global team of experts brings diverse perspectives and innovative solutions to every challenge.
                     </p>
                     <Button variant="default" className="w-auto hover:scale-105 transition-transform duration-300">
                         <Link href="/about">Who We Are</Link>

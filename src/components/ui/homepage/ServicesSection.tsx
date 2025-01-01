@@ -140,7 +140,7 @@ const ServicesSection: React.FC = () => {
               </button>
             )}
 
-            <div className="flex gap-3">
+            <div className="flex gap-3 md:hidden">
               {services.map((_, index) => (
                 <button
                   key={index}

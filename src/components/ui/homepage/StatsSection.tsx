@@ -50,15 +50,15 @@ export default function StatsSection() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="relative group"
             >
-              <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 border border-gray-700/50 hover:border-gray-500/50 transition-all duration-300">
-                <div className="relative z-10">
+              <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 border border-gray-700/50 hover:border-gray-500/50 transition-all duration-300 h-full flex flex-col">
+                <div className="relative z-10 flex flex-col h-full">
                   <div className="flex items-baseline space-x-1 mb-2">
                     {stat.prefix && (
                       <span className="text-gray-300 text-2xl sm:text-3xl lg:text-4xl font-bold">
                         {stat.prefix}
                       </span>
                     )}
-                    <span className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300">
+                    <span className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-clip-text text-purple-500 bg-gradient-to-r from-white to-gray-300">
                       {stat.value}
                     </span>
                     {stat.suffix && (
@@ -67,12 +67,14 @@ export default function StatsSection() {
                       </span>
                     )}
                   </div>
-                  <h3 className="text-base sm:text-lg font-semibold text-white mb-1 sm:mb-2">
-                    {stat.label}
-                  </h3>
-                  <p className="text-gray-400 text-xs sm:text-sm">
-                    {stat.description}
-                  </p>
+                  <div className="flex flex-col flex-grow justify-between">
+                    <h3 className="text-base sm:text-lg font-semibold text-white mb-1 sm:mb-2 min-h-[2.5rem] sm:min-h-[3rem]">
+                      {stat.label}
+                    </h3>
+                    <p className="text-gray-400 text-xs sm:text-sm">
+                      {stat.description}
+                    </p>
+                  </div>
                 </div>
               </div>
             </motion.div>

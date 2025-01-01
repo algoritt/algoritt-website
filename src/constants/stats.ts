@@ -10,30 +10,30 @@ export interface Stat {
 export const stats: Stat[] = [
   {
     id: 'clients',
-    value: '150',
-    label: 'Active Clients',
-    description: 'Trusted by businesses worldwide',
+    value: '30',
+    label: 'Clients with Active Engagements',
+    description: 'Global partnerships across industries',
     suffix: '+'
   },
   {
-    id: 'projects',
-    value: '500',
-    label: 'Projects Delivered',
-    description: 'Across various industries',
+    id: 'models',
+    value: '3800',
+    label: 'Models Developed/Validated',
+    description: 'Advanced solutions implemented',
     suffix: '+'
   },
   {
     id: 'technologies',
-    value: '25',
-    label: 'Technologies',
-    description: 'Cutting-edge tech stack',
+    value: '40',
+    label: 'Technologies Supported',
+    description: 'Cutting-edge tech expertise',
     suffix: '+'
   },
   {
     id: 'satisfaction',
     value: '98',
-    label: 'Client Satisfaction',
-    description: 'Based on client feedback',
+    label: 'Client Satisfaction Rate',
+    description: 'Consistent service excellence',
     suffix: '%'
   }
 ];

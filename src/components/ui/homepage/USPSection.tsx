@@ -44,10 +44,10 @@ export default function USPSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Why Choose Us
+            Our Approach
           </h2>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Discover what sets us apart and makes us your ideal technology partner
+            We combine expertise, innovation, and strategic thinking to deliver transformative solutions
           </p>
         </div>
 

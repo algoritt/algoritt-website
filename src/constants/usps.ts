@@ -11,63 +11,43 @@ export interface USP {
 
 export const usps: USP[] = [
   {
-    id: 'expertise',
-    title: 'Deep Technical Expertise',
-    description: 'Our team comprises industry veterans with decades of combined experience in cutting-edge technologies.',
+    id: 'domain-expertise',
+    title: 'Domain Expertise',
+    description: 'We bring deep domain knowledge and a proven track record in diverse sectors, enabling us to deliver tailored, high-impact solutions for your unique challenges.',
     icon: '/assets/icons/expertise.svg',
     stats: {
-      value: '15+',
-      label: 'Years Experience'
+      value: '10+',
+      label: 'Industries Served'
     }
   },
   {
-    id: 'innovation',
-    title: 'Culture of Innovation',
-    description: 'We stay ahead of the curve by continuously exploring and implementing emerging technologies.',
-    icon: '/assets/icons/innovation.svg',
-    stats: {
-      value: '50+',
-      label: 'Innovation Projects'
-    }
-  },
-  {
-    id: 'agile',
-    title: 'Agile Methodology',
-    description: 'Our iterative approach ensures rapid development while maintaining flexibility to adapt to changing needs.',
-    icon: '/assets/icons/agile.svg',
-    stats: {
-      value: '2x',
-      label: 'Faster Delivery'
-    }
-  },
-  {
-    id: 'quality',
-    title: 'Quality Assurance',
-    description: 'Rigorous testing and quality control processes ensure delivery of robust and reliable solutions.',
-    icon: '/assets/icons/quality.svg',
-    stats: {
-      value: '99.9%',
-      label: 'Client Satisfaction'
-    }
-  },
-  {
-    id: 'support',
-    title: '24/7 Support',
-    description: 'Round-the-clock technical support ensures your systems run smoothly at all times.',
-    icon: '/assets/icons/support.svg',
-    stats: {
-      value: '24/7',
-      label: 'Support Available'
-    }
-  },
-  {
-    id: 'customization',
-    title: 'Tailored Solutions',
-    description: 'We create custom solutions that perfectly align with your unique business requirements.',
+    id: 'tailored-solutions',
+    title: 'Tailored Approach',
+    description: 'We understand that each organization is unique. Our solutions are tailored specifically to your needs, ensuring optimal results and measurable success.',
     icon: '/assets/icons/customization.svg',
     stats: {
       value: '100%',
-      label: 'Custom Built'
+      label: 'Custom Solutions'
+    }
+  },
+  {
+    id: 'strategic-partnership',
+    title: 'Strategic Partnership',
+    description: 'We build strategic partnerships with our clients, working closely with your team to ensure alignment, accountability, and high performance.',
+    icon: '/assets/icons/innovation.svg',
+    stats: {
+      value: '95%',
+      label: 'Client Retention'
+    }
+  },
+  {
+    id: 'innovation-focus',
+    title: 'Innovation & Value',
+    description: 'Our focus is on delivering lasting value through innovation, resilience, and optimization, helping you navigate market complexities and achieve long-term success.',
+    icon: '/assets/icons/quality.svg',
+    stats: {
+      value: '500+',
+      label: 'Projects Delivered'
     }
   }
 ];
