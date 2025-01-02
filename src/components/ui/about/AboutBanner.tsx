@@ -57,7 +57,7 @@ export default function AboutBanner({ section }: AboutBannerProps) {
     hidden: { 
       opacity: 0,
       scale: 0.95,
-      [section.alignment === 'left' ? 'x' : '-x']: 20
+      x: section.alignment === 'left' ? 20 : -20
     },
     visible: {
       opacity: 1,
