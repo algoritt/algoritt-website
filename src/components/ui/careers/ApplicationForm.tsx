@@ -15,7 +15,9 @@ export default function ApplicationForm({ position }: Props) {
     phone: '',
     resumeUrl: '',
     coverLetter: '',
-    portfolio: ''
+    portfolio: '',
+    positionId: position.id,
+    positionTitle: position.title
   })
 
   const [errors, setErrors] = useState<Record<string, string>>({})
@@ -78,10 +80,16 @@ export default function ApplicationForm({ position }: Props) {
     }
 
     setIsSubmitting(true)
-    // TODO: Implement form submission
-    await new Promise(resolve => setTimeout(resolve, 1000)) // Simulated API call
-    console.log('Form submitted:', formData)
-    setIsSubmitting(false)
+    try {
+      // TODO: Implement form submission
+      await new Promise(resolve => setTimeout(resolve, 1000)) // Simulated API call
+      console.log('Application submitted for:', position.title)
+      console.log('Form data:', formData)
+    } catch (error) {
+      console.error('Error submitting application:', error)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (

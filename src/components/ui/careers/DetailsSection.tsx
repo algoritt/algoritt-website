@@ -30,6 +30,15 @@ export default function DetailsSection({ position }: Props) {
     }
   }
 
+  const benefits = [
+    'Competitive salary and equity package',
+    'Flexible working hours and remote work options',
+    'Health, dental, and vision insurance',
+    'Professional development opportunities',
+    'Modern tech stack and tools',
+    'Collaborative and inclusive work environment'
+  ]
+
   return (
     <motion.div
       initial="hidden"
@@ -47,7 +56,7 @@ export default function DetailsSection({ position }: Props) {
           Requirements
         </motion.h2>
         <ul className="space-y-4">
-          {position.requirements.map((req, index) => (
+          {position.requirements.map(req => (
             <motion.li
               key={req}
               variants={item}
@@ -81,16 +90,9 @@ export default function DetailsSection({ position }: Props) {
           What We Offer
         </motion.h2>
         <ul className="space-y-4">
-          {[
-            'Competitive salary and equity package',
-            'Flexible working hours and remote work options',
-            'Health, dental, and vision insurance',
-            'Professional development opportunities',
-            'Modern tech stack and tools',
-            'Collaborative and inclusive work environment'
-          ].map((benefit, index) => (
+          {benefits.map((benefit, i) => (
             <motion.li
-              key={index}
+              key={i}
               variants={item}
               className="flex items-start"
             >
