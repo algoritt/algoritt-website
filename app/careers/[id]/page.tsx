@@ -1,9 +1,9 @@
 import { openPositions } from '@/constants/careers'
 import Link from 'next/link'
-import ApplicationForm from '@/components/ui/careers/ApplicationForm'
 import HeroSection from '@/components/ui/careers/HeroSection'
 import DetailsSection from '@/components/ui/careers/DetailsSection'
 import SimilarPositions from '@/components/ui/careers/SimilarPositions'
+import ApplicationFormContainer from '@/components/ui/careers/ApplicationFormContainer'
 
 type PageProps = {
   params: Promise<{ id: string }>
@@ -43,13 +43,7 @@ export default async function CareerPositionPage({ params }: PageProps) {
                 <DetailsSection position={position} />
               </div>
 
-              {/* Application Form Sidebar */}
-              <div className="lg:col-span-3">
-                <div className="sticky top-24 bg-gray-800 rounded-lg p-6 shadow-xl">
-                  <h2 className="text-2xl font-bold text-white mb-6">Apply for {position.title}</h2>
-                  <ApplicationForm position={position} />
-                </div>
-              </div>
+              <ApplicationFormContainer position={position} />
             </div>
           </div>
         </div>
