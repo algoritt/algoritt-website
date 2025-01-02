@@ -19,39 +19,6 @@ const footerLinks = {
   ]
 }
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.05,
-      delayChildren: 0.1
-    }
-  }
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.3
-    }
-  }
-}
-
-const linkVariants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.3
-    }
-  }
-}
-
 export function Footer() {
   const currentYear = new Date().getFullYear()
 
@@ -60,17 +27,14 @@ export function Footer() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           className="py-12 lg:py-16"
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
+          transition={{ duration: 0.3 }}
         >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8">
             {/* Company Info */}
-            <motion.div 
-              className="space-y-6 lg:col-span-2"
-              variants={itemVariants}
-            >
+            <div className="space-y-6 lg:col-span-2">
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -82,35 +46,43 @@ export function Footer() {
                 </Link>
               </motion.div>
               <motion.p 
-                variants={itemVariants}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.1 }}
                 className="text-base text-gray-400"
               >
                 Empowering businesses with cutting-edge software solutions and digital transformation services.
               </motion.p>
-              <motion.div variants={itemVariants}>
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.2 }}
+              >
                 <SocialLinks />
               </motion.div>
-            </motion.div>
+            </div>
 
             {/* Solutions Links */}
-            <motion.div 
-              className='md:col-span-1'
-              variants={itemVariants}
-            >
+            <div className='md:col-span-1'>
               <motion.h3 
-                variants={itemVariants}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3 }}
                 className="text-sm font-semibold text-white uppercase tracking-wider mb-4"
               >
                 Solutions
               </motion.h3>
-              <motion.ul 
-                className="space-y-3"
-                variants={containerVariants}
-              >
-                {footerLinks.solutions.map((link) => (
+              <ul className="space-y-3">
+                {footerLinks.solutions.map((link, index) => (
                   <motion.li 
                     key={link.name}
-                    variants={linkVariants}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
                     whileHover={{ x: 4 }}
                   >
                     <Link
@@ -121,28 +93,28 @@ export function Footer() {
                     </Link>
                   </motion.li>
                 ))}
-              </motion.ul>
-            </motion.div>
+              </ul>
+            </div>
 
             {/* Company Links */}
-            <motion.div 
-              className='md:col-span-1'
-              variants={itemVariants}
-            >
+            <div className='md:col-span-1'>
               <motion.h3 
-                variants={itemVariants}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3 }}
                 className="text-sm font-semibold text-white uppercase tracking-wider mb-4"
               >
                 Company
               </motion.h3>
-              <motion.ul 
-                className="space-y-3"
-                variants={containerVariants}
-              >
-                {footerLinks.company.map((link) => (
+              <ul className="space-y-3">
+                {footerLinks.company.map((link, index) => (
                   <motion.li 
                     key={link.name}
-                    variants={linkVariants}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
                     whileHover={{ x: 4 }}
                   >
                     <Link
@@ -153,30 +125,38 @@ export function Footer() {
                     </Link>
                   </motion.li>
                 ))}
-              </motion.ul>
-            </motion.div>
+              </ul>
+            </div>
 
             {/* Newsletter */}
-            <motion.div 
-              className='lg:col-span-2'
-              variants={itemVariants}
-            >
+            <div className='lg:col-span-2'>
               <motion.h3 
-                variants={itemVariants}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3 }}
                 className="text-sm font-semibold text-white uppercase tracking-wider mb-4"
               >
                 Stay Updated
               </motion.h3>
               <motion.p 
-                variants={itemVariants}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.1 }}
                 className="text-base text-gray-400 mb-4"
               >
                 Subscribe to our newsletter for the latest updates and insights.
               </motion.p>
-              <motion.div variants={itemVariants}>
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.2 }}
+              >
                 <NewsletterForm />
               </motion.div>
-            </motion.div>
+            </div>
           </div>
         </motion.div>
 
