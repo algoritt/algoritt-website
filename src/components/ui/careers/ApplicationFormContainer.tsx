@@ -16,9 +16,9 @@ export default function ApplicationFormContainer({ position }: Props) {
       y: 0,
       transition: {
         type: "spring",
-        stiffness: 100,
-        damping: 15,
-        mass: 1
+        stiffness: 150,
+        damping: 12,
+        mass: 0.8
       }
     }
   }
@@ -29,8 +29,8 @@ export default function ApplicationFormContainer({ position }: Props) {
       opacity: 1,
       x: 0,
       transition: {
-        delay: 0.2,
-        duration: 0.5
+        delay: 0.1,
+        duration: 0.3
       }
     }
   }

@@ -14,7 +14,7 @@ export default function HeroSection({ position }: Props) {
       opacity: 1, 
       y: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.3,
         ease: [0.21, 0.45, 0.32, 0.9]
       }
     }
@@ -36,7 +36,7 @@ export default function HeroSection({ position }: Props) {
             <motion.span 
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
+              transition={{ delay: 0.1 }}
               className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-purple-500/20 text-purple-400"
             >
               {position.department}
@@ -44,7 +44,7 @@ export default function HeroSection({ position }: Props) {
             <motion.span 
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.3 }}
+              transition={{ delay: 0.15 }}
               className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-green-500/20 text-green-400"
             >
               {position.openings} {position.openings === 1 ? 'Opening' : 'Openings'}
@@ -53,7 +53,7 @@ export default function HeroSection({ position }: Props) {
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
+            transition={{ delay: 0.2, duration: 0.3 }}
             className="text-4xl md:text-5xl font-bold text-white mb-6"
           >
             {position.title}
@@ -62,7 +62,7 @@ export default function HeroSection({ position }: Props) {
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5 }}
+              transition={{ delay: 0.25 }}
               className="flex items-center"
             >
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -74,7 +74,7 @@ export default function HeroSection({ position }: Props) {
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.6 }}
+              transition={{ delay: 0.3 }}
               className="flex items-center"
             >
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -86,7 +86,7 @@ export default function HeroSection({ position }: Props) {
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.6 }}
+            transition={{ delay: 0.35, duration: 0.3 }}
             className="text-xl text-gray-300 leading-relaxed"
           >
             {position.description}

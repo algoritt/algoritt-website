@@ -15,7 +15,7 @@ export default function SimilarPositions({ currentPosition, positions }: Props) 
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
+        staggerChildren: 0.1
       }
     }
   }
@@ -26,7 +26,7 @@ export default function SimilarPositions({ currentPosition, positions }: Props) 
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5
+        duration: 0.3
       }
     }
   }
@@ -42,7 +42,7 @@ export default function SimilarPositions({ currentPosition, positions }: Props) 
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
             variants={container}
             className="space-y-8"
           >
@@ -57,7 +57,7 @@ export default function SimilarPositions({ currentPosition, positions }: Props) 
                 <motion.div
                   key={pos.id}
                   variants={item}
-                  whileHover={{ y: -4 }}
+                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
                   transition={{ duration: 0.2 }}
                 >
                   <Link
