@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
 import { openPositions } from '@/constants/careers'
 
-interface Props {
+type LayoutProps = {
   children: React.ReactNode
-  params: { id: string }
+  params: Promise<{ id: string }>
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const position = openPositions.find(p => p.id === params.id)
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const position = openPositions.find(p => p.id === id)
 
   if (!position) {
     return {
@@ -27,6 +28,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default function CareerPositionLayout({ children }: Props) {
-  return children
+export default async function CareerPositionLayout({
+  children
+}: LayoutProps) {
+  return <>{children}</>
 } 

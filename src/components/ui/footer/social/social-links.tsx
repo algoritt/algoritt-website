@@ -11,12 +11,12 @@ interface SocialLink {
 const socialLinks: SocialLink[] = [
   {
     name: 'linkedin',
-    url: 'https://linkedin.com/company/algoritt',
+    url: 'https://www.linkedin.com/company/algoritt-consulting/',
     label: 'Follow us on LinkedIn'
   },
   {
     name: 'glassdoor',
-    url: 'https://www.glassdoor.com/Overview/Working-at-Algoritt',
+    url: 'https://www.glassdoor.co.in/Overview/Working-at-Siya-Consulting-Group-EI_IE9605585.11,32.htm',
     label: 'Check us out on Glassdoor'
   },
   {

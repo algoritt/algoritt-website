@@ -1,6 +1,5 @@
 'use client';
 
-import type { Metadata } from 'next'
 import Link from 'next/link'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
@@ -91,7 +90,7 @@ export default function CareersPage() {
       ))}
 
       {/* Open Positions Section */}
-      <section id="open-positions" className="py-20 bg-gray-50 dark:bg-gray-900">
+      <section id="open-positions" className="py-20 bg-gray-50 dark:bg-gray-900 dark:text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <motion.h2 

@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import { JobPosition } from '@/constants/careers'
 import ApplicationForm from '@/components/ui/careers/ApplicationForm'
 
@@ -9,8 +8,6 @@ interface Props {
 }
 
 export default function CareerDetails({ position }: Props) {
-  const [isFormOpen, setIsFormOpen] = useState(false)
-
   return (
     <main className="flex min-h-screen flex-col bg-gray-950">
       <section className="relative w-full pt-24 md:pt-32 pb-20">
@@ -44,24 +41,12 @@ export default function CareerDetails({ position }: Props) {
               </ul>
 
               <div className="mt-12">
-                <button
-                  type="button"
-                  onClick={() => setIsFormOpen(true)}
-                  className="px-6 py-3 text-white bg-purple-600 hover:bg-purple-500 rounded-lg font-medium transition-colors"
-                >
-                  Apply Now
-                </button>
+                <ApplicationForm position={position} />
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      <ApplicationForm
-        jobTitle={position.title}
-        isOpen={isFormOpen}
-        onClose={() => setIsFormOpen(false)}
-      />
     </main>
   )
 } 

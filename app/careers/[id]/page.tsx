@@ -1,6 +1,3 @@
-'use client';
-
-import { useParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { openPositions } from '@/constants/careers'
 import Link from 'next/link'
@@ -28,8 +25,12 @@ const container = {
   }
 };
 
-export default function CareerPositionPage() {
-  const { id } = useParams() as { id: string };
+type PageProps = {
+  params: Promise<{ id: string }>
+}
+
+export default async function CareerPositionPage({ params }: PageProps) {
+  const { id } = await params;
   const position = openPositions.find(p => p.id === id);
 
   if (!position) {
@@ -112,9 +113,9 @@ export default function CareerPositionPage() {
                   <motion.div variants={fadeIn} className="space-y-6">
                     <h2 className="text-2xl font-bold text-white">Requirements</h2>
                     <ul className="space-y-4">
-                      {position.requirements.map((req, index) => (
+                      {position.requirements.map((req) => (
                         <motion.li
-                          key={index}
+                          key={req}
                           variants={fadeIn}
                           className="flex items-start"
                         >
@@ -201,7 +202,7 @@ export default function CareerPositionPage() {
                 {openPositions
                   .filter(p => p.department === position.department && p.id !== position.id)
                   .slice(0, 2)
-                  .map((pos, index) => (
+                  .map((pos) => (
                     <motion.div
                       key={pos.id}
                       variants={fadeIn}

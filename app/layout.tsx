@@ -1,42 +1,40 @@
-import type { Metadata, Viewport } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
-import "./globals.css";
-import { Header } from "@/components/ui/header/header";
-import { Footer } from "@/components/ui/footer/footer";
+import type { Metadata } from 'next'
+import { Work_Sans } from 'next/font/google'
+import './globals.css'
+import { Header } from '@/components/ui/header/header'
+import { Footer } from '@/components/ui/footer/footer'
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const jakarta = Plus_Jakarta_Sans({ 
-  subsets: ["latin"], 
-  variable: "--font-jakarta" 
-});
-
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
-}
+const workSans = Work_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: "Algoritt - Modern Software Solutions",
-  description: "Empowering businesses with cutting-edge software solutions and digital transformation services.",
-  keywords: "software development, digital transformation, web development, mobile apps, cloud solutions",
-};
+  title: 'Algoritt - Empowering Innovation and Growth',
+  description: 'Join Algoritt, a leader in software development and business consulting, where innovation meets excellence. Explore our career opportunities and services.',
+  keywords: [
+    'quantitative analysis',
+    'risk management',
+    'business consulting',
+    'career opportunities',
+    'innovation',
+    'software development',
+    'technology solutions',
+    'custom software',
+    'web applications',
+    'digital transformation'
+  ],
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="en" className="!scroll-smooth dark">
-      <body className={`${inter.variable} ${jakarta.variable} font-sans bg-gray-950 text-gray-100 antialiased min-h-screen w-full overflow-x-hidden flex flex-col`}>
+      <body className={workSans.className}>
         <Header />
-        <main className="flex-1 w-full overflow-hidden">
-          {children}
-        </main>
+        {children}
         <Footer />
       </body>
     </html>
-  );
+  )
 }

@@ -28,7 +28,7 @@ export function Footer() {
             {/* Company Info */}
             <div className="space-y-6 lg:col-span-2">
               <Link href="/" className="flex items-center">
-                <Image src="/assets/logo_white.png" alt="Algoritt Logo" layout="fixed" width={100} height={100} />
+                <Image src="/assets/logo_white.png" alt="Algoritt Logo" width={100} height={100} />
               </Link>
               <p className="text-base text-gray-400">
                 Empowering businesses with cutting-edge software solutions and digital transformation services.

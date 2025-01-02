@@ -2,13 +2,14 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import type { JobPosition } from '@/constants/careers'
+import { JobPosition } from '@/types'
 
 interface Props {
   position: JobPosition
 }
 
 export default function ApplicationForm({ position }: Props) {
+  const [isOpen, setIsOpen] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -59,118 +60,151 @@ export default function ApplicationForm({ position }: Props) {
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-6 lg:p-8"
-    >
-      <h3 className="text-2xl font-bold text-white mb-6">Apply Now</h3>
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Name Input */}
-        <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-            Full Name
-          </label>
-          <input
-            type="text"
-            id="name"
-            value={formData.name}
-            onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-            className={`w-full px-4 py-3 bg-gray-700/50 border ${errors.name ? 'border-red-500' : 'border-gray-600'} rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500`}
-            placeholder="John Doe"
-          />
-          {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name}</p>}
-        </div>
+    <>
+      <button
+        type="button"
+        onClick={() => setIsOpen(true)}
+        className="px-6 py-3 text-white bg-purple-600 hover:bg-purple-500 rounded-lg font-medium transition-colors"
+      >
+        Apply Now
+      </button>
 
-        {/* Email Input */}
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            value={formData.email}
-            onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-            className={`w-full px-4 py-3 bg-gray-700/50 border ${errors.email ? 'border-red-500' : 'border-gray-600'} rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500`}
-            placeholder="john@example.com"
-          />
-          {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
-        </div>
-
-        {/* Phone Input */}
-        <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-2">
-            Phone (Optional)
-          </label>
-          <input
-            type="tel"
-            id="phone"
-            value={formData.phone}
-            onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-            className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500"
-            placeholder="+1 (555) 000-0000"
-          />
-        </div>
-
-        {/* Resume URL Input */}
-        <div>
-          <label htmlFor="resumeUrl" className="block text-sm font-medium text-gray-300 mb-2">
-            Resume Google Drive URL
-          </label>
-          <input
-            type="url"
-            id="resumeUrl"
-            value={formData.resumeUrl}
-            onChange={(e) => setFormData(prev => ({ ...prev, resumeUrl: e.target.value }))}
-            className={`w-full px-4 py-3 bg-gray-700/50 border ${errors.resumeUrl ? 'border-red-500' : 'border-gray-600'} rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500`}
-            placeholder="https://drive.google.com/file/d/..."
-          />
-          {errors.resumeUrl && <p className="mt-1 text-sm text-red-500">{errors.resumeUrl}</p>}
-          <p className="mt-1 text-xs text-gray-400">Please upload your resume to Google Drive and share the link</p>
-        </div>
-
-        {/* Cover Letter */}
-        <div>
-          <label htmlFor="coverLetter" className="block text-sm font-medium text-gray-300 mb-2">
-            Cover Letter
-          </label>
-          <textarea
-            id="coverLetter"
-            value={formData.coverLetter}
-            onChange={(e) => setFormData(prev => ({ ...prev, coverLetter: e.target.value }))}
-            className={`w-full px-4 py-3 bg-gray-700/50 border ${errors.coverLetter ? 'border-red-500' : 'border-gray-600'} rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 min-h-[120px]`}
-            placeholder="Tell us why you're interested in this position..."
-          />
-          {errors.coverLetter && <p className="mt-1 text-sm text-red-500">{errors.coverLetter}</p>}
-        </div>
-
-        {/* Portfolio URL */}
-        <div>
-          <label htmlFor="portfolio" className="block text-sm font-medium text-gray-300 mb-2">
-            Portfolio URL (Optional)
-          </label>
-          <input
-            type="url"
-            id="portfolio"
-            value={formData.portfolio}
-            onChange={(e) => setFormData(prev => ({ ...prev, portfolio: e.target.value }))}
-            className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500"
-            placeholder="https://your-portfolio.com"
-          />
-        </div>
-
-        {/* Submit Button */}
-        <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          type="submit"
-          className="w-full px-6 py-3 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-500 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 overflow-y-auto"
         >
-          Submit Application
-        </motion.button>
-      </form>
-    </motion.div>
+          <div className="flex min-h-screen items-center justify-center p-4">
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="w-full max-w-xl rounded-lg bg-gray-800 p-6 shadow-xl"
+            >
+              <div className="mb-6 flex items-center justify-between">
+                <h2 className="text-2xl font-bold text-white">Apply for {position.title}</h2>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="text-gray-400 hover:text-white"
+                >
+                  <span className="sr-only">Close</span>
+                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Name Input */}
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    value={formData.name}
+                    onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                    className={`w-full px-4 py-3 bg-gray-700/50 border ${errors.name ? 'border-red-500' : 'border-gray-600'} rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500`}
+                    placeholder="John Doe"
+                  />
+                  {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name}</p>}
+                </div>
+
+                {/* Email Input */}
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                    className={`w-full px-4 py-3 bg-gray-700/50 border ${errors.email ? 'border-red-500' : 'border-gray-600'} rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500`}
+                    placeholder="john@example.com"
+                  />
+                  {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
+                </div>
+
+                {/* Phone Input */}
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-2">
+                    Phone (Optional)
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    value={formData.phone}
+                    onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
+                    className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500"
+                    placeholder="+1 (555) 000-0000"
+                  />
+                </div>
+
+                {/* Resume URL Input */}
+                <div>
+                  <label htmlFor="resumeUrl" className="block text-sm font-medium text-gray-300 mb-2">
+                    Resume Google Drive URL
+                  </label>
+                  <input
+                    type="url"
+                    id="resumeUrl"
+                    value={formData.resumeUrl}
+                    onChange={(e) => setFormData(prev => ({ ...prev, resumeUrl: e.target.value }))}
+                    className={`w-full px-4 py-3 bg-gray-700/50 border ${errors.resumeUrl ? 'border-red-500' : 'border-gray-600'} rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500`}
+                    placeholder="https://drive.google.com/file/d/..."
+                  />
+                  {errors.resumeUrl && <p className="mt-1 text-sm text-red-500">{errors.resumeUrl}</p>}
+                  <p className="mt-1 text-xs text-gray-400">Please upload your resume to Google Drive and share the link</p>
+                </div>
+
+                {/* Cover Letter */}
+                <div>
+                  <label htmlFor="coverLetter" className="block text-sm font-medium text-gray-300 mb-2">
+                    Cover Letter
+                  </label>
+                  <textarea
+                    id="coverLetter"
+                    value={formData.coverLetter}
+                    onChange={(e) => setFormData(prev => ({ ...prev, coverLetter: e.target.value }))}
+                    className={`w-full px-4 py-3 bg-gray-700/50 border ${errors.coverLetter ? 'border-red-500' : 'border-gray-600'} rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 min-h-[120px]`}
+                    placeholder="Tell us why you're interested in this position..."
+                  />
+                  {errors.coverLetter && <p className="mt-1 text-sm text-red-500">{errors.coverLetter}</p>}
+                </div>
+
+                {/* Portfolio URL */}
+                <div>
+                  <label htmlFor="portfolio" className="block text-sm font-medium text-gray-300 mb-2">
+                    Portfolio URL (Optional)
+                  </label>
+                  <input
+                    type="url"
+                    id="portfolio"
+                    value={formData.portfolio}
+                    onChange={(e) => setFormData(prev => ({ ...prev, portfolio: e.target.value }))}
+                    className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500"
+                    placeholder="https://your-portfolio.com"
+                  />
+                </div>
+
+                {/* Submit Button */}
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  type="submit"
+                  className="w-full px-6 py-3 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-500 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+                >
+                  Submit Application
+                </motion.button>
+              </form>
+            </motion.div>
+          </div>
+        </motion.div>
+      )}
+    </>
   )
 }

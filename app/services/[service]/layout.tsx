@@ -1,15 +1,16 @@
 import type { Metadata } from 'next'
 import { services } from '@/constants/services'
 
-interface Props {
+type LayoutProps = {
   children: React.ReactNode
-  params: { service: string }
+  params: Promise<{ service: string }>
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const service = services.find(s => s.id === params.service)
+export async function generateMetadata({ params }: { params: Promise<{ service: string }> }): Promise<Metadata> {
+  const { service } = await params;
+  const serviceData = services.find(s => s.id === service)
 
-  if (!service) {
+  if (!serviceData) {
     return {
       title: 'Service Not Found | Algoritt',
       description: 'The requested service could not be found.',
@@ -17,16 +18,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${service.title} | Algoritt Services`,
-    description: service.description,
+    title: `${serviceData.title} | Algoritt Services`,
+    description: serviceData.description,
     openGraph: {
-      title: `${service.title} | Algoritt Services`,
-      description: service.description,
+      title: `${serviceData.title} | Algoritt Services`,
+      description: serviceData.description,
       type: 'website',
     },
   }
 }
 
-export default function ServiceLayout({ children }: Props) {
+export default async function ServiceLayout({ children }: LayoutProps) {
   return children
 } 

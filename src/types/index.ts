@@ -13,12 +13,14 @@ export interface ServiceItem {
 }
 
 export interface JobPosition {
-  title: string
-  department: string
-  location: string
-  type: string
-  description?: string
-  requirements?: string[]
+  id: string;
+  title: string;
+  department: string;
+  location: string;
+  type: string;
+  description: string;
+  requirements: string[];
+  openings: number;
 }
 
 export interface ContactFormData {
