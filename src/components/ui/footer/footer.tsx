@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { SocialLinks } from './social/social-links'
+import SocialLinks from './social/social-links'
 import { NewsletterForm } from './newsletter/newsletter-form'
 import { services } from '@/constants/services'
 import Image from 'next/image'

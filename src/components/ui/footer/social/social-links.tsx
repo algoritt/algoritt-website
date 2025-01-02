@@ -26,7 +26,7 @@ const socialLinks: SocialLink[] = [
   }
 ]
 
-export function SocialLinks() {
+export default function SocialLinks() {
   return (
     <div className="flex gap-4">
       {socialLinks.map((link) => (
