@@ -124,23 +124,6 @@ export default function TestimonialsSection() {
             />
           ))}
         </div>
-
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-12 flex justify-center items-center gap-8 md:gap-16"
-        >
-          <div className="text-center">
-            <p className="text-4xl md:text-5xl font-bold text-purple-500">50+</p>
-            <p className="text-gray-400 text-sm md:text-base mt-1">Financial Institutions</p>
-          </div>
-          <div className="text-center">
-            <p className="text-4xl md:text-5xl font-bold text-purple-500">100%</p>
-            <p className="text-gray-400 text-sm md:text-base mt-1">Client Satisfaction</p>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

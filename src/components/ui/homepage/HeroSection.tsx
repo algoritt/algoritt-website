@@ -12,16 +12,12 @@ const HeroSection: React.FC = () => {
             </video>
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="max-w-3xl mx-auto text-center text-white">
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8 sm:mb-10">
-                        <span className="block mb-4">Navigating the Global</span>
-                        <span className="gradient-text block">Business Terrain</span>
+                    <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-5xl font-bold tracking-tight mb-8 sm:mb-10">
+                        <span className="block mb-4">Navigating the Global Business Terrain with Expert Consulting</span>
                     </h1>
-                    <p className="text-lg sm:text-xl md:text-2xl mb-10 sm:mb-12 max-w-3xl mx-auto text-gray-200 leading-relaxed">
-                        Algoritt is a leading consulting firm known for its deep expertise and innovative strategies. We help organizations optimize processes, mitigate risks, and drive sustainable growth with tailored solutions across industries.
-                    </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Button variant="default" className="w-full sm:w-[200px]">
-                            <Link href="/contact">Get Started</Link>
+                            <Link href="/about">Learn More</Link>
                         </Button>
                     </div>
                 </div>

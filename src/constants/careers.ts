@@ -62,6 +62,7 @@ export interface JobPosition {
   type: string;
   description: string;
   requirements: string[];
+  openings: number;
 }
 
 export const openPositions: JobPosition[] = [
@@ -71,6 +72,7 @@ export const openPositions: JobPosition[] = [
     department: 'Engineering',
     location: 'Remote',
     type: 'Full-time',
+    openings: 2,
     description: 'We are looking for a Senior Frontend Developer to join our team and help build the next generation of our products.',
     requirements: [
       '5+ years of experience with modern JavaScript frameworks (React, Next.js)',
@@ -85,12 +87,93 @@ export const openPositions: JobPosition[] = [
     department: 'Engineering',
     location: 'Remote',
     type: 'Full-time',
+    openings: 3,
     description: 'Join our backend team to build scalable and reliable systems that power our applications.',
     requirements: [
       '3+ years of experience in backend development',
       'Strong knowledge of Node.js and TypeScript',
       'Experience with databases and API design',
       'Understanding of cloud infrastructure and microservices',
+    ],
+  },
+  {
+    id: 'quant-analyst',
+    title: 'Quantitative Analyst',
+    department: 'Analytics',
+    location: 'London, UK',
+    type: 'Full-time',
+    openings: 1,
+    description: 'Join our quantitative analytics team to develop and implement sophisticated mathematical models and strategies for financial markets.',
+    requirements: [
+      'Masters or PhD in Mathematics, Physics, Computer Science, or related field',
+      'Strong programming skills in Python and R',
+      'Experience with statistical modeling and machine learning',
+      'Knowledge of financial markets and derivatives',
+      'Excellent analytical and problem-solving skills',
+    ],
+  },
+  {
+    id: 'quant-management-trainee',
+    title: 'Quantitative Management Trainee',
+    department: 'Analytics',
+    location: 'Warsaw, Poland',
+    type: 'Full-time',
+    openings: 5,
+    description: 'An exciting opportunity for graduates to join our 12-month rotational program, gaining hands-on experience in quantitative analysis and management.',
+    requirements: [
+      'Recent graduate with a degree in Mathematics, Statistics, or related field',
+      'Strong analytical and quantitative skills',
+      'Programming experience in Python or R',
+      'Excellent communication and teamwork abilities',
+      'Eagerness to learn and grow in a fast-paced environment',
+    ],
+  },
+  {
+    id: 'business-development-associate',
+    title: 'Business Development Associate',
+    department: 'Sales',
+    location: 'New York, USA',
+    type: 'Full-time',
+    openings: 2,
+    description: 'Drive business growth by identifying and pursuing new opportunities, developing client relationships, and expanding our market presence.',
+    requirements: [
+      '3+ years of experience in business development or sales',
+      'Strong network in the financial services industry',
+      'Excellent presentation and negotiation skills',
+      'Track record of closing enterprise deals',
+      'Understanding of quantitative trading and financial markets',
+    ],
+  },
+  {
+    id: 'hr-manager',
+    title: 'HR Manager',
+    department: 'Human Resources',
+    location: 'Prague, Czech Republic',
+    type: 'Full-time',
+    openings: 1,
+    description: 'Lead our HR initiatives, focusing on talent acquisition, employee development, and maintaining a positive company culture across our global offices.',
+    requirements: [
+      '5+ years of HR management experience',
+      'Experience in international recruitment and talent management',
+      'Strong knowledge of HR best practices and employment laws',
+      'Excellent interpersonal and communication skills',
+      'Experience with HRIS systems and HR analytics',
+    ],
+  },
+  {
+    id: 'hr-specialist',
+    title: 'HR Specialist',
+    department: 'Human Resources',
+    location: 'Bangalore, India',
+    type: 'Full-time',
+    openings: 2,
+    description: 'Support our growing team by managing recruitment processes, employee relations, and HR operations in our India office.',
+    requirements: [
+      '3+ years of HR experience',
+      'Strong understanding of Indian labor laws and HR practices',
+      'Experience with full-cycle recruitment',
+      'Excellent documentation and organizational skills',
+      'Strong interpersonal and communication abilities',
     ],
   },
 ] 

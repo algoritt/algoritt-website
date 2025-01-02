@@ -10,8 +10,8 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col">
       <HeroSection />
-      <ServicesSection />
       <AboutSection />
+      <ServicesSection />
       <USPSection />
       <WorkingAtAlgoritt />
       <TestimonialsSection />

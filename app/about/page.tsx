@@ -3,6 +3,7 @@
 import { aboutSections } from '@/constants/about'
 import { motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
+import Image from 'next/image'
 
 // Dynamically import AboutBanner with no SSR to avoid hydration issues
 const AboutBanner = dynamic(() => import('@/components/ui/about/AboutBanner'), {
@@ -34,28 +35,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Values Grid */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto">
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20"
-          >
-            {[
-              { title: 'Data-Driven', description: 'Making informed decisions through advanced analytics' },
-              { title: 'Innovation', description: 'Embracing cutting-edge solutions for modern challenges' },
-              { title: 'Excellence', description: 'Delivering exceptional results with precision' }
-            ].map((value, index) => (
-              <div key={index} className="p-8 rounded-2xl bg-gray-800/50 backdrop-blur-sm border border-gray-700">
-                <h3 className="text-2xl font-bold text-white mb-4">{value.title}</h3>
-                <p className="text-gray-300">{value.description}</p>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+      
 
       {/* Content Sections */}
       {aboutSections.map((section, index) => (
@@ -69,6 +49,121 @@ export default function AboutPage() {
           <AboutBanner section={section} />
         </motion.div>
       ))}
+
+      {/* Updated Values Section */}
+      <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-gray-800">
+        <div className="container mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold text-white mb-4">Our Core Values</h2>
+            <p className="text-gray-300 text-xl max-w-2xl mx-auto">
+              These principles guide our decisions and shape our culture
+            </p>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          >
+            {[
+              {
+                title: 'Commitment',
+                description: 'Dedicated to delivering excellence and exceeding expectations in everything we do',
+                icon: '🎯'
+              },
+              {
+                title: 'Integrity',
+                description: 'Upholding the highest ethical standards with transparency and honesty',
+                icon: '⭐'
+              },
+              {
+                title: 'Innovation',
+                description: 'Continuously pushing boundaries and embracing new technologies',
+                icon: '💡'
+              },
+              {
+                title: 'Inclusion',
+                description: 'Fostering a diverse environment where every voice matters',
+                icon: '🤝'
+              }
+            ].map((value, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="p-8 rounded-2xl bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-purple-500 transition-all group"
+              >
+                <div className="text-4xl mb-4">{value.icon}</div>
+                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-purple-500 transition-colors">
+                  {value.title}
+                </h3>
+                <p className="text-gray-300">{value.description}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Global Presence Section */}
+      <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+        <div className="container mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold text-white mb-4">Global Presence</h2>
+            <p className="text-gray-300 text-xl max-w-2xl mx-auto">
+              Delivering excellence across continents with our strategically located offices
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="relative max-w-5xl mx-auto"
+          >
+            <Image
+              src="/assets/about/global-presence.jpg"
+              alt="Algoritt's Global Presence Map"
+              width={1200}
+              height={600}
+              className="rounded-2xl shadow-2xl"
+              priority
+            />
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+              {[
+                { country: 'USA', region: 'North America' },
+                { country: 'UK', region: 'Europe' },
+                { country: 'Poland', region: 'Europe' },
+                { country: 'Czech Republic', region: 'Europe' },
+                { country: 'India', region: 'Asia' },
+              ].map((location, index) => (
+                <motion.div
+                  key={location.country}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="text-center p-4 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700"
+                >
+                  <h3 className="text-xl font-bold text-white mb-1">{location.country}</h3>
+                  <p className="text-gray-400">{location.region}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Call to Action */}
       <section className="relative py-20">

@@ -1,40 +1,53 @@
+'use client';
+
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { type JobPosition } from '@/types'
+import { useState } from 'react'
+import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button/button'
-import { careerSections } from '@/constants/careers'
+import { careerSections, openPositions } from '@/constants/careers'
 import CareerSection from '@/components/ui/careers/CareerSection'
 
-export const metadata: Metadata = {
-  title: 'Careers | Algoritt',
-  description: 'Join our team and help build the future of technology.',
-}
-
-const openPositions: (JobPosition & { slug: string })[] = [
-  {
-    slug: 'senior-frontend-developer',
-    title: 'Senior Frontend Developer',
-    department: 'Engineering',
-    location: 'Remote',
-    type: 'Full-time',
-  },
-  {
-    slug: 'backend-engineer',
-    title: 'Backend Engineer',
-    department: 'Engineering',
-    location: 'Remote',
-    type: 'Full-time',
-  },
-]
-
 const companyStats = [
-  { value: '50+', label: 'Team Members' },
-  { value: '15+', label: 'Countries' },
+  { value: '25+', label: 'Team Members' },
+  { value: '5+', label: 'Countries' },
   { value: '95%', label: 'Employee Satisfaction' },
   { value: '4.8/5', label: 'Glassdoor Rating' },
 ]
 
+// Group positions by department
+const departments = [...new Set(openPositions.map(p => p.department))];
+
+const cardVariants = {
+  hidden: { 
+    opacity: 0,
+    y: 10
+  },
+  visible: (index: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: index * 0.1,
+      duration: 0.5,
+      ease: [0.21, 0.45, 0.32, 0.9]
+    }
+  }),
+  hover: {
+    y: -4,
+    transition: {
+      duration: 0.3,
+      ease: 'easeOut'
+    }
+  }
+};
+
 export default function CareersPage() {
+  const [selectedDepartment, setSelectedDepartment] = useState<string | null>(null);
+
+  const filteredPositions = selectedDepartment
+    ? openPositions.filter(p => p.department === selectedDepartment)
+    : openPositions;
+
   return (
     <main className="flex min-h-screen flex-col">
       {/* Hero Section with Pitch */}
@@ -47,7 +60,7 @@ export default function CareersPage() {
               Join Our Mission
             </h1>
             <p className="text-xl text-gray-300 mb-8">
-              At Algoritt, we&apos;re building the future of technology. Join our team of passionate innovators and make a real impact in the world of software development.
+            Together, we will navigate challenges, seize opportunities, and achieve milestones that propel both your career and our collective success. Join us in a journey of mutual growth and accomplishment
             </p>
             <Button variant="default" size="lg" className="bg-purple-600 hover:bg-purple-500">
               <Link href="#open-positions">
@@ -80,26 +93,146 @@ export default function CareersPage() {
       {/* Open Positions Section */}
       <section id="open-positions" className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold mb-8 text-center">Open Positions</h2>
-            <div className="space-y-6">
-              {openPositions.map((position) => (
-                <Link
-                  key={position.slug}
-                  href={`/careers/${position.slug}`}
-                  className="block p-6 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-colors hover:shadow-lg"
+          <div className="max-w-7xl mx-auto">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-4xl font-bold mb-12 text-center"
+            >
+              Open Positions
+            </motion.h2>
+            
+            {/* Department Filters */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex flex-wrap gap-3 justify-center mb-12"
+            >
+              <button
+                onClick={() => setSelectedDepartment(null)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  selectedDepartment === null
+                    ? 'bg-purple-600 text-white'
+                    : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                }`}
+              >
+                All Departments
+              </button>
+              {departments.map((dept) => (
+                <button
+                  key={dept}
+                  onClick={() => setSelectedDepartment(dept)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                    selectedDepartment === dept
+                      ? 'bg-purple-600 text-white'
+                      : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                  }`}
                 >
-                  <h3 className="text-2xl font-semibold mb-2">{position.title}</h3>
-                  <div className="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-300">
-                    <span>{position.department}</span>
-                    <span>•</span>
-                    <span>{position.location}</span>
-                    <span>•</span>
-                    <span>{position.type}</span>
-                  </div>
-                </Link>
+                  {dept}
+                </button>
+              ))}
+            </motion.div>
+
+            {/* Positions Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredPositions.map((position, index) => (
+                <motion.div
+                  key={position.id}
+                  variants={cardVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  whileHover="hover"
+                  viewport={{ once: true }}
+                  custom={index}
+                >
+                  <Link
+                    href={`/careers/${position.id}`}
+                    className="group flex flex-col h-full p-6 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-purple-500 transition-all hover:shadow-xl"
+                  >
+                    <div className="flex items-start justify-between mb-4">
+                      <div>
+                        <div className="flex flex-wrap gap-2 mb-3">
+                          <motion.span
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.3 }}
+                            className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-purple-500/20 text-purple-400"
+                          >
+                            {position.department}
+                          </motion.span>
+                          <motion.span
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.3, delay: 0.1 }}
+                            className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-green-500/20 text-green-400"
+                          >
+                            {position.openings} {position.openings === 1 ? 'Opening' : 'Openings'}
+                          </motion.span>
+                        </div>
+                        <h3 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">
+                          {position.title}
+                        </h3>
+                      </div>
+                      <motion.svg
+                        className="w-5 h-5 text-gray-400 group-hover:text-purple-400 transition-colors"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        whileHover={{ x: 3 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M9 5l7 7-7 7"
+                        />
+                      </motion.svg>
+                    </div>
+                    
+                    <p className="text-gray-400 text-sm mb-4 line-clamp-2">
+                      {position.description}
+                    </p>
+                    
+                    <div className="mt-auto flex flex-wrap gap-3 text-sm text-gray-400">
+                      <span className="flex items-center">
+                        <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        {position.location}
+                      </span>
+                      <span className="flex items-center">
+                        <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        {position.type}
+                      </span>
+                    </div>
+                  </Link>
+                </motion.div>
               ))}
             </div>
+
+            {/* No Results Message */}
+            {filteredPositions.length === 0 && (
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                className="text-center py-12"
+              >
+                <p className="text-gray-400 text-lg mb-4">No positions found in this department</p>
+                <button
+                  onClick={() => setSelectedDepartment(null)}
+                  className="text-purple-400 hover:text-purple-300"
+                >
+                  View all positions
+                </button>
+              </motion.div>
+            )}
           </div>
         </div>
       </section>

@@ -14,7 +14,20 @@ export interface Service {
         type: 'image' | 'video';
         url: string;
     };
-    subServices: SubService[];
+    subServices: {
+        id: string;
+        title: string;
+        description: string;
+        icon: string;
+    }[];
+    process?: {
+        title: string;
+        description: string;
+    }[];
+    benefits?: {
+        title: string;
+        description: string;
+    }[];
 }
 
 export const services: Service[] = [

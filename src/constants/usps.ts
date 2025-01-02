@@ -11,6 +11,16 @@ export interface USP {
 
 export const usps: USP[] = [
   {
+    id: 'advanced-analytics',
+    title: 'Advanced Analytics',
+    description: 'Leveraging advanced analytics and cutting-edge technologies, we provide actionable insights that empower informed decision-making and drive sustainable growth.',
+    icon: '/assets/icons/analytics.svg',
+    stats: {
+      value: '1000+',
+      label: 'Analytics Models'
+    }
+  },
+  {
     id: 'domain-expertise',
     title: 'Domain Expertise',
     description: 'We bring deep domain knowledge and a proven track record in diverse sectors, enabling us to deliver tailored, high-impact solutions for your unique challenges.',

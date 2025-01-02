@@ -1,0 +1,24 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Neural Network Grid Background -->
+  <path d="M6 24C6 14.0589 14.0589 6 24 6C33.9411 6 42 14.0589 42 24C42 33.9411 33.9411 42 24 42C14.0589 42 6 33.9411 6 24Z" stroke="#A855F7" stroke-width="1.5" stroke-dasharray="2 2"/>
+  
+  <!-- Connection Lines -->
+  <path d="M16 20L24 28L32 20M16 28L24 20L32 28" stroke="#A855F7" stroke-width="1.5"/>
+  
+  <!-- Neural Network Nodes -->
+  <circle cx="16" cy="20" r="3" fill="#18181B" stroke="#A855F7" stroke-width="1.5"/>
+  <circle cx="24" cy="20" r="3" fill="#18181B" stroke="#A855F7" stroke-width="1.5"/>
+  <circle cx="32" cy="20" r="3" fill="#18181B" stroke="#A855F7" stroke-width="1.5"/>
+  <circle cx="16" cy="28" r="3" fill="#18181B" stroke="#A855F7" stroke-width="1.5"/>
+  <circle cx="24" cy="28" r="3" fill="#18181B" stroke="#A855F7" stroke-width="1.5"/>
+  <circle cx="32" cy="28" r="3" fill="#18181B" stroke="#A855F7" stroke-width="1.5"/>
+  
+  <!-- Analytics Bar Chart -->
+  <rect x="20" y="14" width="2" height="6" rx="1" fill="#A855F7"/>
+  <rect x="24" y="12" width="2" height="8" rx="1" fill="#A855F7"/>
+  <rect x="28" y="16" width="2" height="4" rx="1" fill="#A855F7"/>
+  
+  <!-- Pulse Animation Line -->
+  <path d="M14 34H34" stroke="#A855F7" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M20 34L24 30L28 34" stroke="#A855F7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg> 
