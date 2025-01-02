@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { services } from '@/constants/services';
 import { getServiceIcon } from '@/utils/serviceIcons';
 import Link from 'next/link';
-import Image from 'next/image';
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
