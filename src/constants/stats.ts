@@ -10,21 +10,21 @@ export interface Stat {
 export const stats: Stat[] = [
   {
     id: 'clients',
-    value: '30',
+    value: '12',
     label: 'Clients with Active Engagements',
     description: 'Global partnerships across industries',
     suffix: '+'
   },
   {
     id: 'models',
-    value: '3800',
+    value: '700',
     label: 'Models Developed/Validated',
     description: 'Advanced solutions implemented',
     suffix: '+'
   },
   {
     id: 'technologies',
-    value: '40',
+    value: '15',
     label: 'Technologies Supported',
     description: 'Cutting-edge tech expertise',
     suffix: '+'
