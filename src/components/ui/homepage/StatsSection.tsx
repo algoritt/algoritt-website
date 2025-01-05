@@ -21,12 +21,12 @@ export default function StatsSection() {
       <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-transparent to-gray-900" />
 
       <div className="container relative mx-auto px-3 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center mb-8 sm:mb-12 lg:mb-16">
+        <div className="max-w-4xl mx-auto text-center mb-8 md:mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-3xl sm:text-4xl font-bold text-white mb-3 sm:mb-4"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4"
           >
             Our Impact in Numbers
           </motion.h2>
@@ -34,7 +34,7 @@ export default function StatsSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-gray-400 text-base sm:text-lg"
+            className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto"
           >
             Delivering exceptional results through innovation and expertise
           </motion.p>
