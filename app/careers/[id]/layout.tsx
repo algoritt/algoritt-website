@@ -19,10 +19,10 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 
   return {
     title: `${position.title} | Algoritt Careers`,
-    description: position.description,
+    description: position.roleOverview,
     openGraph: {
       title: `${position.title} | Algoritt Careers`,
-      description: position.description,
+      description: position.roleOverview,
       type: 'website',
     },
   }
