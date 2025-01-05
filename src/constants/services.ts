@@ -13,13 +13,9 @@ export interface Service {
     media: {
         type: 'image' | 'video';
         url: string;
+        thumbnail?: string; // Still image for services listing
     };
-    subServices: {
-        id: string;
-        title: string;
-        description: string;
-        icon: string;
-    }[];
+    subServices: SubService[];
     process?: {
         title: string;
         description: string;
@@ -37,8 +33,9 @@ export const services: Service[] = [
         description: 'Mitigating Risks, Maximizing Confidence',
         longDescription: 'At the heart of effective risk management is a robust model that offers predictive power and strategic foresight. Our Model Development & Documentation services focus on the development of risk models for credit risk, market risk, operational risk, and pricing, combining precision, reliability, and compliance with industry standards.',
         media: {
-            type: 'image',
-            url: '/assets/services/risk-management.jpg'
+            type: 'video',
+            url: '/assets/services/risk-management.mp4',
+            thumbnail: '/assets/services/risk-management.jpg'
         },
         subServices: [
             {
@@ -73,8 +70,9 @@ export const services: Service[] = [
         description: 'Navigating Complexity with Confidence: Comprehensive Compliance Solutions for Regulatory Excellence',
         longDescription: 'Our comprehensive compliance and governance solutions help organizations navigate complex regulatory landscapes while maintaining operational efficiency. We combine industry expertise with cutting-edge technology to deliver robust compliance frameworks that protect and empower your business.',
         media: {
-            type: 'image',
-            url: '/assets/services/compliance-governance.jpg'
+            type: 'video',
+            url: '/assets/services/compliance-governance.mp4',
+            thumbnail: '/assets/services/compliance-governance.jpg'
         },
         subServices: [
             {
@@ -115,8 +113,9 @@ export const services: Service[] = [
         description: 'Insight-Driven Decisions, Future-Ready Intelligence',
         longDescription: 'We empower organizations with advanced analytics and artificial intelligence solutions to transform data into actionable insights. Our comprehensive approach combines cutting-edge technology with domain expertise to deliver sustainable value and competitive advantage.',
         media: {
-            type: 'image',
-            url: '/assets/services/data-analytics-ai.jpg'
+            type: 'video',
+            url: '/assets/services/data-analytics-ai.mp4',
+            thumbnail: '/assets/services/data-analytics-ai.jpg'
         },
         subServices: [
             {
@@ -151,8 +150,9 @@ export const services: Service[] = [
         description: 'Preparing for the Future: Holistic Strategies to Manage and Mitigate Climate Change Risks for Long-Term Sustainability',
         longDescription: 'We help organizations navigate the complexities of environmental, social, and governance challenges while building sustainable business practices. Our comprehensive approach integrates ESG considerations into core business strategies, ensuring long-term resilience and compliance with evolving regulatory requirements.',
         media: {
-            type: 'image',
-            url: '/assets/services/sustainability-and-esg.jpg'
+            type: 'video',
+            url: '/assets/services/sustainability-and-esg.mp4',
+            thumbnail: '/assets/services/sustainability-and-esg.jpg'
         },
         subServices: [
             {

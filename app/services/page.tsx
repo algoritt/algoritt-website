@@ -65,24 +65,12 @@ export default function ServicesPage() {
                   className="group relative overflow-hidden rounded-2xl bg-gray-800/50 p-1 hover:bg-gray-800 transition-all duration-300 flex flex-col h-full backdrop-blur-sm border border-gray-700"
                 >
                   <div className="relative h-64 overflow-hidden rounded-xl">
-                    {service.media.type === 'video' ? (
-                      <video
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="w-full h-full object-cover"
-                      >
-                        <source src={service.media.url} type="video/mp4" />
-                      </video>
-                    ) : (
-                      <Image
-                        src={service.media.url}
-                        alt={service.title}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
-                      />
-                    )}
+                    <Image
+                      src={service.media.thumbnail || service.media.url}
+                      alt={service.title}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent" />
                   </div>
                   <div className="p-6 flex flex-col flex-grow">
