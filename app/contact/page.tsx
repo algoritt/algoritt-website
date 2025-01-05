@@ -21,7 +21,7 @@ export default function ContactPage() {
   return (
     <main className="flex min-h-screen flex-col bg-gray-900 font-worksans">
       {/* Hero Section */}
-      <section className="relative w-full min-h-[40vh] flex items-center justify-center pt-24">
+      <section className="relative w-full min-h-[60vh] flex items-center justify-center pt-24">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:14px_24px]" />
         <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-900/40 to-gray-900" />
         
@@ -54,8 +54,8 @@ export default function ContactPage() {
               className="space-y-8"
             >
               <div>
-                <h2 className="text-3xl font-bold text-white mb-8">Contact Information</h2>
-                <p className="text-gray-300 mb-12">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">Contact Information</h2>
+                <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-8">
                   Ready to take the next step? Reach out to us through any of these channels or fill out the form.
                 </p>
               </div>

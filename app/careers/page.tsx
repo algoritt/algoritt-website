@@ -50,23 +50,29 @@ export default function CareersPage() {
   return (
     <main className="flex min-h-screen flex-col">
       {/* Hero Section with Pitch */}
-      <section className="relative w-full pt-24 md:pt-32 pb-20 bg-gray-900">
+      <section className="relative w-full min-h-[60vh] flex items-center justify-center pt-24 bg-gray-900">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:14px_24px]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-transparent to-gray-900" />
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-900/40 to-gray-900" />
+        
         <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl mb-6">
-              Join Our Mission
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <h1 className="text-6xl md:text-7xl font-bold tracking-tight text-white mb-8">
+              Join Our <span className="text-purple-500">Mission</span>
             </h1>
-            <p className="text-xl text-gray-300 mb-8">
-            Together, we will navigate challenges, seize opportunities, and achieve milestones that propel both your career and our collective success. Join us in a journey of mutual growth and accomplishment
+            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-8">
+              Together, we will navigate challenges, seize opportunities, and achieve milestones that propel both your career and our collective success. Join us in a journey of mutual growth and accomplishment
             </p>
             <Button variant="default" size="lg" className="bg-purple-600 hover:bg-purple-500">
               <Link href="#open-positions">
                 Explore Opportunities
               </Link>
             </Button>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -93,14 +99,24 @@ export default function CareersPage() {
       <section id="open-positions" className="py-20 bg-gray-50 dark:bg-gray-900 dark:text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-4xl font-bold mb-12 text-center"
-            >
-              Open Positions
-            </motion.h2>
+            <div className="text-center mb-8 md:mb-16">
+              <motion.h2 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4"
+              >
+                Open Positions
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto"
+              >
+                Join our team and be part of something extraordinary
+              </motion.p>
+            </div>
             
             {/* Department Filters */}
             <motion.div 

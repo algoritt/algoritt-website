@@ -51,24 +51,24 @@ export default function ServicePage() {
   return (
     <main className="min-h-screen bg-gray-900">
       {/* Hero Section */}
-      <section className="relative pt-24 pb-20">
+      <section className="relative w-full min-h-[60vh] flex items-center justify-center pt-24">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:14px_24px]" />
         <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-900/40 to-gray-900" />
         
         <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
             className="max-w-4xl mx-auto text-center"
           >
             <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-purple-500/20 text-purple-400 mb-6">
               Our Services
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+            <h1 className="text-6xl md:text-7xl font-bold tracking-tight text-white mb-8">
               {serviceData.title}
             </h1>
-            <p className="text-xl text-gray-300 leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
               {serviceData.description}
             </p>
           </motion.div>
@@ -85,9 +85,9 @@ export default function ServicePage() {
             variants={container}
             className="max-w-6xl mx-auto"
           >
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-white mb-4">Our Offerings</h2>
-              <p className="text-gray-400 max-w-2xl mx-auto">
+            <div className="text-center mb-8 md:mb-16">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">Our Offerings</h2>
+              <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
                 Discover how our {serviceData.title.toLowerCase()} service can transform your business
               </p>
             </div>
@@ -135,10 +135,10 @@ export default function ServicePage() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeIn}
-            className="max-w-4xl mx-auto text-center"
+            className="text-center mb-8 md:mb-16"
           >
-            <h2 className="text-3xl font-bold text-white mb-6">Ready to Get Started?</h2>
-            <p className="text-xl text-gray-300 mb-8">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">Ready to Get Started?</h2>
+            <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-8">
               Transform your business with our {serviceData.title.toLowerCase()} solutions
             </p>
             <Link
