@@ -6,7 +6,7 @@ import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
-    name: '',
+    fullName: '',
     email: '',
     subject: '',
     message: ''
@@ -110,16 +110,16 @@ export default function ContactPage() {
             >
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                    Name
+                  <label htmlFor="fullName" className="block text-sm font-medium text-gray-300 mb-2">
+                    Full Name
                   </label>
                   <input
                     type="text"
-                    id="name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    id="fullName"
+                    value={formData.fullName}
+                    onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                     className="w-full px-4 py-3 rounded-lg bg-gray-800/50 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
-                    placeholder="Your name"
+                    placeholder="Your full name"
                     required
                   />
                 </div>
