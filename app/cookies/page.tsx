@@ -102,7 +102,7 @@ export default function CookiesPolicy() {
                 If You do not accept Our Cookies, You may experience some inconvenience in your use of the Website and some features may not function properly.
               </p>
               <p>
-                If You'd like to delete Cookies or instruct your web browser to delete or refuse Cookies, please visit the help pages of your web browser:
+                If you&apos;d like to delete Cookies or instruct your web browser to delete or refuse Cookies, please visit the help pages of your web browser:
               </p>
               <ul>
                 <li><a href="https://support.google.com/accounts/answer/32050" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300">Chrome</a></li>
