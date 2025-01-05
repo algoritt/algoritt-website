@@ -61,10 +61,40 @@ const config = {
       fontFamily: {
         sans: ['var(--font-inter)'],
         heading: ['var(--font-jakarta)'],
+        work: ['Work Sans', 'sans-serif'],
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: '100%',
+            color: 'rgb(209 213 219)',
+            h1: {
+              color: 'rgb(255 255 255)',
+            },
+            h2: {
+              color: 'rgb(168 85 247)',
+            },
+            h3: {
+              color: 'rgb(229 231 235)',
+            },
+            strong: {
+              color: 'rgb(168 85 247)',
+            },
+            a: {
+              color: 'rgb(168 85 247)',
+              '&:hover': {
+                color: 'rgb(192 132 252)',
+              },
+            },
+          },
+        },
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("@tailwindcss/typography"),
+  ],
 } satisfies Config
 
 export default config
