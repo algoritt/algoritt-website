@@ -30,15 +30,6 @@ export default function DetailsSection({ position }: Props) {
     }
   }
 
-  const benefits = [
-    'Competitive salary and equity package',
-    'Flexible working hours and remote work options',
-    'Health, dental, and vision insurance',
-    'Professional development opportunities',
-    'Modern tech stack and tools',
-    'Collaborative and inclusive work environment'
-  ]
-
   return (
     <motion.div
       initial="hidden"
@@ -47,18 +38,34 @@ export default function DetailsSection({ position }: Props) {
       variants={container}
       className="space-y-12"
     >
-      {/* Requirements */}
+      {/* Role Overview */}
       <div className="space-y-6">
         <motion.h2 
           variants={item}
           className="text-2xl font-bold text-white"
         >
-          Requirements
+          Role Overview
+        </motion.h2>
+        <motion.p
+          variants={item}
+          className="text-gray-300"
+        >
+          {position.roleOverview}
+        </motion.p>
+      </div>
+
+      {/* Key Responsibilities */}
+      <div className="space-y-6">
+        <motion.h2 
+          variants={item}
+          className="text-2xl font-bold text-white"
+        >
+          Key Responsibilities
         </motion.h2>
         <ul className="space-y-4">
-          {position.requirements.map(req => (
+          {position.keyResponsibilities.map(resp => (
             <motion.li
-              key={req}
+              key={resp}
               variants={item}
               className="flex items-start"
             >
@@ -75,44 +82,164 @@ export default function DetailsSection({ position }: Props) {
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <span className="text-gray-300">{req}</span>
+              <span className="text-gray-300">{resp}</span>
             </motion.li>
           ))}
         </ul>
       </div>
 
-      {/* What We Offer */}
+      {/* Requirements */}
       <div className="space-y-6">
         <motion.h2 
           variants={item}
           className="text-2xl font-bold text-white"
         >
-          What We Offer
+          Requirements
         </motion.h2>
-        <ul className="space-y-4">
-          {benefits.map((benefit, i) => (
-            <motion.li
-              key={i}
+
+        {/* Education */}
+        {position.requirements.education && (
+          <div className="space-y-4">
+            <motion.h3
               variants={item}
-              className="flex items-start"
+              className="text-xl font-semibold text-purple-400"
             >
-              <svg
-                className="w-6 h-6 text-purple-500 mr-3 flex-shrink-0 mt-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-              <span className="text-gray-300">{benefit}</span>
-            </motion.li>
-          ))}
-        </ul>
+              Education
+            </motion.h3>
+            <ul className="space-y-4">
+              {position.requirements.education.map(edu => (
+                <motion.li
+                  key={edu}
+                  variants={item}
+                  className="flex items-start"
+                >
+                  <svg
+                    className="w-6 h-6 text-purple-500 mr-3 flex-shrink-0 mt-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <span className="text-gray-300">{edu}</span>
+                </motion.li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* Experience */}
+        {position.requirements.experience && (
+          <div className="space-y-4">
+            <motion.h3
+              variants={item}
+              className="text-xl font-semibold text-purple-400"
+            >
+              Experience
+            </motion.h3>
+            <ul className="space-y-4">
+              {position.requirements.experience.map(exp => (
+                <motion.li
+                  key={exp}
+                  variants={item}
+                  className="flex items-start"
+                >
+                  <svg
+                    className="w-6 h-6 text-purple-500 mr-3 flex-shrink-0 mt-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <span className="text-gray-300">{exp}</span>
+                </motion.li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* Technical Skills */}
+        {position.requirements.technical && (
+          <div className="space-y-4">
+            <motion.h3
+              variants={item}
+              className="text-xl font-semibold text-purple-400"
+            >
+              Technical Skills
+            </motion.h3>
+            <ul className="space-y-4">
+              {position.requirements.technical.map(tech => (
+                <motion.li
+                  key={tech}
+                  variants={item}
+                  className="flex items-start"
+                >
+                  <svg
+                    className="w-6 h-6 text-purple-500 mr-3 flex-shrink-0 mt-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <span className="text-gray-300">{tech}</span>
+                </motion.li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* Soft Skills */}
+        {position.requirements.soft && (
+          <div className="space-y-4">
+            <motion.h3
+              variants={item}
+              className="text-xl font-semibold text-purple-400"
+            >
+              Soft Skills
+            </motion.h3>
+            <ul className="space-y-4">
+              {position.requirements.soft.map(soft => (
+                <motion.li
+                  key={soft}
+                  variants={item}
+                  className="flex items-start"
+                >
+                  <svg
+                    className="w-6 h-6 text-purple-500 mr-3 flex-shrink-0 mt-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <span className="text-gray-300">{soft}</span>
+                </motion.li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </motion.div>
   )

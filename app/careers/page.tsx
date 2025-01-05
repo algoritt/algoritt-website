@@ -208,7 +208,7 @@ export default function CareersPage() {
                     </div>
                     
                     <p className="text-gray-400 text-sm mb-4 line-clamp-2">
-                      {position.description}
+                      {position.roleOverview}
                     </p>
                     
                     <div className="mt-auto flex flex-wrap gap-3 text-sm text-gray-400">
@@ -224,6 +224,12 @@ export default function CareersPage() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                         {position.type}
+                      </span>
+                      <span className="flex items-center">
+                        <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                        {position.workMode}
                       </span>
                     </div>
                   </Link>
