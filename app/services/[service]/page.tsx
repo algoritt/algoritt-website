@@ -93,7 +93,7 @@ export default function ServicePage() {
               </svg>
               Back to Services
             </Link>
-            <h1 className="text-6xl md:text-7xl font-bold tracking-tight text-purple-500 mb-8 drop-shadow-lg">
+            <h1 className="text-6xl md:text-7xl font-bold tracking-tight text-white mb-8 drop-shadow-lg">
               {serviceData.title}
             </h1>
             <p className="text-xl md:text-2xl text-gray-200 leading-relaxed drop-shadow-lg font-medium">
