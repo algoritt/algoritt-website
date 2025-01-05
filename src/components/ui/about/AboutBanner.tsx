@@ -92,7 +92,7 @@ export default function AboutBanner({ section }: AboutBannerProps) {
               >
                 <div className="space-y-4">
                   <motion.h2 
-                    className="text-4xl font-bold tracking-tight text-white sm:text-5xl"
+                    className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4"
                     style={{ y: yParallax }}
                   >
                     {section.title}
@@ -100,7 +100,7 @@ export default function AboutBanner({ section }: AboutBannerProps) {
                   <div className="w-20 h-1 bg-purple-600 rounded-full" />
                 </div>
                 <motion.p 
-                  className="text-xl leading-8 text-gray-300 whitespace-pre-line"
+                  className="text-gray-400 text-lg md:text-xl max-w-2xl"
                   style={{ y: yParallaxText }}
                 >
                   {section.description}
@@ -171,7 +171,7 @@ export default function AboutBanner({ section }: AboutBannerProps) {
               >
                 <div className="space-y-4">
                   <motion.h2 
-                    className="text-4xl font-bold tracking-tight text-white sm:text-5xl"
+                    className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4"
                     style={{ y: yParallax }}
                   >
                     {section.title}
@@ -179,7 +179,7 @@ export default function AboutBanner({ section }: AboutBannerProps) {
                   <div className="w-20 h-1 bg-purple-600 rounded-full" />
                 </div>
                 <motion.p 
-                  className="text-xl leading-8 text-gray-300 whitespace-pre-line"
+                  className="text-gray-400 text-lg md:text-xl max-w-2xl"
                   style={{ y: yParallaxText }}
                 >
                   {section.description}
