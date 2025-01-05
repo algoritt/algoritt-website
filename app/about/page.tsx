@@ -24,13 +24,13 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto text-center"
+            className="max-w-6xl mx-auto text-center"
           >
             <h1 className="text-6xl md:text-7xl font-bold tracking-tight text-white mb-8">
-              Transforming <span className="text-purple-500">Insights</span> into Impact
+              Driving <span className="text-purple-500">Excellence</span> Forward
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
-              We empower organizations to navigate complexity, embrace innovation, and achieve sustainable growth through data-driven strategies and expert consulting.
+              Strategic consulting and risk management solutions that transform businesses for lasting success.
             </p>
           </motion.div>
         </div>
