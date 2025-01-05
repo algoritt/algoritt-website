@@ -17,9 +17,16 @@ export interface JobPosition {
   title: string;
   department: string;
   location: string;
+  workMode: 'Office' | 'Remote' | 'Hybrid';
   type: string;
-  description: string;
-  requirements: string[];
+  roleOverview: string;
+  keyResponsibilities: string[];
+  requirements: {
+    education?: string[];
+    experience?: string[];
+    technical?: string[];
+    soft?: string[];
+  };
   openings: number;
 }
 
