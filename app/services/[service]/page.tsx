@@ -62,10 +62,7 @@ export default function ServicePage() {
             transition={{ duration: 0.8 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-purple-500/20 text-purple-400 mb-6">
-              Our Services
-            </span>
-            <h1 className="text-6xl md:text-7xl font-bold tracking-tight text-white mb-8">
+            <h1 className="text-6xl md:text-7xl font-bold tracking-tight text-purple-500 mb-8">
               {serviceData.title}
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
