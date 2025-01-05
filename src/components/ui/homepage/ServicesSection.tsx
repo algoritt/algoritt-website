@@ -59,25 +59,13 @@ const ServicesSection: React.FC = () => {
           className="group h-[400px] bg-gray-800/40 backdrop-blur rounded-2xl overflow-hidden border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300"
         >
           <div className="relative h-44 w-full overflow-hidden">
-            {service.media.type === 'video' ? (
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-full object-cover"
-              >
-                <source src={service.media.url} type="video/mp4" />
-              </video>
-            ) : (
-              <Image
-                src={service.media.url}
-                alt={service.title}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-              />
-            )}
+            <Image
+              src={service.media.thumbnail || service.media.url}
+              alt={service.title}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60" />
           </div>
 
