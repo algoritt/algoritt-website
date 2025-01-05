@@ -65,7 +65,7 @@ export default function SimilarPositions({ currentPosition, positions }: Props) 
                     className="block p-6 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-purple-500 transition-all"
                   >
                     <h3 className="text-xl font-bold text-white mb-2">{pos.title}</h3>
-                    <p className="text-gray-400 text-sm line-clamp-2 mb-4">{pos.description}</p>
+                    <p className="text-gray-400 text-sm line-clamp-2 mb-4">{pos.roleOverview}</p>
                     <div className="flex gap-4 text-sm text-gray-400">
                       <span>{pos.location}</span>
                       <span>•</span>
