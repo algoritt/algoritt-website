@@ -53,7 +53,24 @@ export default function ServicePage() {
       {/* Hero Section */}
       <section className="relative w-full min-h-[60vh] flex items-center justify-center pt-24">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:14px_24px]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-900/40 to-gray-900" />
+        {serviceData.media.type === 'video' ? (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src={serviceData.media.url} type="video/mp4" />
+          </video>
+        ) : (
+          <img
+            src={serviceData.media.url}
+            alt={serviceData.title}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/90 via-gray-900/75 to-gray-900" />
         
         <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -64,7 +81,7 @@ export default function ServicePage() {
           >
             <Link
               href="/services"
-              className="inline-flex items-center text-gray-400 hover:text-white mb-8 transition-colors group"
+              className="inline-flex items-center text-gray-300 hover:text-white mb-8 transition-colors group"
             >
               <svg 
                 className="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform" 
@@ -76,10 +93,10 @@ export default function ServicePage() {
               </svg>
               Back to Services
             </Link>
-            <h1 className="text-6xl md:text-7xl font-bold tracking-tight text-purple-500 mb-8">
+            <h1 className="text-6xl md:text-7xl font-bold tracking-tight text-purple-500 mb-8 drop-shadow-lg">
               {serviceData.title}
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-200 leading-relaxed drop-shadow-lg font-medium">
               {serviceData.description}
             </p>
           </motion.div>
