@@ -17,7 +17,7 @@ export const careerSections: CareerSection[] = [
       type: 'image',
       url: '/assets/careers/intern.jpg'
     },
-    description: 'Welcome to our Intern Program, offering a dynamic 3-month opportunity in Quantitative Management. As a Quant Management Trainee, you will immerse yourself in practical, on-the-job training designed to hone your skills and deepen your understanding of quantitative analysis and management principles.',
+    description: 'Welcome to our Intern Program, offering a dynamic 6-month opportunity in Quantitative Management. As a Quant Management Trainee, you will immerse yourself in practical, on-the-job training designed to hone your skills and deepen your understanding of quantitative analysis and management principles.',
     bullets: [
       'Hands-on experience with industry experts',
       'Mentorship from senior professionals',
