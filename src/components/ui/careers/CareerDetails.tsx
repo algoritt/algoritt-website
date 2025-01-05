@@ -28,17 +28,134 @@ export default function CareerDetails({ position }: Props) {
             </div>
 
             <div className="prose prose-invert max-w-none">
-              <p className="text-lg mb-8 text-gray-300">{position.description}</p>
+              <p className="text-lg mb-8 text-gray-300">{position.roleOverview}</p>
 
-              <h2 className="text-2xl font-semibold mb-4 text-white">Requirements</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-white">Key Responsibilities</h2>
               <ul className="space-y-2">
-                {position.requirements?.map((requirement, index) => (
-                  <li key={index} className="flex items-start text-gray-300">
-                    <span className="text-purple-500 mr-2">•</span>
-                    {requirement}
+                {position.keyResponsibilities.map((resp, index) => (
+                  <li key={index} className="flex items-start">
+                    <svg
+                      className="w-6 h-6 text-purple-500 mr-3 flex-shrink-0 mt-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span className="text-gray-300">{resp}</span>
                   </li>
                 ))}
               </ul>
+
+              <h2 className="text-2xl font-semibold mb-4 mt-8 text-white">Requirements</h2>
+              {position.requirements.education && (
+                <>
+                  <h3 className="text-xl font-semibold mb-2 text-purple-400">Education</h3>
+                  <ul className="space-y-2 mb-4">
+                    {position.requirements.education.map((edu, index) => (
+                      <li key={index} className="flex items-start">
+                        <svg
+                          className="w-6 h-6 text-purple-500 mr-3 flex-shrink-0 mt-1"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                        <span className="text-gray-300">{edu}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+
+              {position.requirements.experience && (
+                <>
+                  <h3 className="text-xl font-semibold mb-2 text-purple-400">Experience</h3>
+                  <ul className="space-y-2 mb-4">
+                    {position.requirements.experience.map((exp, index) => (
+                      <li key={index} className="flex items-start">
+                        <svg
+                          className="w-6 h-6 text-purple-500 mr-3 flex-shrink-0 mt-1"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                        <span className="text-gray-300">{exp}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+
+              {position.requirements.technical && (
+                <>
+                  <h3 className="text-xl font-semibold mb-2 text-purple-400">Technical Skills</h3>
+                  <ul className="space-y-2 mb-4">
+                    {position.requirements.technical.map((tech, index) => (
+                      <li key={index} className="flex items-start">
+                        <svg
+                          className="w-6 h-6 text-purple-500 mr-3 flex-shrink-0 mt-1"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                        <span className="text-gray-300">{tech}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+
+              {position.requirements.soft && (
+                <>
+                  <h3 className="text-xl font-semibold mb-2 text-purple-400">Soft Skills</h3>
+                  <ul className="space-y-2">
+                    {position.requirements.soft.map((soft, index) => (
+                      <li key={index} className="flex items-start">
+                        <svg
+                          className="w-6 h-6 text-purple-500 mr-3 flex-shrink-0 mt-1"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                        <span className="text-gray-300">{soft}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
 
               <div className="mt-12">
                 <ApplicationForm position={position} />
