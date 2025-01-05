@@ -46,7 +46,7 @@ export default function Disclaimer() {
           >
             <div className="space-y-8">
               <p className="text-lg sm:text-xl leading-relaxed">
-                Algoritt is a leading global consulting firm offering specialized services and solutions to the financial services industry. Founded in 2018, Algoritt is a trusted partner to some of the world's largest banks, insurance companies, asset managers, and other financial institutions. Our deep domain expertise in financial services, combined with advanced analytics and new-age technologies, has enabled us to accelerate value creation for our clients across their entire enterprise.
+                Algoritt is a leading global consulting firm offering specialized services and solutions to the financial services industry. Founded in 2018, Algoritt is a trusted partner to some of the world&apos;s largest banks, insurance companies, asset managers, and other financial institutions. Our deep domain expertise in financial services, combined with advanced analytics and new-age technologies, has enabled us to accelerate value creation for our clients across their entire enterprise.
               </p>
 
               <div className="space-y-6">

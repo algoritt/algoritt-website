@@ -74,7 +74,7 @@ export default function CookiesPolicy() {
               <h2>The use of the Cookies</h2>
               <h3>Type of Cookies We Use</h3>
               <p>
-                Cookies can be "Persistent" or "Session" Cookies. Persistent Cookies remain on your personal computer or mobile device when You go offline, while Session Cookies are deleted as soon as You close your web browser.
+                Cookies can be &ldquo;Persistent&rdquo; or &ldquo;Session&rdquo; Cookies. Persistent Cookies remain on your personal computer or mobile device when You go offline, while Session Cookies are deleted as soon as You close your web browser.
               </p>
               <p>
                 We use both session and persistent Cookies for the purposes set out below:
