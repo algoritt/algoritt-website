@@ -33,6 +33,20 @@ export default function ServicesPage() {
       {/* Services Grid */}
       <section className="py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8 md:mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+              Our Solutions
+            </h2>
+            <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
+              Explore our comprehensive range of services designed to drive your business forward
+            </p>
+          </motion.div>
+
           <motion.div 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -100,11 +114,13 @@ export default function ServicesPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-3xl mx-auto text-center"
+            className="text-center mb-8 md:mb-16"
           >
-            <h2 className="text-4xl font-bold text-white mb-6">Ready to Transform Your Business?</h2>
-            <p className="text-xl text-gray-300 mb-8">
-              Let&apos;s collaborate to unlock your organization&apos;s full potential.
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+              Ready to Transform Your Business?
+            </h2>
+            <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-8">
+              Let&apos;s collaborate to unlock your organization&apos;s full potential
             </p>
             <Link 
               href="/contact" 
