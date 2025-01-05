@@ -83,14 +83,6 @@ export default function HeroSection({ position }: Props) {
               {position.type}
             </motion.span>
           </div>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.35, duration: 0.3 }}
-            className="text-xl text-gray-300 leading-relaxed"
-          >
-            {position.roleOverview}
-          </motion.p>
         </motion.div>
       </div>
     </section>
