@@ -17,7 +17,7 @@ const ServicesSection: React.FC = () => {
   
   const autoplayOptions = {
     delay: 3000,
-    rootNode: (emblaRoot: any) => emblaRoot.parentElement,
+    rootNode: (emblaRoot: HTMLElement) => emblaRoot.parentElement,
     stopOnInteraction: false,
     stopOnMouseEnter: true,
   };

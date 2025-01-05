@@ -2,14 +2,8 @@
 
 import { aboutSections } from '@/constants/about'
 import { motion } from 'framer-motion'
-import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
-
-// Dynamically import AboutBanner with no SSR to avoid hydration issues
-const AboutBanner = dynamic(() => import('@/components/ui/about/AboutBanner'), {
-  ssr: false
-});
 
 export default function AboutPage() {
   return (

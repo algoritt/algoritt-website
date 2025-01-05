@@ -48,7 +48,7 @@ export default function TestimonialsSection() {
             Client Success Stories
           </h2>
           <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
-            See how we've helped organizations unlock their business potential and achieve lasting success through digital transformation
+            Discover how Algoritt&apos;s expertise transforms businesses through innovative solutions
           </p>
         </motion.div>
 

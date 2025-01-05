@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { services } from '@/constants/services';
 import { getServiceIcon } from '@/utils/serviceIcons';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -64,9 +65,10 @@ export default function ServicePage() {
             <source src={serviceData.media.url} type="video/mp4" />
           </video>
         ) : (
-          <img
+          <Image
             src={serviceData.media.url}
             alt={serviceData.title}
+            fill
             className="absolute inset-0 w-full h-full object-cover"
           />
         )}
