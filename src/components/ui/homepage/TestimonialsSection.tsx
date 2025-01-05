@@ -48,13 +48,13 @@ export default function TestimonialsSection() {
             Client Success Stories
           </h2>
           <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
-            Join the ranks of leading financial institutions who trust our expertise in risk management
+            See how we've helped organizations unlock their business potential and achieve lasting success through digital transformation
           </p>
         </motion.div>
 
         <div className="relative max-w-5xl mx-auto">
           {/* Main Testimonial Card */}
-          <div className="h-[320px] md:h-[280px] relative">
+          <div className="min-h-[400px] relative">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
@@ -62,23 +62,23 @@ export default function TestimonialsSection() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.5 }}
-                className="absolute inset-0 bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 md:p-10 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 flex flex-col"
+                className="absolute inset-0 bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 md:p-10 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300"
               >
-                <div className="absolute -top-4 right-8 text-7xl text-purple-500/20">&quot;</div>
+                <div className="absolute -top-4 right-8 text-7xl text-purple-500/20 select-none">&quot;</div>
                 
-                <div className="relative z-10 flex flex-col flex-grow">
-                  <div className="flex-grow overflow-y-auto scrollbar-hide">
+                <div className="relative z-10 h-full flex flex-col">
+                  <div className="flex-grow mb-6">
                     <p className="text-gray-300 text-lg md:text-xl leading-relaxed">
                       {testimonials[currentIndex].testimonial}
                     </p>
                   </div>
                   
-                  <div className="mt-6 pt-4 border-t border-gray-700/50">
+                  <div className="pt-6 border-t border-gray-700/50">
                     <h4 className="text-white font-semibold text-xl mb-1">
                       {testimonials[currentIndex].name}
                     </h4>
                     <p className="text-gray-400">
-                      {testimonials[currentIndex].role} at {testimonials[currentIndex].company}
+                      {testimonials[currentIndex].role} • {testimonials[currentIndex].company}
                     </p>
                   </div>
                 </div>
@@ -90,7 +90,7 @@ export default function TestimonialsSection() {
           <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between px-4 md:-mx-16">
             <button
               onClick={handlePrev}
-              className="p-2 rounded-full bg-gray-800/50 border border-gray-700/50 hover:border-purple-500/50 text-white transition-all duration-300 backdrop-blur-sm"
+              className="p-2 rounded-full bg-gray-800/50 border border-gray-700/50 hover:border-purple-500/50 text-white transition-all duration-300 backdrop-blur-sm hover:scale-110"
               aria-label="Previous testimonial"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -99,7 +99,7 @@ export default function TestimonialsSection() {
             </button>
             <button
               onClick={handleNext}
-              className="p-2 rounded-full bg-gray-800/50 border border-gray-700/50 hover:border-purple-500/50 text-white transition-all duration-300 backdrop-blur-sm"
+              className="p-2 rounded-full bg-gray-800/50 border border-gray-700/50 hover:border-purple-500/50 text-white transition-all duration-300 backdrop-blur-sm hover:scale-110"
               aria-label="Next testimonial"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
