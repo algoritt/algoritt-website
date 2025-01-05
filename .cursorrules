@@ -88,3 +88,69 @@ accessibility:
   require_aria_labels: true
   require_semantic_html: true
   require_alt_text: true
+
+# Commit Structure Rules
+
+## Commit Types
+commit_types:
+  - feat: A new feature
+  - fix: A bug fix
+  - refactor: Code change that neither fixes a bug nor adds a feature
+  - style: Changes that do not affect the meaning of the code
+  - docs: Documentation only changes
+  - test: Adding missing tests or correcting existing tests
+  - chore: Changes to the build process or auxiliary tools
+  - perf: A code change that improves performance
+  - update: Updates to existing features/docs/dependencies
+
+## Commit Format
+commit_format: "<type>(<scope>): <description>"
+example: "refactor(hero): standardize hero sections across pages"
+
+## Commit Guidelines
+commit_rules:
+  - make_atomic_commits: true  # One logical change per commit
+  - use_imperative_mood: true  # "add feature" not "added feature"
+  - max_subject_length: 72
+  - capitalize_subject: false
+  - no_dot_at_end: true
+  - separate_changes: true     # Different types of changes should be in different commits
+
+## Scopes
+scopes:
+  - hero: Changes to hero sections
+  - sections: Changes to page sections
+  - components: Changes to UI components
+  - pages: Changes to page layouts
+  - styles: Changes to styling
+  - config: Changes to configuration
+  - deps: Changes to dependencies
+  - docs: Changes to documentation
+
+## Process
+commit_process:
+  1. Check status: "git status" to see all changes
+  2. Group changes: Group related files for atomic commits
+  3. Add files: "git add <files>" for each group
+  4. Commit: Use semantic commit message format
+  5. Verify: "git status" to ensure all changes are committed
+
+## Special Characters
+special_chars:
+  - Escape square brackets: \[ \]
+  - Escape parentheses: \( \)
+  - Use quotes for commit messages with special characters
+
+## Examples
+good_commits:
+  - "feat(auth): add login functionality"
+  - "fix(api): resolve undefined user data"
+  - "refactor(hero): standardize section styling"
+  - "update(docs): revise API documentation"
+  - "style(components): align text elements"
+
+bad_commits:
+  - "fixed stuff"                    # Too vague
+  - "many changes"                   # Not atomic
+  - "Updated several components."    # Not specific enough
+  - "feat:add login"                # Missing space after colon
