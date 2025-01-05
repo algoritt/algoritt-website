@@ -16,7 +16,7 @@ export const usps: USP[] = [
     description: 'Leveraging advanced analytics and cutting-edge technologies, we provide actionable insights that empower informed decision-making and drive sustainable growth.',
     icon: '/assets/icons/analytics.svg',
     stats: {
-      value: '1000+',
+      value: '220+',
       label: 'Analytics Models'
     }
   },
@@ -46,7 +46,7 @@ export const usps: USP[] = [
     description: 'We build strategic partnerships with our clients, working closely with your team to ensure alignment, accountability, and high performance.',
     icon: '/assets/icons/innovation.svg',
     stats: {
-      value: '95%',
+      value: '98%',
       label: 'Client Retention'
     }
   },
@@ -56,7 +56,7 @@ export const usps: USP[] = [
     description: 'Our focus is on delivering lasting value through innovation, resilience, and optimization, helping you navigate market complexities and achieve long-term success.',
     icon: '/assets/icons/quality.svg',
     stats: {
-      value: '500+',
+      value: '90+',
       label: 'Projects Delivered'
     }
   }

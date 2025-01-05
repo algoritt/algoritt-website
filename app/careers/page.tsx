@@ -8,10 +8,10 @@ import { careerSections, openPositions } from '@/constants/careers'
 import CareerSection from '@/components/ui/careers/CareerSection'
 
 const companyStats = [
-  { value: '25+', label: 'Team Members' },
-  { value: '5+', label: 'Countries' },
-  { value: '95%', label: 'Employee Satisfaction' },
-  { value: '4.8/5', label: 'Glassdoor Rating' },
+  { value: '50+', label: 'Team Members' },
+  { value: '12+', label: 'Clients' },
+  { value: '96%', label: 'Employee Satisfaction' },
+  { value: '900+', label: 'Models Developed' },
 ]
 
 // Group positions by department
