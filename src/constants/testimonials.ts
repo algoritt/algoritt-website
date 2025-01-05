@@ -5,31 +5,53 @@ export interface Testimonial {
   company: string;
   rating: number;
   testimonial: string;
+  service: string;
 }
 
 export const testimonials: Testimonial[] = [
   {
     id: '1',
     name: 'Marvin',
-    role: 'MD',
-    company: 'Leading Bank, UK',
+    role: 'Managing Director',
+    company: 'Global Investment Bank',
     rating: 5,
-    testimonial: 'Working with Algoritt consultants for our pricing model validation and documentation requirements has been one of our most successful consulting engagements. Their consultants are true professionals and highly knowledgeable in risk management. They started with low exposure low risk models and now they are validating critical front office pricing and XVA models.',
+    service: 'Risk Management',
+    testimonial: 'Working with Algoritt for our model validation and documentation has transformed our risk management approach. Their expertise in validating critical pricing and XVA models has significantly enhanced our risk assessment capabilities. The team\'s professionalism and deep knowledge have made them an invaluable partner in our risk management journey.',
   },
   {
     id: '2',
-    name: 'Mathew',
-    role: 'CEO',
-    company: 'Leading Bank, Poland',
+    name: 'Sarah',
+    role: 'Chief Compliance Officer',
+    company: 'European Financial Services',
     rating: 5,
-    testimonial: 'Partnering with Algoritt has been instrumental in safeguarding our business. Their comprehensive risk management solutions provide unparalleled insights, enabling us to navigate uncertainty with confidence. With their expertise, we\'re empowered to tackle challenges head-on, knowing our assets are protected. Algoritt is more than a provider – they\'re a trusted ally in our journey towards resilience and success.',
+    service: 'Compliance & Governance',
+    testimonial: 'Algoritt\'s compliance solutions have revolutionized how we handle regulatory requirements. Their AML/KYC implementation and transaction monitoring systems have significantly improved our compliance framework. The team\'s understanding of regulatory landscapes and ability to deliver tailored solutions sets them apart.',
   },
   {
     id: '3',
-    name: 'Jason',
-    role: 'Director',
-    company: 'Leading Bank, US',
+    name: 'Michael',
+    role: 'Head of Analytics',
+    company: 'Fortune 500 Corporation',
     rating: 5,
-    testimonial: 'We had used Algoritt for our Model Validation requirements during the last CCAR cycle. We were pleasantly surprised with the quality of their consultants. They understood the criticality of the deliverables as well as the tight timelines and went over and above the expectations. We look forward to working with them in future and would highly recommend them for risk model validation.',
+    service: 'Data Analytics & AI',
+    testimonial: 'The data analytics and AI solutions provided by Algoritt have given us unprecedented insights into our operations. Their advanced analytics models and visualization tools have helped us make data-driven decisions with confidence. The ROI we\'ve seen from their solutions has been exceptional.',
+  },
+  {
+    id: '4',
+    name: 'Elena',
+    role: 'ESG Director',
+    company: 'Global Asset Management',
+    rating: 5,
+    service: 'Sustainability & ESG',
+    testimonial: 'Algoritt has been instrumental in advancing our ESG initiatives. Their comprehensive approach to climate risk assessment and ESG reporting has helped us meet evolving regulatory requirements while driving sustainable growth. Their expertise in integrating ESG factors into our strategy has been invaluable.',
+  },
+  {
+    id: '5',
+    name: 'David',
+    role: 'Chief Risk Officer',
+    company: 'Leading Insurance Group',
+    rating: 5,
+    service: 'Risk Management',
+    testimonial: 'The model governance framework implemented by Algoritt has strengthened our risk management infrastructure. Their ability to combine regulatory compliance with operational efficiency has helped us build a more resilient risk management system. Their team\'s expertise and commitment to excellence are truly outstanding.',
   }
 ];
