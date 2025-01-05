@@ -16,7 +16,7 @@ const ServicesSection: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   
   const autoplayOptions = {
-    delay: 4000,
+    delay: 3000,
     rootNode: (emblaRoot: any) => emblaRoot.parentElement,
     stopOnInteraction: false,
     stopOnMouseEnter: true,
@@ -28,6 +28,7 @@ const ServicesSection: React.FC = () => {
       loop: true,
       skipSnaps: false,
       dragFree: false,
+      duration: 30,
     },
     [Autoplay(autoplayOptions)]
   );
@@ -64,9 +65,9 @@ const ServicesSection: React.FC = () => {
     <div className="w-full h-full px-3">
       <Link href={`/services/${service.id}`}>
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0 }}
           className="group h-[400px] bg-gray-800/40 backdrop-blur rounded-2xl overflow-hidden border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300"
         >
           <div className="relative h-44 w-full overflow-hidden">
