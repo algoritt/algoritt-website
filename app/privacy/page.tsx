@@ -63,8 +63,8 @@ export default function PrivacyPolicy() {
               <p>For the purposes of this Privacy Policy:</p>
               <ul>
                 <li><strong>Account</strong> means a unique account created for You to access our Service or parts of our Service.</li>
-                <li><strong>Company</strong> (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to Finresourcing LLC (DBA Algoritt Consulting), One World Trade Center, Suite 8500, New York, NY, 10007, United States.</li>
-                <li><strong>Cookies</strong> are small files that are placed on Your computer, mobile device or any other device by a website, containing the details of Your browsing history on that website among its many uses.</li>
+                <li><strong>Company</strong> (referred to as either &ldquo;the Company&rdquo;, &ldquo;We&rdquo;, &ldquo;Us&rdquo; or &ldquo;Our&rdquo; in this Agreement) refers to Finresourcing LLC (DBA Algoritt Consulting), One World Trade Center, Suite 8500, New York, NY, 10007, United States.</li>
+                <li><strong>Cookies</strong> are small files that are placed on Your computer, mobile device or any other device by a website, containing the details of your browsing history on that website among its many uses.</li>
                 <li><strong>Country</strong> refers to: New York, United States</li>
                 <li><strong>Device</strong> means any device that can access the Service such as a computer, a cellphone or a digital tablet.</li>
                 <li><strong>Personal Data</strong> is any information that relates to an identified or identifiable individual.</li>
@@ -91,7 +91,7 @@ export default function PrivacyPolicy() {
 
               <h3>Usage Data</h3>
               <p>
-                Usage Data is collected automatically when using the Service. Usage Data may include information such as Your Device's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that You visit, the time and date of Your visit, the time spent on those pages, unique device identifiers and other diagnostic data.
+                Usage Data is collected automatically when using the Service. Usage Data may include information such as Your Device&apos;s Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that You visit, the time and date of Your visit, the time spent on those pages, unique device identifiers and other diagnostic data.
               </p>
 
               <h2>Tracking Technologies and Cookies</h2>
@@ -117,7 +117,7 @@ export default function PrivacyPolicy() {
                 The security of Your Personal Data is important to Us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While We strive to use commercially acceptable means to protect Your Personal Data, We cannot guarantee its absolute security.
               </p>
 
-              <h2>Children's Privacy</h2>
+              <h2>Children&apos;s Privacy</h2>
               <p>
                 Our Service does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from anyone under the age of 13.
               </p>
