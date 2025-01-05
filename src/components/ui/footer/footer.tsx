@@ -52,7 +52,7 @@ export function Footer() {
                 transition={{ duration: 0.3, delay: 0.1 }}
                 className="text-base text-gray-400"
               >
-                Empowering businesses with cutting-edge software solutions and digital transformation services.
+                Algoritt is a trusted consulting & advisory firm unlocking business potential through risk management and digital transformation for lasting success.
               </motion.p>
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
