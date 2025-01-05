@@ -16,6 +16,12 @@ const footerLinks = {
     { name: 'About', href: '/about' },
     { name: 'Careers', href: '/careers' },
     { name: 'Contact', href: '/contact' },
+  ],
+  legal: [
+    { name: 'Privacy Policy', href: '/privacy' },
+    { name: 'Terms & Conditions', href: '/terms' },
+    { name: 'Cookie Policy', href: '/cookies' },
+    { name: 'Disclaimer', href: '/disclaimer' },
   ]
 }
 
@@ -128,6 +134,38 @@ export function Footer() {
               </ul>
             </div>
 
+            {/* Legal Links */}
+            <div className='md:col-span-1'>
+              <motion.h3 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3 }}
+                className="text-sm font-semibold text-white uppercase tracking-wider mb-4"
+              >
+                Legal
+              </motion.h3>
+              <ul className="space-y-3">
+                {footerLinks.legal.map((link, index) => (
+                  <motion.li 
+                    key={link.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                    whileHover={{ x: 4 }}
+                  >
+                    <Link
+                      href={link.href}
+                      className="text-base text-gray-400 hover:text-white transition-colors duration-200"
+                    >
+                      {link.name}
+                    </Link>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+
             {/* Newsletter */}
             <div className='lg:col-span-2'>
               <motion.h3 
@@ -178,26 +216,6 @@ export function Footer() {
             >
               {currentYear} Algoritt. All rights reserved.
             </motion.p>
-            <motion.div 
-              className="flex gap-6"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-            >
-              <Link
-                href="/privacy"
-                className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                href="/terms"
-                className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
-              >
-                Terms of Service
-              </Link>
-            </motion.div>
           </div>
         </motion.div>
       </div>
