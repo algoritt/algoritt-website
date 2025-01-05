@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { services } from '@/constants/services';
 import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, useInView } from 'framer-motion';
 
@@ -13,13 +14,23 @@ const ServicesSection: React.FC = () => {
   const isInView = useInView(containerRef, { once: true });
   const [showControls, setShowControls] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  
+  const autoplayOptions = {
+    delay: 4000,
+    rootNode: (emblaRoot: any) => emblaRoot.parentElement,
+    stopOnInteraction: false,
+    stopOnMouseEnter: true,
+  };
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    align: 'start',
-    loop: false,
-    skipSnaps: false,
-    dragFree: false,
-  });
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      align: 'start',
+      loop: true,
+      skipSnaps: false,
+      dragFree: false,
+    },
+    [Autoplay(autoplayOptions)]
+  );
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
