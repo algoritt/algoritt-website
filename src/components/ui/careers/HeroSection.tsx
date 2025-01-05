@@ -89,7 +89,7 @@ export default function HeroSection({ position }: Props) {
             transition={{ delay: 0.35, duration: 0.3 }}
             className="text-xl text-gray-300 leading-relaxed"
           >
-            {position.description}
+            {position.roleOverview}
           </motion.p>
         </motion.div>
       </div>
