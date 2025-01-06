@@ -1,6 +1,8 @@
 # Codebase rules
 - params should be awaited before using its properties
-
+- Always escape square brackets and parentheses in commit messages
+- Always escape characters with &quot; &ldquo; &rdquo; &apos; &lsquo; &rsquo; &#34;
+- Always use the correct HTML entities for special characters
 # Project Structure Rules
 root_dir: ./
 src_dir: ./src
