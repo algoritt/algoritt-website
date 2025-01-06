@@ -5,6 +5,13 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 
+const companyStats = [
+  { value: '10+', label: 'Years Experience' },
+  { value: '500+', label: 'Projects Delivered' },
+  { value: '50+', label: 'Global Experts' },
+  { value: '12+', label: 'Countries Served' },
+]
+
 export default function AboutPage() {
   return (
     <main className="flex min-h-screen flex-col bg-gray-900 font-worksans">
@@ -18,88 +25,96 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-6xl mx-auto text-center"
+            className="max-w-4xl mx-auto text-center"
           >
             <h1 className="text-6xl md:text-7xl font-bold tracking-tight text-white mb-8">
               Driving <span className="text-purple-500">Excellence</span> Forward
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-8">
               Strategic consulting and risk management solutions that transform businesses for lasting success.
             </p>
-          </motion.div>
-        </div>
-      </section>      
-
-      {/* Content Sections */}
-      <section className="relative py-20 bg-gray-900">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:14px_24px]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/0 via-purple-600/5 to-gray-900/0" />
-        
-        <div className="container relative mx-auto">
-          {aboutSections.map((section, index) => (
-            <motion.div
-              key={section.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              className="mb-24 last:mb-0"
+            <Link 
+              href="/contact" 
+              className="inline-flex items-center px-8 py-3 rounded-full bg-purple-600 text-white font-semibold hover:bg-purple-700 transition-colors"
             >
-              <div className="flex flex-col lg:flex-row items-center gap-12 px-4 sm:px-6 lg:px-8">
-                <div className={`w-full lg:w-1/2 ${section.alignment === 'left' ? 'lg:order-1' : 'lg:order-2'}`}>
-                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
-                    {section.media.type === 'video' ? (
-                      <video
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        className="absolute inset-0 w-full h-full object-cover"
-                      >
-                        <source src={section.media.src} type="video/mp4" />
-                      </video>
-                    ) : (
-                      <Image
-                        src={section.media.src}
-                        alt={section.media.alt || section.title}
-                        fill
-                        className="object-cover transition-transform duration-500 hover:scale-105"
-                      />
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/20 to-transparent opacity-60" />
-                  </div>
-                </div>
-
-                <div className={`w-full lg:w-1/2 ${section.alignment === 'left' ? 'lg:order-2' : 'lg:order-1'}`}>
-                  <motion.div
-                    initial={{ opacity: 0, x: section.alignment === 'left' ? 20 : -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50"
-                  >
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                      {section.title}
-                    </h2>
-                    <div className="prose prose-lg prose-invert">
-                      <p className="text-gray-300 leading-relaxed whitespace-pre-line">
-                        {section.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+              Get in Touch
+            </Link>
+          </motion.div>
         </div>
       </section>
 
-      {/* Updated Values Section */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-gray-800">
-        <div className="container mx-auto">
+      {/* Content Sections */}
+      {aboutSections.map((section, index) => (
+        <section key={section.id} className="py-24 bg-gray-900 relative overflow-hidden">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:14px_24px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-transparent to-gray-900" />
+          
+          <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
+            <div className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 0 ? '' : 'lg:flex-row-reverse'}`}>
+              {/* Content Side */}
+              <motion.div
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="space-y-6"
+              >
+                <div className="inline-block">
+                  <motion.div
+                    initial={{ width: 0 }}
+                    whileInView={{ width: '100%' }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="h-1 bg-purple-600 mb-4"
+                  />
+                  <h2 className="text-3xl md:text-4xl font-bold text-white">{section.title}</h2>
+                </div>
+                <p className="text-gray-300 text-lg leading-relaxed whitespace-pre-line">{section.description}</p>
+              </motion.div>
+
+              {/* Media Side */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className={`relative h-[400px] rounded-xl overflow-hidden ${
+                  index % 2 === 0 ? 'lg:order-last' : 'lg:order-first'
+                }`}
+              >
+                {section.media.type === 'video' ? (
+                  <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover"
+                  >
+                    <source src={section.media.src} type="video/mp4" />
+                  </video>
+                ) : (
+                  <Image
+                    src={section.media.src}
+                    alt={section.media.alt || section.title}
+                    fill
+                    className="object-cover"
+                  />
+                )}
+                {/* Decorative Elements */}
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-gray-900 to-transparent" />
+              </motion.div>
+            </div>
+          </div>
+        </section>
+      ))}
+
+      {/* Values Section */}
+      <section className="py-24 bg-gray-950">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-8 md:mb-16"
+            className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">Our Core Values</h2>
             <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
@@ -107,12 +122,7 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
                 title: 'Commitment',
@@ -140,22 +150,22 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-8 rounded-2xl bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-purple-500 transition-all group"
+                className="group p-8 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-purple-500 transition-all"
               >
                 <div className="text-4xl mb-4">{value.icon}</div>
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-purple-500 transition-colors">
+                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-purple-400 transition-colors">
                   {value.title}
                 </h3>
                 <p className="text-gray-300">{value.description}</p>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Global Presence Section */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
-        <div className="container mx-auto">
+      <section className="py-24 bg-gray-900">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -176,14 +186,14 @@ export default function AboutPage() {
           >
             <Image
               src="/assets/about/global-presence.jpg"
-              alt="Algoritt's Global Presence Map"
+              alt="Algoritt&apos;s Global Presence Map"
               width={1200}
               height={600}
-              className="rounded-2xl shadow-2xl"
+              className="rounded-xl shadow-2xl"
               priority
             />
             
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-6 mt-12">
               {[
                 { country: 'USA', region: 'North America' },
                 { country: 'UK', region: 'Europe' },
@@ -196,9 +206,9 @@ export default function AboutPage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="text-center p-4 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700"
+                  className="text-center p-4 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-purple-500 transition-all group"
                 >
-                  <h3 className="text-xl font-bold text-white mb-1">{location.country}</h3>
+                  <h3 className="text-xl font-bold text-white mb-1 group-hover:text-purple-400 transition-colors">{location.country}</h3>
                   <p className="text-gray-400">{location.region}</p>
                 </motion.div>
               ))}
@@ -208,13 +218,13 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-20">
+      <section className="py-24 bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-8 md:mb-16"
+            className="text-center"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
               Ready to Transform Your Business?
