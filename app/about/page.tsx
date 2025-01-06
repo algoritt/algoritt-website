@@ -5,13 +5,6 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const companyStats = [
-  { value: '10+', label: 'Years Experience' },
-  { value: '500+', label: 'Projects Delivered' },
-  { value: '50+', label: 'Global Experts' },
-  { value: '12+', label: 'Countries Served' },
-]
-
 export default function AboutPage() {
   return (
     <main className="flex min-h-screen flex-col bg-gray-900 font-worksans">
