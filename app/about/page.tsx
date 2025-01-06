@@ -26,12 +26,6 @@ export default function AboutPage() {
             <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-8">
               Strategic consulting and risk management solutions that transform businesses for lasting success.
             </p>
-            <Link 
-              href="/contact" 
-              className="inline-flex items-center px-8 py-3 rounded-full bg-purple-600 text-white font-semibold hover:bg-purple-700 transition-colors"
-            >
-              Get in Touch
-            </Link>
           </motion.div>
         </div>
       </section>
