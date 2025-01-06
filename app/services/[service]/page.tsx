@@ -115,12 +115,12 @@ export default function ServicePage() {
             variants={container}
             className="max-w-6xl mx-auto"
           >
-            <div className="text-center mb-8 md:mb-16">
+            {/* <div className="text-center mb-8 md:mb-16">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">Our Offerings</h2>
               <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
                 Discover how our {serviceData.title.toLowerCase()} service can transform your business
               </p>
-            </div>
+            </div> */}
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {serviceData.subServices.map((subService, index) => (

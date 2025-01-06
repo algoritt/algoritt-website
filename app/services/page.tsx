@@ -33,7 +33,8 @@ export default function ServicesPage() {
       {/* Services Grid */}
       <section className="py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
+          {/* Our Services */}
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -45,7 +46,7 @@ export default function ServicesPage() {
             <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
               Explore our comprehensive range of services designed to drive your business forward
             </p>
-          </motion.div>
+          </motion.div> */}
 
           <motion.div 
             initial={{ opacity: 0 }}
