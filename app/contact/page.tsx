@@ -68,7 +68,6 @@ export default function ContactPage() {
                   <Mail className="w-6 h-6" />
                   <div className="flex flex-col">
                     <a href="mailto:info@algoritt.com" className="hover:text-purple-500">info@algoritt.com</a>
-                    <a href="mailto:admin@algoritt.com" className="hover:text-purple-500">admin@algoritt.com</a>
                   </div>
                 </motion.div>
 
@@ -79,7 +78,6 @@ export default function ContactPage() {
                   <Phone className="w-6 h-6" />
                   <div className="flex flex-col">
                     <a href="tel:+12122207213">+1-212-220-7213</a>
-                    <a href="tel:+15513998572">+1-551-399-8572</a>
                   </div>
                 </motion.div>
 
