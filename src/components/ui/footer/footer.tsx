@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import SocialLinks from './social/social-links'
-import { NewsletterForm } from './newsletter/newsletter-form'
+import NewsletterForm from './newsletter/newsletter-form'
 import { services } from '@/constants/services'
 import Image from 'next/image'
 
