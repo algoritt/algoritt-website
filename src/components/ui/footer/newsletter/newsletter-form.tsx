@@ -30,6 +30,7 @@ export default function NewsletterForm() {
         throw new Error('Failed to subscribe')
       }
     } catch (error) {
+      console.error('Newsletter subscription error:', error);
       setSubmitStatus({
         type: 'error',
         message: 'Something went wrong. Please try again later.'

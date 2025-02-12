@@ -37,6 +37,7 @@ export default function ContactPage() {
         throw new Error('Failed to submit form');
       }
     } catch (error) {
+      console.error('Contact form submission error:', error);
       setSubmitStatus({
         type: 'error',
         message: 'Something went wrong. Please try again later.'

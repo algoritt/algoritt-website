@@ -1,7 +1,7 @@
 'use server'
 
 import { supabase } from '@/lib/supabase'
-import { ContactFormData, NewsletterSubscription, JobApplication } from '@/types/forms'
+import type { ContactFormData, JobApplication } from '@/types/forms'
 
 export async function submitContactForm(formData: ContactFormData) {
   try {
