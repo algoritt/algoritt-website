@@ -1,6 +1,10 @@
+import type { ContactFormData, JobApplication } from '@/types/forms'
+
+type FormDataType = ContactFormData | JobApplication | { email: string }
+
 interface TeamsNotificationOptions {
   title: string
-  formData: Record<string, any>
+  formData: FormDataType
 }
 
 export async function sendTeamsNotification({ title, formData }: TeamsNotificationOptions) {
