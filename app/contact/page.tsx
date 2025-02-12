@@ -3,19 +3,47 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { submitContactForm } from '@/actions/forms';
+import type { ContactFormData } from '@/types/forms';
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    fullName: '',
+  const [formData, setFormData] = useState<ContactFormData>({
+    full_name: '',
     email: '',
     subject: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string | null;
+  }>({ type: null, message: null });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log(formData);
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: null });
+
+    try {
+      const result = await submitContactForm(formData);
+      
+      if (result.success) {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Thank you for your message. We will get back to you soon!'
+        });
+        setFormData({ full_name: '', email: '', subject: '', message: '' });
+      } else {
+        throw new Error('Failed to submit form');
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Something went wrong. Please try again later.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -113,9 +141,9 @@ export default function ContactPage() {
                   </label>
                   <input
                     type="text"
-                    id="fullName"
-                    value={formData.fullName}
-                    onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                    id="full_name"
+                    value={formData.full_name}
+                    onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
                     className="w-full px-4 py-3 rounded-lg bg-gray-800/50 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
                     placeholder="Your full name"
                     required
@@ -172,11 +200,20 @@ export default function ContactPage() {
                   whileTap={{ scale: 0.98 }}
                   type="submit"
                   className="inline-flex items-center px-8 py-3 rounded-full bg-purple-600 text-white font-semibold hover:bg-purple-700 transition-colors"
+                  disabled={isSubmitting}
                 >
                   Send Message
                   <Send className="w-5 h-5 ml-2" />
                 </motion.button>
               </form>
+
+              {submitStatus.message && (
+                <div className={`mt-4 p-4 rounded ${
+                  submitStatus.type === 'success' ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'
+                }`}>
+                  {submitStatus.message}
+                </div>
+              )}
             </motion.div>
           </div>
         </div>

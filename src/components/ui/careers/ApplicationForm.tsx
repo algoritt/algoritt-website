@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { submitJobApplication } from '@/actions/forms'
 import { JobPosition } from '@/types'
 
 interface Props {
@@ -13,15 +14,20 @@ export default function ApplicationForm({ position }: Props) {
     name: '',
     email: '',
     phone: '',
-    resumeUrl: '',
-    coverLetter: '',
+    resume_url: '',
+    cover_letter: '',
     portfolio: '',
-    positionId: position.id,
-    positionTitle: position.title
+    position_id: position.id,
+    position_title: position.title,
+    status: 'pending' as const
   })
 
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null
+    message: string | null
+  }>({ type: null, message: null })
 
   const formFields = {
     hidden: { opacity: 0 },
@@ -58,14 +64,14 @@ export default function ApplicationForm({ position }: Props) {
       newErrors.email = 'Invalid email format'
     }
 
-    if (!formData.resumeUrl.trim()) {
-      newErrors.resumeUrl = 'Resume URL is required'
-    } else if (!formData.resumeUrl.includes('drive.google.com')) {
-      newErrors.resumeUrl = 'Please provide a Google Drive URL'
+    if (!formData.resume_url.trim()) {
+      newErrors.resume_url = 'Resume URL is required'
+    } else if (!formData.resume_url.includes('drive.google.com')) {
+      newErrors.resume_url = 'Please provide a Google Drive URL'
     }
 
-    if (!formData.coverLetter.trim()) {
-      newErrors.coverLetter = 'Cover letter is required'
+    if (!formData.cover_letter.trim()) {
+      newErrors.cover_letter = 'Cover letter is required'
     }
 
     setErrors(newErrors)
@@ -80,13 +86,35 @@ export default function ApplicationForm({ position }: Props) {
     }
 
     setIsSubmitting(true)
+    setSubmitStatus({ type: null, message: null })
+
     try {
-      // TODO: Implement form submission
-      await new Promise(resolve => setTimeout(resolve, 1000)) // Simulated API call
-      console.log('Application submitted for:', position.title)
-      console.log('Form data:', formData)
+      const result = await submitJobApplication(formData)
+      
+      if (result.success) {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Your application has been submitted successfully!'
+        })
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          resume_url: '',
+          cover_letter: '',
+          portfolio: '',
+          position_id: position.id,
+          position_title: position.title,
+          status: 'pending'
+        })
+      } else {
+        throw new Error('Failed to submit application')
+      }
     } catch (error) {
-      console.error('Error submitting application:', error)
+      setSubmitStatus({
+        type: 'error',
+        message: 'Something went wrong. Please try again later.'
+      })
     } finally {
       setIsSubmitting(false)
     }
@@ -174,27 +202,27 @@ export default function ApplicationForm({ position }: Props) {
 
       {/* Resume URL Input */}
       <motion.div variants={formField}>
-        <label htmlFor="resumeUrl" className="block text-sm font-medium text-gray-300 mb-2">
+        <label htmlFor="resume_url" className="block text-sm font-medium text-gray-300 mb-2">
           Resume Google Drive URL
         </label>
         <motion.input
           whileFocus={{ scale: 1.01 }}
           type="url"
-          id="resumeUrl"
-          value={formData.resumeUrl}
-          onChange={(e) => setFormData(prev => ({ ...prev, resumeUrl: e.target.value }))}
-          className={`w-full px-4 py-3 bg-gray-700/50 border ${errors.resumeUrl ? 'border-red-500' : 'border-gray-600'} rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all duration-200`}
+          id="resume_url"
+          value={formData.resume_url}
+          onChange={(e) => setFormData(prev => ({ ...prev, resume_url: e.target.value }))}
+          className={`w-full px-4 py-3 bg-gray-700/50 border ${errors.resume_url ? 'border-red-500' : 'border-gray-600'} rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all duration-200`}
           placeholder="https://drive.google.com/file/d/..."
         />
         <AnimatePresence>
-          {errors.resumeUrl && (
+          {errors.resume_url && (
             <motion.p
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               className="mt-1 text-sm text-red-500"
             >
-              {errors.resumeUrl}
+              {errors.resume_url}
             </motion.p>
           )}
         </AnimatePresence>
@@ -213,21 +241,21 @@ export default function ApplicationForm({ position }: Props) {
         </label>
         <motion.textarea
           whileFocus={{ scale: 1.01 }}
-          id="coverLetter"
-          value={formData.coverLetter}
-          onChange={(e) => setFormData(prev => ({ ...prev, coverLetter: e.target.value }))}
+          id="cover_letter"
+          value={formData.cover_letter}
+          onChange={(e) => setFormData(prev => ({ ...prev, cover_letter: e.target.value }))}
           className={`w-full px-4 py-3 bg-gray-700/50 border ${errors.coverLetter ? 'border-red-500' : 'border-gray-600'} rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 min-h-[120px] transition-all duration-200`}
           placeholder="Tell us why you're interested in this position..."
         />
         <AnimatePresence>
-          {errors.coverLetter && (
+          {errors.cover_letter && (
             <motion.p
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               className="mt-1 text-sm text-red-500"
             >
-              {errors.coverLetter}
+              {errors.cover_letter}
             </motion.p>
           )}
         </AnimatePresence>
@@ -277,6 +305,18 @@ export default function ApplicationForm({ position }: Props) {
           )}
         </motion.button>
       </motion.div>
+
+      {submitStatus.message && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className={`p-4 rounded-md ${
+            submitStatus.type === 'success' ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'
+          }`}
+        >
+          {submitStatus.message}
+        </motion.div>
+      )}
     </motion.form>
   )
 }
