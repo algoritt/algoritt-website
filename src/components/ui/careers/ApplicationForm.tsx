@@ -111,6 +111,7 @@ export default function ApplicationForm({ position }: Props) {
         throw new Error('Failed to submit application')
       }
     } catch (error) {
+      console.error('Job application submission error:', error);
       setSubmitStatus({
         type: 'error',
         message: 'Something went wrong. Please try again later.'

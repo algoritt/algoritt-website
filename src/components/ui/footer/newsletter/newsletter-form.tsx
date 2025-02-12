@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { subscribeToNewsletter } from '@/actions/forms'
+import type { PostgrestError } from '@supabase/supabase-js'
 
 export default function NewsletterForm() {
   const [email, setEmail] = useState('')
@@ -27,12 +28,16 @@ export default function NewsletterForm() {
         })
         setEmail('')
       } else {
-        throw new Error('Failed to subscribe')
+        throw result.error
       }
     } catch (error) {
+      const pgError = error as PostgrestError
+      
       setSubmitStatus({
         type: 'error',
-        message: 'Something went wrong. Please try again later.'
+        message: pgError.code === '23505' 
+          ? 'You are already subscribed.'
+          : 'Something went wrong. Please try again later.'
       })
     } finally {
       setIsSubmitting(false)
@@ -60,13 +65,20 @@ export default function NewsletterForm() {
           Subscribe
         </motion.button>
       </div>
-      {submitStatus.message && (
-        <div className={`mt-4 text-sm ${
-          submitStatus.type === 'success' ? 'text-green-400' : 'text-red-400'
-        }`}>
-          {submitStatus.message}
-        </div>
-      )}
+      <div className="h-8 mt-4">
+        {submitStatus.message && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className={`text-sm ${
+              submitStatus.type === 'success' ? 'text-green-400' : 'text-red-400'
+            }`}
+          >
+            {submitStatus.message}
+          </motion.div>
+        )}
+      </div>
     </form>
   )
 }

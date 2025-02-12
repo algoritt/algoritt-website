@@ -1,7 +1,8 @@
 'use server'
 
 import { supabase } from '@/lib/supabase'
-import { ContactFormData, NewsletterSubscription, JobApplication } from '@/types/forms'
+import type { ContactFormData, JobApplication } from '@/types/forms'
+import { sendTeamsNotification } from '@/lib/notifications'
 
 export async function submitContactForm(formData: ContactFormData) {
   try {
@@ -15,6 +16,13 @@ export async function submitContactForm(formData: ContactFormData) {
       .select()
 
     if (error) throw error
+
+    // Send Teams notification
+    await sendTeamsNotification({
+      title: '📧 New Contact Form Submission',
+      formData
+    })
+
     return { success: true, data }
   } catch (error) {
     console.error('Error submitting contact form:', error)
@@ -35,6 +43,13 @@ export async function subscribeToNewsletter(email: string) {
       .select()
 
     if (error) throw error
+
+    // Send Teams notification
+    await sendTeamsNotification({
+      title: '📫 New Newsletter Subscription',
+      formData: { email }
+    })
+
     return { success: true, data }
   } catch (error) {
     console.error('Error subscribing to newsletter:', error)
@@ -55,6 +70,16 @@ export async function submitJobApplication(formData: JobApplication) {
       .select()
 
     if (error) throw error
+
+    // Send Teams notification
+    await sendTeamsNotification({
+      title: '👔 New Job Application',
+      formData: {
+        ...formData,
+        status: 'pending'
+      }
+    })
+
     return { success: true, data }
   } catch (error) {
     console.error('Error submitting job application:', error)
