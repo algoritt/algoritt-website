@@ -40,4 +40,3 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 # public/assets/hero-background.mp4
-pnpm-lock.yaml

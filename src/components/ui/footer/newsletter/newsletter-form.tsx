@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { subscribeToNewsletter } from '@/actions/forms'
-import type { PostgrestError } from '@supabase/supabase-js'
 
 export default function NewsletterForm() {
   const [email, setEmail] = useState('')
@@ -30,12 +29,11 @@ export default function NewsletterForm() {
       } else {
         throw result.error
       }
-    } catch (error) {
-      const pgError = error as PostgrestError
-      
+    } catch (error: unknown) {
+      const errorObj = error as { code?: string; message?: string }
       setSubmitStatus({
         type: 'error',
-        message: pgError.code === '23505' 
+        message: errorObj?.code === 'DUPLICATE_EMAIL' 
           ? 'You are already subscribed.'
           : 'Something went wrong. Please try again later.'
       })
