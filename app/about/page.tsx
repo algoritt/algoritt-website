@@ -172,7 +172,7 @@ export default function AboutPage() {
             className="relative max-w-5xl mx-auto"
           >
             <Image
-              src="/assets/about/global-presence.jpg"
+              src="/assets/about/global-presence.png"
               alt="Algoritt&apos;s Global Presence Map"
               width={1200}
               height={600}
