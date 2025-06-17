@@ -1,21 +1,21 @@
 'use server'
 
-import { supabase } from '@/lib/supabase'
 import type { ContactFormData, JobApplication } from '@/types/forms'
 import { sendTeamsNotification } from '@/lib/notifications'
+import { 
+  ContactSubmissionModel, 
+  NewsletterSubscriptionModel, 
+  JobApplicationModel 
+} from '@/lib/models'
 
 export async function submitContactForm(formData: ContactFormData) {
   try {
-    const { data, error } = await supabase
-      .from('contact_submissions')
-      .insert([
-        {
-          ...formData,
-        },
-      ])
-      .select()
-
-    if (error) throw error
+    const data = await ContactSubmissionModel.create({
+      full_name: formData.full_name,
+      email: formData.email,
+      subject: formData.subject,
+      message: formData.message
+    })
 
     // Send Teams notification
     await sendTeamsNotification({
@@ -32,17 +32,7 @@ export async function submitContactForm(formData: ContactFormData) {
 
 export async function subscribeToNewsletter(email: string) {
   try {
-    const { data, error } = await supabase
-      .from('newsletter_subscriptions')
-      .insert([
-        {
-          email,
-          status: 'active'
-        },
-      ])
-      .select()
-
-    if (error) throw error
+    const data = await NewsletterSubscriptionModel.create(email)
 
     // Send Teams notification
     await sendTeamsNotification({
@@ -53,23 +43,28 @@ export async function subscribeToNewsletter(email: string) {
     return { success: true, data }
   } catch (error) {
     console.error('Error subscribing to newsletter:', error)
+    
+    // Handle duplicate email error
+    if (error instanceof Error && error.message === 'Email already subscribed') {
+      return { success: false, error: { code: 'DUPLICATE_EMAIL', message: error.message } }
+    }
+    
     return { success: false, error }
   }
 }
 
 export async function submitJobApplication(formData: JobApplication) {
   try {
-    const { data, error } = await supabase
-      .from('job_applications')
-      .insert([
-        {
-          ...formData,
-          status: 'pending',
-        },
-      ])
-      .select()
-
-    if (error) throw error
+    const data = await JobApplicationModel.create({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      resume_url: formData.resume_url,
+      cover_letter: formData.cover_letter,
+      portfolio: formData.portfolio,
+      position_id: formData.position_id,
+      position_title: formData.position_title
+    })
 
     // Send Teams notification
     await sendTeamsNotification({

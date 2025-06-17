@@ -1,8 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Algoritt Website
+
+This is a [Next.js](https://nextjs.org) project for Algoritt's company website featuring services, careers, and contact forms.
+
+## Database
+
+This project uses **MongoDB** for data storage. See [MONGODB_SETUP.md](./MONGODB_SETUP.md) for complete setup instructions.
+
+## Environment Variables
+
+Create a `.env.local` file with:
+
+```bash
+MONGODB_URI=your_mongodb_connection_string_here
+```
 
 ## Getting Started
 
-First, run the development server:
+1. Install dependencies:
+```bash
+npm install
+```
+
+2. Set up database indexes:
+```bash
+npm run db:init
+```
+
+3. Run the development server:
 
 ```bash
 npm run dev
