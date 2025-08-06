@@ -106,7 +106,7 @@ export default function ContactPage() {
                 >
                   <Phone className="w-6 h-6" />
                   <div className="flex flex-col">
-                    <a href="tel:+12122207213">+1-212-220-7213</a>
+                    <a href="tel:+15513997312">+1 (551) 399‑7312</a>
                   </div>
                 </motion.div>
 
@@ -118,7 +118,7 @@ export default function ContactPage() {
                   <div className="space-y-4">
                     <div>
                       <h3 className="font-semibold text-white mb-1">USA Address</h3>
-                      <p>One World Trade Center, Suite 8500, New York, NY, 10007, United States</p>
+                      <p>33 Wood Avenue South, Suite 430, Iselin, New Jersey 08830</p>
                     </div>
                     <div>
                       <h3 className="font-semibold text-white mb-1">India Address</h3>

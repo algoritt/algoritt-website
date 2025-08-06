@@ -63,7 +63,7 @@ export default function PrivacyPolicy() {
               <p>For the purposes of this Privacy Policy:</p>
               <ul>
                 <li><strong>Account</strong> means a unique account created for You to access our Service or parts of our Service.</li>
-                <li><strong>Company</strong> (referred to as either &ldquo;the Company&rdquo;, &ldquo;We&rdquo;, &ldquo;Us&rdquo; or &ldquo;Our&rdquo; in this Agreement) refers to Finresourcing LLC (DBA Algoritt Consulting), One World Trade Center, Suite 8500, New York, NY, 10007, United States.</li>
+                <li><strong>Company</strong> (referred to as either &ldquo;the Company&rdquo;, &ldquo;We&rdquo;, &ldquo;Us&rdquo; or &ldquo;Our&rdquo; in this Agreement) refers to Finresourcing LLC (DBA Algoritt Consulting), 33 Wood Avenue South, Suite 430, Iselin, New Jersey 08830.</li>
                 <li><strong>Cookies</strong> are small files that are placed on Your computer, mobile device or any other device by a website, containing the details of your browsing history on that website among its many uses.</li>
                 <li><strong>Country</strong> refers to: New York, United States</li>
                 <li><strong>Device</strong> means any device that can access the Service such as a computer, a cellphone or a digital tablet.</li>
