@@ -197,7 +197,7 @@ export default function ApplicationForm({ position }: Props) {
           value={formData.phone}
           onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
           className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all duration-200"
-          placeholder="+1 (555) 000-0000"
+                              placeholder="+1 (551) 399‑7312"
         />
       </motion.div>
 

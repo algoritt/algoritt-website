@@ -65,7 +65,7 @@ export default function CookiesPolicy() {
               <h3>Definitions</h3>
               <p>For the purposes of this Cookies Policy:</p>
               <ul>
-                <li><strong>Company</strong> (referred to as either &ldquo;the Company&rdquo;, &ldquo;We&rdquo;, &ldquo;Us&rdquo; or &ldquo;Our&rdquo; in this Cookies Policy) refers to Finresourcing LLC (DBA Algoritt Consulting), One World Trade Center, Suite 8500, New York, NY, 10007, United States.</li>
+                <li><strong>Company</strong> (referred to as either &ldquo;the Company&rdquo;, &ldquo;We&rdquo;, &ldquo;Us&rdquo; or &ldquo;Our&rdquo; in this Cookies Policy) refers to Finresourcing LLC (DBA Algoritt Consulting), 33 Wood Avenue South, Suite 430, Iselin, New Jersey 08830.</li>
                 <li><strong>Cookies</strong> means small files that are placed on Your computer, mobile device or any other device by a website, containing details of your browsing history on that website among its many uses.</li>
                 <li><strong>Website</strong> refers to Algoritt, accessible from https://algoritt.com/</li>
                 <li><strong>You</strong> means the individual accessing or using the Website, or a company, or any legal entity on behalf of which such individual is accessing or using the Website, as applicable.</li>
