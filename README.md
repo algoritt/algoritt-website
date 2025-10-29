@@ -26,7 +26,7 @@ This website serves as the company's primary digital presence, featuring service
 ## Prerequisites
 
 - Node.js 18+ or 20+
-- npm, pnpm, or yarn
+- pnpm (package manager)
 - AWS Account with DynamoDB access
 - AWS IAM credentials
 
@@ -42,11 +42,7 @@ cd algoritt-website
 ### 2. Install Dependencies
 
 ```bash
-npm install
-# or
 pnpm install
-# or
-yarn install
 ```
 
 ### 3. Environment Setup
@@ -71,7 +67,7 @@ TEAMS_CHANNEL_WEBHOOK=your_teams_webhook_url
 ### 4. Initialize Database
 
 ```bash
-npm run db:init
+pnpm run db:init
 ```
 
 This creates the required DynamoDB tables with proper indexes.
@@ -79,19 +75,19 @@ This creates the required DynamoDB tables with proper indexes.
 ### 5. Run Development Server
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Available Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
-- `npm run db:init` - Initialize DynamoDB tables
-- `npm run db:migrate` - Migrate data from MongoDB to DynamoDB
+- `pnpm run dev` - Start development server
+- `pnpm run build` - Build for production
+- `pnpm run start` - Start production server
+- `pnpm run lint` - Run ESLint
+- `pnpm run db:init` - Initialize DynamoDB tables
+- `pnpm run db:migrate` - Migrate data from MongoDB to DynamoDB
 
 ## Project Structure
 
@@ -159,8 +155,8 @@ Quick migration:
 
 ```bash
 # Ensure MongoDB URI is in .env.local
-npm run db:init    # Create DynamoDB tables
-npm run db:migrate # Migrate data
+pnpm run db:init    # Create DynamoDB tables
+pnpm run db:migrate # Migrate data
 ```
 
 ## Deployment
