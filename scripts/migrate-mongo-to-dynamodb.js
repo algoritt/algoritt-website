@@ -79,6 +79,11 @@ async function batchWriteToDynamoDB(tableName, items) {
       await dynamoDb.send(command);
       processedCount += batch.length;
       console.log(`   ✓ Migrated ${processedCount}/${items.length} items`);
+      
+      // Add delay to avoid exceeding provisioned throughput
+      if (processedCount < items.length) {
+        await new Promise(resolve => setTimeout(resolve, 1000)); // 1 second delay
+      }
     } catch (error) {
       console.error(`   ✗ Error in batch write:`, error.message);
       throw error;
