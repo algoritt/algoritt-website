@@ -126,6 +126,7 @@ async function createNewsletterSubscriptionsTable() {
         IndexName: 'EmailIndex',
         KeySchema: [
           { AttributeName: 'email', KeyType: 'HASH' },
+          { AttributeName: 'timestamp', KeyType: 'RANGE' },
         ],
         Projection: {
           ProjectionType: 'ALL',
