@@ -12,22 +12,22 @@ if (!process.env.AWS_REGION) {
   throw new Error('Invalid/Missing environment variable: "AWS_REGION"')
 }
 
-if (!process.env.AWS_ACCESS_KEY_ID) {
-  throw new Error('Invalid/Missing environment variable: "AWS_ACCESS_KEY_ID"')
+// Create DynamoDB client configuration
+const clientConfig: any = {
+  region: process.env.AWS_REGION,
 }
 
-if (!process.env.AWS_SECRET_ACCESS_KEY) {
-  throw new Error('Invalid/Missing environment variable: "AWS_SECRET_ACCESS_KEY"')
+// Only use explicit credentials in local development
+// In AWS Amplify/Lambda, IAM roles provide credentials automatically
+if (process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY) {
+  clientConfig.credentials = {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  }
 }
 
 // Create DynamoDB client
-const client = new DynamoDBClient({
-  region: process.env.AWS_REGION,
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  },
-})
+const client = new DynamoDBClient(clientConfig)
 
 // Create DynamoDB Document client for simplified operations
 const dynamoDb = DynamoDBDocumentClient.from(client, {
