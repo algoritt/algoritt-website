@@ -6,7 +6,7 @@ import {
   ContactSubmissionModel, 
   NewsletterSubscriptionModel, 
   JobApplicationModel 
-} from '@/lib/models'
+} from '@/lib/dynamodb-models'
 
 export async function submitContactForm(formData: ContactFormData) {
   try {
@@ -80,4 +80,4 @@ export async function submitJobApplication(formData: JobApplication) {
     console.error('Error submitting job application:', error)
     return { success: false, error }
   }
-} 
+}
