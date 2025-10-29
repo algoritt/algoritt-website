@@ -1,4 +1,4 @@
-import { DynamoDBClient } from '@aws-sdk/client-dynamodb'
+import { DynamoDBClient, DynamoDBClientConfig } from '@aws-sdk/client-dynamodb'
 import { 
   DynamoDBDocumentClient, 
   PutCommand, 
@@ -16,7 +16,7 @@ if (!region) {
 }
 
 // Create DynamoDB client configuration
-const clientConfig: any = {
+const clientConfig: DynamoDBClientConfig = {
   region: region,
 }
 
@@ -53,7 +53,7 @@ export const TABLES = {
 } as const
 
 // Helper functions
-export async function putItem(tableName: string, item: Record<string, any>) {
+export async function putItem(tableName: string, item: Record<string, unknown>) {
   const command = new PutCommand({
     TableName: tableName,
     Item: item,
@@ -61,7 +61,7 @@ export async function putItem(tableName: string, item: Record<string, any>) {
   return await dynamoDb.send(command)
 }
 
-export async function getItem(tableName: string, key: Record<string, any>) {
+export async function getItem(tableName: string, key: Record<string, unknown>) {
   const command = new GetCommand({
     TableName: tableName,
     Key: key,
@@ -73,7 +73,7 @@ export async function getItem(tableName: string, key: Record<string, any>) {
 export async function queryItems(
   tableName: string,
   keyConditionExpression: string,
-  expressionAttributeValues: Record<string, any>,
+  expressionAttributeValues: Record<string, unknown>,
   expressionAttributeNames?: Record<string, string>
 ) {
   const command = new QueryCommand({
@@ -97,9 +97,9 @@ export async function scanItems(tableName: string, limit?: number) {
 
 export async function updateItem(
   tableName: string,
-  key: Record<string, any>,
+  key: Record<string, unknown>,
   updateExpression: string,
-  expressionAttributeValues: Record<string, any>,
+  expressionAttributeValues: Record<string, unknown>,
   expressionAttributeNames?: Record<string, string>
 ) {
   const command = new UpdateCommand({

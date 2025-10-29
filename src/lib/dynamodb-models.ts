@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid'
-import { dynamoDb, TABLES, putItem, queryItems, scanItems } from './dynamodb'
+import { dynamoDb, TABLES, putItem, scanItems } from './dynamodb'
 import { GetCommand, QueryCommand } from '@aws-sdk/lib-dynamodb'
 
 // DynamoDB document interfaces
