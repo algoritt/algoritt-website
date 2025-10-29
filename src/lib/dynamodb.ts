@@ -8,13 +8,16 @@ import {
   UpdateCommand
 } from '@aws-sdk/lib-dynamodb'
 
-if (!process.env.AWS_REGION) {
-  throw new Error('Invalid/Missing environment variable: "AWS_REGION"')
+// Use DYNAMODB_REGION to avoid AWS_ prefix conflicts
+const region = process.env.DYNAMODB_REGION || process.env.AWS_REGION
+
+if (!region) {
+  throw new Error('Invalid/Missing environment variable: "DYNAMODB_REGION" or "AWS_REGION"')
 }
 
 // Create DynamoDB client configuration
 const clientConfig: any = {
-  region: process.env.AWS_REGION,
+  region: region,
 }
 
 // Only use explicit credentials in local development
