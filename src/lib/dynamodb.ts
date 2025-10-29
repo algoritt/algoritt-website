@@ -53,18 +53,18 @@ export const TABLES = {
 } as const
 
 // Helper functions
-export async function putItem(tableName: string, item: Record<string, unknown>) {
+export async function putItem<T extends Record<string, unknown>>(tableName: string, item: T) {
   const command = new PutCommand({
     TableName: tableName,
-    Item: item,
+    Item: item as Record<string, unknown>,
   })
   return await dynamoDb.send(command)
 }
 
-export async function getItem(tableName: string, key: Record<string, unknown>) {
+export async function getItem<T extends Record<string, unknown>>(tableName: string, key: T) {
   const command = new GetCommand({
     TableName: tableName,
-    Key: key,
+    Key: key as Record<string, unknown>,
   })
   const response = await dynamoDb.send(command)
   return response.Item
@@ -95,18 +95,18 @@ export async function scanItems(tableName: string, limit?: number) {
   return response.Items || []
 }
 
-export async function updateItem(
+export async function updateItem<T extends Record<string, unknown>, V extends Record<string, unknown>>(
   tableName: string,
-  key: Record<string, unknown>,
+  key: T,
   updateExpression: string,
-  expressionAttributeValues: Record<string, unknown>,
+  expressionAttributeValues: V,
   expressionAttributeNames?: Record<string, string>
 ) {
   const command = new UpdateCommand({
     TableName: tableName,
-    Key: key,
+    Key: key as Record<string, unknown>,
     UpdateExpression: updateExpression,
-    ExpressionAttributeValues: expressionAttributeValues,
+    ExpressionAttributeValues: expressionAttributeValues as Record<string, unknown>,
     ...(expressionAttributeNames && { ExpressionAttributeNames: expressionAttributeNames }),
     ReturnValues: 'ALL_NEW',
   })
